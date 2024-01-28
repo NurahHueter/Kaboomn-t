@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{3f1ed74b-9cdd-4b5e-8dbb-f793ed3ef053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Manager">
+      <UniqueIdentifier>{9ac098d9-4b43-4a43-937a-3977121bd139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Manager\GameStateManager">
+      <UniqueIdentifier>{da1da965-b6ca-415b-9449-9d3441b8f3a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{8d7ba076-96a5-4f1c-89f8-8e520cb75ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{9878e344-1c11-47aa-941d-9a0d2fe4e5d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{1e26bee2-fcfc-4e1e-ae5b-ed1bfbbad3b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{d38beeaf-2964-42de-946d-42bf352df556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Debug">
+      <UniqueIdentifier>{5a0a560b-7e7f-4553-9c47-a37f010ab5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Debug">
+      <UniqueIdentifier>{07681759-8301-4639-9f89-ab378ca94263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{4174f321-1fb8-442b-b8c7-ae2a8eccd05c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{98ff1aed-d33a-4c63-b98b-6f629d649a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Components">
+      <UniqueIdentifier>{2c86efb3-00c2-4028-9e2b-a0d7dbed99f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Components">
+      <UniqueIdentifier>{e90dd375-0c91-4774-a3b7-947320dc3549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enums">
+      <UniqueIdentifier>{897cde11-dd21-4e26-bde4-d68e83b003b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\CustomComponents">
+      <UniqueIdentifier>{f738bc46-c050-40d5-8c82-6724873659fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\CustomComponents">
+      <UniqueIdentifier>{55d176e3-3422-4629-9727-1bc91ce73799}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDraw.cpp">
+      <Filter>Source Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MenüState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollision.cpp">
+      <Filter>Source Files\Components\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBodyCmp.cpp">
+      <Filter>Source Files\Components\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderCmp.cpp">
+      <Filter>Source Files\Components\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayerCmp.cpp">
+      <Filter>Source Files\Components\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAnimationCmp.cpp">
+      <Filter>Source Files\Components\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="SteeringCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Astar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateManager.h">
+      <Filter>Header Files\Manager\GameStateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\Manager\GameStateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraCmp.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="tileson.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDraw.h">
+      <Filter>Header Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="FPS.h">
+      <Filter>Header Files\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigonometry.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorAlgebra2D.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorAlgebra3D.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayerCmp.h">
+      <Filter>Header Files\Components\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderCmp.h">
+      <Filter>Header Files\Components\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBodyCmp.h">
+      <Filter>Header Files\Components\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderComponent.h">
+      <Filter>Header Files\Components\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponent.h">
+      <Filter>Header Files\Components\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollisionCmp.h">
+      <Filter>Header Files\Components\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnimationCmp.h">
+      <Filter>Header Files\Components\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectTypes.h">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="SteeringCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Astar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationTypes.h">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="VectorAlgebra2D.inl">
+      <Filter>Header Files\Math</Filter>
+    </None>
+    <None Include="VectorAlgebra3D.inl">
+      <Filter>Header Files\Math</Filter>
+    </None>
+  </ItemGroup>
+</Project>

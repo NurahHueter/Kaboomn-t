@@ -1,0 +1,14 @@
+{ "columns":60,
+ "image":"bg_space_seamless.png",
+ "imageheight":540,
+ "imagewidth":960,
+ "margin":0,
+ "name":"Space",
+ "spacing":0,
+ "tilecount":1980,
+ "tiledversion":"1.10.2",
+ "tileheight":16,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":"1.10"
+}
