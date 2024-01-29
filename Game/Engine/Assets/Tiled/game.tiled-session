@@ -3,11 +3,27 @@
         "height": 4300,
         "width": 2
     },
-    "last.imagePath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/Sprout Lands - Sprites - premium pack/Characters",
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "Charakter.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/Sprout Lands - Sprites - premium pack/Tilesets/Building parts",
     "map.height": 60,
+    "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "map.width": 60,
+    "openFiles": [
+    ],
+    "project": "game.tiled-project",
+    "recentFiles": [
+        "Charakter.tsx"
+    ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 16,
