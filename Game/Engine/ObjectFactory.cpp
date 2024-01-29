@@ -147,6 +147,9 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             , texture ));
         }
 
+        auto bounds = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(gameObject->getPosition(), sf::Vector2f(object.getSize().x, object.getSize().y)), true);
+
+        gameObject->addComponent(bounds);
         gameObject->addComponent(patchCmp);
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);

@@ -10,7 +10,7 @@ namespace mmt_gd
 	public:
 		PatchCmp(GameObject& gameObject)
 			: IComponent(gameObject) {};
-		bool init() override { return true; };
+		bool init() override;
 		void update(float deltaTime){};
 		void addPlant(std::shared_ptr<GameObject> plant);
 
