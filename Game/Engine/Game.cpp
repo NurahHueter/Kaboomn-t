@@ -20,7 +20,7 @@ namespace mmt_gd
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
-		GameStateManager::instance().setState("MenuState");
+		GameStateManager::instance().setState("PlayState");
 	}
 
 	void Game::Run()

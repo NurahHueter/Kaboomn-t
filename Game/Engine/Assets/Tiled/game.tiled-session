@@ -3,27 +3,80 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "game.tmj",
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "Barn structures.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Charakter.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "Darker_Soil_Ground_Tiles.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 2
+        },
+        "Fences.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "Map.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "STONE PATH.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Trees, stumps and bushes.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Water well.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Water.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "game.tmj": {
+            "scale": 1,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 368,
+                "y": 381.5
+            }
         }
     },
-    "last.imagePath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/Sprout Lands - Sprites - premium pack/Tilesets/Building parts",
+    "last.externalTilesetPath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/Tiled",
+    "last.imagePath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/Sprout Lands - Sprites - premium pack/Tilesets/Building parts/Animal Structures",
     "map.height": 60,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "map.width": 60,
     "openFiles": [
+        "game.tmj",
+        "Barn structures.tsx"
     ],
     "project": "game.tiled-project",
     "recentFiles": [
+        "Barn structures.tsx",
+        "game.tmj",
+        "Map.tsx",
+        "Water.tsx",
+        "Trees, stumps and bushes.tsx",
+        "Water well.tsx",
+        "STONE PATH.tsx",
+        "Fences.tsx",
+        "Darker_Soil_Ground_Tiles.tsx",
         "Charakter.tsx"
     ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 16,
