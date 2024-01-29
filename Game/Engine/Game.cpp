@@ -13,7 +13,7 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		RenderManager::instance().getWindow().create({ 1920, 1080 }, "SFML Window");
+		RenderManager::instance().getWindow().create({ 800, 640 }, "SFML Window");
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
 		bindInput();
@@ -93,7 +93,7 @@ namespace mmt_gd
 			InputManager::instance().bind("down", sf::Keyboard::Key::S, 1);
 			InputManager::instance().bind("left", sf::Keyboard::Key::A, 1);
 			InputManager::instance().bind("right", sf::Keyboard::Key::D, 1);
-			InputManager::instance().bind("leftclick", sf::Mouse::Left, 2);
+			InputManager::instance().bind("leftclick", sf::Mouse::Left, 1);
 			InputManager::instance().bind("debugdraw", sf::Keyboard::Key::Num0, 1);
 			InputManager::instance().bind("space", sf::Keyboard::Key::Space, 1);
 			InputManager::instance().bind("MenuState", sf::Keyboard::Key::Num1, 1);

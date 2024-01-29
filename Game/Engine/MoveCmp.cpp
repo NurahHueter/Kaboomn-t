@@ -5,48 +5,73 @@
 #include "SpriteAnimationCmp.h"
 #include "MoveCmp.h"
 #include "RigidBodyCmp.h"
+
+
 namespace mmt_gd
 {
+    bool MoveCmp::init()
+    {
+        gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(IdleDown);
+        return true;
+    }
     void MoveCmp::update(float deltaTime)
     {
-        constexpr float acc = 690.0f; ///< "const" is evaluated at compile time; "const" could be changed at runtime
 
-        sf::Vector2f accVec;
+        sf::Vector2f velocity(0.0f, 0.0f);
         const auto& animation = gameObject.getComponent<SpriteAnimationCmp>();
+
         if (InputManager::instance().isKeyPressed("up", gameObject.getPlayerIdx()))
         {
-            accVec = { 0.0f, -acc };
+            velocity.y = -m_velocity;
             animation->setCurrentAnimation(MoveUp);
         }
-        if (InputManager::instance().isKeyPressed("down", gameObject.getPlayerIdx()))
+        else if (InputManager::instance().isKeyPressed("down", gameObject.getPlayerIdx()))
         {
-            accVec = { 0.0f, acc };
+            velocity.y = m_velocity;
             animation->setCurrentAnimation(MoveDown);
         }
-        if (InputManager::instance().isKeyPressed("left", gameObject.getPlayerIdx()))
+
+        else if (InputManager::instance().isKeyPressed("left", gameObject.getPlayerIdx()))
         {
-            accVec = { -acc, 0.0f };
+            velocity.x = -m_velocity;
             animation->setCurrentAnimation(MoveLeft);
         }
-        if (InputManager::instance().isKeyPressed("right", gameObject.getPlayerIdx()))
+        else if (InputManager::instance().isKeyPressed("right", gameObject.getPlayerIdx()))
         {
-            accVec = { acc, 0.0f };
+            velocity.x = m_velocity;
             animation->setCurrentAnimation(MoveRight);
         }
-        
-        if (auto rigidBodyCmp = gameObject.getComponent<RigidBodyCmp>())
+        else if (InputManager::instance().isKeyUp("up", gameObject.getPlayerIdx()))
         {
-            rigidBodyCmp->setVelocityP(accVec * deltaTime);
-            rigidBodyCmp->setVelocityN(rigidBodyCmp->getVelocity()-(rigidBodyCmp->getVelocity()* 0.99f));
-            rigidBodyCmp->setImpulse(accVec);
-            sf::Vector2f velocity = rigidBodyCmp->getVelocity();
-            velocity.x = std::min(std::abs(rigidBodyCmp->getVelocity().x), m_maxSpeed) * (velocity.x < 0 ? -1 : 1);
-            velocity.y = std::min(std::abs(rigidBodyCmp->getVelocity().y), m_maxSpeed) * (velocity.y < 0 ? -1 : 1);
-            rigidBodyCmp->setPosition(velocity, deltaTime);
-            gameObject.setPosition(rigidBodyCmp->getPosition());
+            animation->setCurrentAnimation(IdleUp);
         }
-        
-        // Reset acceleration 
-        accVec = sf::Vector2f(0, 0);
-    };
+        else if (InputManager::instance().isKeyUp("down", gameObject.getPlayerIdx()))
+        {
+            animation->setCurrentAnimation(IdleDown);
+        }
+        else if (InputManager::instance().isKeyUp("left", gameObject.getPlayerIdx()))
+        {
+            animation->setCurrentAnimation(IdleLeft);
+        }
+        else if (InputManager::instance().isKeyUp("right", gameObject.getPlayerIdx()))
+        {
+            animation->setCurrentAnimation(IdleRight);
+        }
+
+
+
+        gameObject.setPosition(gameObject.getPosition() + velocity * deltaTime);
+
+        //if (auto rigidBodyCmp = gameObject.getComponent<RigidBodyCmp>())
+      //{
+      //    /*  rigidBodyCmp->setVelocityP(accVec * deltaTime);
+      //      rigidBodyCmp->setVelocityN(rigidBodyCmp->getVelocity()-(rigidBodyCmp->getVelocity()* 0.99f));
+      //      rigidBodyCmp->setImpulse(accVec);
+      //      sf::Vector2f velocity = rigidBodyCmp->getVelocity();
+      //      velocity.x = std::min(std::abs(rigidBodyCmp->getVelocity().x), m_maxSpeed) * (velocity.x < 0 ? -1 : 1);
+      //      velocity.y = std::min(std::abs(rigidBodyCmp->getVelocity().y), m_maxSpeed) * (velocity.y < 0 ? -1 : 1);
+      //      rigidBodyCmp->setPosition(velocity, deltaTime);*/
+      //}
+       
+    }
 }

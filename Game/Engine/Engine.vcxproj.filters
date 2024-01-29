@@ -141,6 +141,9 @@
     <ClCompile Include="PatchCmp.cpp">
       <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
+    <ClCompile Include="ToolCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -247,6 +250,9 @@
     </ClInclude>
     <ClInclude Include="PlantTypes.h">
       <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
