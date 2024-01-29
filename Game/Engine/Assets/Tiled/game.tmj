@@ -675,35 +675,35 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"Water.tsx"
+         "source":"Water.tsj"
         }, 
         {
          "firstgid":5,
-         "source":"Map.tsx"
+         "source":"Map.tsj"
         }, 
         {
          "firstgid":82,
-         "source":"Water well.tsx"
+         "source":"Water well.tsj"
         }, 
         {
          "firstgid":86,
-         "source":"STONE PATH.tsx"
+         "source":"STONE PATH.tsj"
         }, 
         {
          "firstgid":102,
-         "source":"Trees, stumps and bushes.tsx"
+         "source":"Trees, stumps and bushes.tsj"
         }, 
         {
          "firstgid":186,
-         "source":"Fences.tsx"
+         "source":"Fences.tsj"
         }, 
         {
          "firstgid":218,
-         "source":"Darker_Soil_Ground_Tiles.tsx"
+         "source":"Darker_Soil_Ground_Tiles.tsj"
         }, 
         {
          "firstgid":295,
-         "source":"Barn structures.tsx"
+         "source":"Barn structures.tsj"
         }],
  "tilewidth":16,
  "type":"map",
