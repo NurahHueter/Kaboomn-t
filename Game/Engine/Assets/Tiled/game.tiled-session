@@ -1,0 +1,16 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "last.imagePath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/Sprout Lands - Sprites - premium pack/Characters",
+    "map.height": 60,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 60,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
