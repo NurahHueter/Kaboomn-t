@@ -13,70 +13,10 @@ namespace mmt_gd
 
 	using namespace sf;
 	using namespace std;
-	std::vector<std::vector<int>> MapTile::m_LayerKachel;
-	std::vector<std::vector<int>> MapTile::m_LayerKachelWithBuffer;
-	sf::Vector2f MapTile::m_tileSize;
 
 	void MapTile::loadMap(const std::unique_ptr<tson::Map>& map, const fs::path resourcePath)
 	{
-		const int numRows = 50;
-		const int numCols = 90;
 		
-		// Get layer data from the map
-		auto& layerData0 = map->getLayers()[0].getData();
-		auto& layerData1 = map->getLayers()[1].getData();
-		auto& layerData2 = map->getLayers()[2].getData();
-		
-		m_LayerKachel.reserve(numRows);
-
-		for (int i = 0; i < numRows; ++i)
-		{
-			// Add an empty row
-			m_LayerKachel.emplace_back(); 
-			m_LayerKachel[i].reserve(numCols);
-
-			for (int j = 0; j < numCols; ++j)
-			{
-				// Check if either layerData1 or layerData2 at this position is not null
-				if (layerData1[i * numCols + j] != 0 || layerData2[i * numCols + j] != 0)
-				{
-					m_LayerKachel[i].emplace_back(0);
-				}
-				else
-				{
-					m_LayerKachel[i].emplace_back(1);
-				}
-			}
-		}
-
-		m_LayerKachelWithBuffer = m_LayerKachel;
-
-		for (int i = 0; i < numRows; ++i)
-		{
-			for (int j = 0; j < numCols; ++j)
-			{
-				// Check if the cell in the first array has the value 0
-				if (m_LayerKachel[i][j] == 0)
-				{
-					// Check and set the adjacent cells in the second array to 0
-					for (int di = -1; di <= 1; ++di)
-					{
-						for (int dj = -1; dj <= 1; ++dj)
-						{
-							int ni = i + di;
-							int nj = j + dj;
-
-							// check if neighborzell is inside the boarder
-							if (ni >= 0 && ni < numRows && nj >= 0 && nj < numCols && m_LayerKachelWithBuffer[ni][nj] != 0)
-							{
-								m_LayerKachelWithBuffer[ni][nj] = 0;
-							}
-						}
-					}
-				}
-			}
-		}
-
 
 		if (map->getStatus() == tson::ParseStatus::OK)
 		{
@@ -118,7 +58,7 @@ namespace mmt_gd
 	{
 		std::vector<TileLayer> layers;
 		layers.resize(map->getLayers().size());
-		m_tileSize = sf::Vector2f( map->getTileSize().x, map->getTileSize().x);
+
 		for (int layerIdx = 0; layerIdx < static_cast<int>(map->getLayers().size()); layerIdx++)
 		{
 			auto layer = map->getLayers()[layerIdx];
