@@ -512,7 +512,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb4.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb4.png"
                         }, 
                         {
                          "name":"Type",
@@ -534,7 +534,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb1.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb1.png"
                         }, 
                         {
                          "name":"Type",
@@ -556,7 +556,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb2.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb2.png"
                         }, 
                         {
                          "name":"Type",
@@ -578,7 +578,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb3.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb3.png"
                         }, 
                         {
                          "name":"Type",
@@ -600,7 +600,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"C:\\Users\\Florian\\FH-Salzburg\\3 Semester GIT\\bomberpflanzen\\Game\\Engine\\Assets\\SproutLands\\Characters\\PremiumCharakterSpritesheet.png"
+                         "value":"..\\Engine\\Assets\\SproutLands\\Characters\\PremiumCharakterSpritesheet.png"
                         }],
                  "rotation":0,
                  "type":"Player",
