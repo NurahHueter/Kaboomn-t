@@ -158,7 +158,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
      std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
     {
         auto gameObject = std::make_shared<GameObject>(type + std::to_string(index));
-
+        gameObject->setType(Plants);
         auto animationCmp = std::make_shared<SpriteAnimationCmp>(*gameObject, RenderManager::instance().getWindow(),
             texture,
             7,
@@ -184,6 +184,11 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         animationCmp->setCurrentAnimation(IdleDown);
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
+
+        const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(animationCmp->getTextureRect()), true);
+
+        gameObject->addComponent(trigger);
+        PhysicsManager::instance().addBoxCollisionCmp(trigger);
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);

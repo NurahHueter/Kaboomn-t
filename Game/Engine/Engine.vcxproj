@@ -200,6 +200,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="PlantAI.h" />
+    <ClInclude Include="PlantCmp.h" />
     <ClInclude Include="PlantTypes.h" />
     <ClInclude Include="RigidBodyCmp.h" />
     <ClInclude Include="BoxCollisionCmp.h" />
