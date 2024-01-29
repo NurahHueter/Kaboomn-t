@@ -12,6 +12,8 @@
 #include "PlantTypes.h"
 #include "ObjectTypes.h"
 #include "PatchCmp.h"
+#include "PlantCmp.h"
+#include "PlantAICmp.h"
 #include "Tileson.hpp"
 #include "AssetManager.h"
 #include "RigidBodyCmp.h"
@@ -37,10 +39,9 @@ namespace mmt_gd
 
     void ObjectFactory::loadPlayer(tson::Object& object, const tson::Layer& layer)
     {
-
         auto gameObject = std::make_shared<GameObject>(object.getName());
         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
-        //gameObject->setType(ObjectType::Spaceship);
+        gameObject->setType(ObjectType::Player);
         std::shared_ptr<sf::Texture> texture;
         std::string texturePath;
 
@@ -189,6 +190,9 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
 
         gameObject->addComponent(trigger);
         PhysicsManager::instance().addBoxCollisionCmp(trigger);
+
+        gameObject->addComponent(std::make_shared<PlantCmp>(*gameObject)); 
+        gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject));
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
