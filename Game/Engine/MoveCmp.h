@@ -3,6 +3,7 @@
 #include<memory>
 namespace mmt_gd
 {
+
 	class MoveCmp : public IComponent
 	{
 	public:
