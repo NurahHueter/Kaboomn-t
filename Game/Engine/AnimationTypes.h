@@ -26,6 +26,13 @@ namespace mmt_gd
         WaterDown, 
         WaterUp, 
         WaterLeft, 
-        WaterRight, 
+        WaterRight,
+        CryIdle,
+        CryLeft,
+        CryBack,
+        ExplosionIdle,
+        ExplosionLeft,
+        ExplosionBack,
+        Smoke,
 	};
 }

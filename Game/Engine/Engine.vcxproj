@@ -159,6 +159,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="MenüState.cpp" />
     <ClCompile Include="MoveCmp.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="PatchCmp.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
@@ -195,8 +196,11 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="MoveCmp.h" />
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="ObjectTypes.h" />
+    <ClInclude Include="PatchCmp.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="PlantAI.h" />
+    <ClInclude Include="PlantTypes.h" />
     <ClInclude Include="RigidBodyCmp.h" />
     <ClInclude Include="BoxCollisionCmp.h" />
     <ClInclude Include="RenderManager.h" />

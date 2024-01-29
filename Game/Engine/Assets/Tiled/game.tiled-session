@@ -57,11 +57,11 @@
             "scaleInEditor": 1
         },
         "game.tmj": {
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 456,
-                "y": 539
+                "x": 479.6666666666667,
+                "y": 479.66666666666663
             }
         }
     },
@@ -78,9 +78,9 @@
     ],
     "project": "game.tiled-project",
     "recentFiles": [
+        "game.tmj",
         "../Tiled2/Darker_Grass_Tile_Layers.tsj",
         "../Tiled2/untitled.tmj",
-        "game.tmj",
         "Fences.tsx",
         "Map.tsx",
         "Darker_Soil_Ground_Tiles.tsx",
