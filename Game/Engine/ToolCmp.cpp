@@ -22,6 +22,8 @@ namespace mmt_gd
         {
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);
+
+            //reset the current animation cycle to index 0 so it always starts at 0
             animation->setCurrentAnimationTime(0);
             if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
             {

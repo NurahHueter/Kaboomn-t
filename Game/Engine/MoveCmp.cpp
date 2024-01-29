@@ -63,8 +63,6 @@ namespace mmt_gd
         }
         
 
-
-
         gameObject.setPosition(gameObject.getPosition() + velocity * deltaTime);
       
     }
