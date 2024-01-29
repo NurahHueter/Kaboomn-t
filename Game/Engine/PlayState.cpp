@@ -11,7 +11,7 @@ namespace mmt_gd
 {
     void PlayState::init()
     {
-        //map
+       //map
         tson::Tileson t;
         const fs::path tileMapresourcePath = { "Assets/Tiled" };
         const std::unique_ptr<tson::Map> map = t.parse(tileMapresourcePath / "game.tmj");
