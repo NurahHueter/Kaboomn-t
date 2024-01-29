@@ -491,7 +491,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":60,
          "id":4,
-         "name":"Objects",
+         "name":"Collider",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
@@ -504,23 +504,6 @@
          "id":3,
          "name":"Objects",
          "objects":[
-                {
-                 "height":29.3333333333333,
-                 "id":1,
-                 "name":"Player",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\/Engine\/Asstets\/Sprout Lands - Sprites - premium packCharactersPremium Charakter Spritesheet.png"
-                        }],
-                 "rotation":0,
-                 "type":"Player",
-                 "visible":true,
-                 "width":33.3333333333334,
-                 "x":434.666666666667,
-                 "y":471.333333333333
-                }, 
                 {
                  "height":64,
                  "id":3,
@@ -588,6 +571,23 @@
                  "width":63.3333,
                  "x":576.000016666667,
                  "y":607.666666666667
+                }, 
+                {
+                 "height":29.3333333333333,
+                 "id":1,
+                 "name":"Player",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"C:\\Users\\Florian\\FH-Salzburg\\3 Semester GIT\\bomberpflanzen\\Game\\Engine\\Assets\\SproutLands\\Characters\\PremiumCharakterSpritesheet.png"
+                        }],
+                 "rotation":0,
+                 "type":"Player",
+                 "visible":true,
+                 "width":33.3333333333334,
+                 "x":434.666666666667,
+                 "y":471.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
