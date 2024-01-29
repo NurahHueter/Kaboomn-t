@@ -172,6 +172,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="SpriteRenderCmp.cpp" />
     <ClCompile Include="SteeringCmp.cpp" />
     <ClCompile Include="TileLayerCmp.cpp" />
+    <ClCompile Include="ToolCmp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationTypes.h" />
@@ -204,6 +205,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="SteeringCmp.h" />
     <ClInclude Include="TileLayerCmp.h" />
     <ClInclude Include="tileson.hpp" />
+    <ClInclude Include="ToolCmp.h" />
     <ClInclude Include="Trigonometry.h" />
     <ClInclude Include="VectorAlgebra2D.h" />
     <ClInclude Include="VectorAlgebra3D.h" />
