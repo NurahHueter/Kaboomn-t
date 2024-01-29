@@ -17,5 +17,6 @@ namespace mmt_gd
     {
     public:
         static void processTsonObject(tson::Object& object, const tson::Layer& layer);
+        static void loadPlayer(tson::Object& object, const tson::Layer& layer);
     };
 } 
