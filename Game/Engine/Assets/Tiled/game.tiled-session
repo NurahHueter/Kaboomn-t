@@ -1,0 +1,124 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "game.tmj",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "../Tiled2/Darker_Grass_Tile_Layers.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "../Tiled2/untitled.tmj": {
+            "scale": 0.03125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 4192,
+                "y": 8720
+            }
+        },
+        "Barn structures.tsj": {
+            "scaleInDock": 1
+        },
+        "Barn structures.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Charakter.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Darker_Soil_Ground_Tiles.tsj": {
+            "scaleInDock": 1
+        },
+        "Darker_Soil_Ground_Tiles.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 2
+        },
+        "Fences.tsj": {
+            "scaleInDock": 1
+        },
+        "Fences.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "Map.tsj": {
+            "scaleInDock": 1
+        },
+        "Map.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "STONE PATH.tsj": {
+            "scaleInDock": 1
+        },
+        "STONE PATH.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Trees, stumps and bushes.tsj": {
+            "scaleInDock": 1
+        },
+        "Trees, stumps and bushes.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Water well.tsj": {
+            "scaleInDock": 1
+        },
+        "Water well.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Water.tsj": {
+            "scaleInDock": 1
+        },
+        "Water.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "game.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 335.66666666666663,
+                "y": 319.66666666666663
+            }
+        }
+    },
+    "last.externalTilesetPath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/Tiled",
+    "last.imagePath": "C:/FH/3.Semester/bomberpflanzen/Game/Engine/Assets/SproutLands/Objects",
+    "map.height": 600,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 600,
+    "openFiles": [
+        "../Tiled2/Darker_Grass_Tile_Layers.tsj",
+        "game.tmj"
+    ],
+    "project": "game.tiled-project",
+    "recentFiles": [
+        "../Tiled2/Darker_Grass_Tile_Layers.tsj",
+        "game.tmj",
+        "../Tiled2/untitled.tmj",
+        "Fences.tsx",
+        "Map.tsx",
+        "Darker_Soil_Ground_Tiles.tsx",
+        "Barn structures.tsx",
+        "Water.tsx",
+        "Trees, stumps and bushes.tsx",
+        "Water well.tsx",
+        "STONE PATH.tsx",
+        "Charakter.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "json",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

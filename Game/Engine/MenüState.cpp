@@ -9,7 +9,7 @@ namespace mmt_gd
 {
     void MenuState::init()
     {
-        AssetManager::instance().LoadFont("font","../Engine/Assets/SpaceShip/arial.ttf");
+        AssetManager::instance().LoadFont("font","../Engine/Assets/Fonts/arial.ttf");
     }
 
     void MenuState::exit()

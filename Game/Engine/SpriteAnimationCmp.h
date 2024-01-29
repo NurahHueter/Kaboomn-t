@@ -50,6 +50,10 @@ namespace mmt_gd
 		};
 
 		int getCurrentAnimationIndex();
+
+		int getCurrentFrameIndex(){ return m_animationFrame; };
+		void setCurrentFrameIndex(int index) { m_animationFrame= index; };
+		void setCurrentAnimationTime(int index) { m_animationTime = index; };
 	protected:
 		bool vertical;
 		const int TILING_X;
