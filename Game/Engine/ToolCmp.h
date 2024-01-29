@@ -10,7 +10,7 @@ namespace mmt_gd
 			:IComponent(gameObject) {};
 		bool init() override { return true; };
 		void update(float deltaTime) override;
-		static bool m_usingAxe;
+		static bool m_usingTool;
 
 	};
 }

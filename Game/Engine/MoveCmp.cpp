@@ -21,7 +21,7 @@ namespace mmt_gd
         sf::Vector2f velocity(0.0f, 0.0f);
         const auto& animation = gameObject.getComponent<SpriteAnimationCmp>();
 
-        if (ToolCmp::m_usingAxe == false)
+        if (ToolCmp::m_usingTool == false)
         {
             if (InputManager::instance().isKeyPressed("up", gameObject.getPlayerIdx()))
             {

@@ -18,7 +18,7 @@ namespace mmt_gd
 
 
         //AXE
-        if (InputManager::instance().isMouseDown("leftclick", gameObject.getPlayerIdx()))
+        if (InputManager::instance().isMouseDown("leftclick", gameObject.getPlayerIdx() && !m_usingTool))
         {
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);
@@ -29,7 +29,6 @@ namespace mmt_gd
             }
             else if (animation->getCurrentAnimation() == IdleUp || animation->getCurrentAnimation() == MoveUp)
             {
-               
                 animation->setCurrentAnimation(AxeHitUp);
             }
             else if (animation->getCurrentAnimation() == IdleLeft || animation->getCurrentAnimation() == MoveLeft)
@@ -39,13 +38,12 @@ namespace mmt_gd
             else if (animation->getCurrentAnimation() == IdleRight || animation->getCurrentAnimation() == MoveRight)
             {
                 animation->setCurrentAnimation(AxeHitRight);
-            }
-            
+            }  
         }
 
 
-
-        else if (InputManager::instance().isKeyDown("space", gameObject.getPlayerIdx()))
+        //WATER
+        else if (InputManager::instance().isKeyPressed("space", gameObject.getPlayerIdx() && !m_usingTool))
         {
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);
@@ -56,7 +54,6 @@ namespace mmt_gd
             }
             else if (animation->getCurrentAnimation() == IdleUp || animation->getCurrentAnimation() == MoveUp)
             {
-
                 animation->setCurrentAnimation(WaterUp);
             }
             else if (animation->getCurrentAnimation() == IdleLeft || animation->getCurrentAnimation() == MoveLeft)
@@ -71,28 +68,29 @@ namespace mmt_gd
         }
 
 
-
-
-        if (animation->getCurrentAnimation() == AxeHitRight && animation->getCurrentFrameIndex() == 7)
+        if (animation->getCurrentFrameIndex() == 7)
         {
-            m_usingTool = false;
-            animation->setCurrentAnimation(IdleRight);
+           
+            if (animation->getCurrentAnimation() == AxeHitRight || animation->getCurrentAnimation() == WaterRight)
+            {
+                m_usingTool = false;
+                animation->setCurrentAnimation(IdleRight);
+            }
+            else if (animation->getCurrentAnimation() == AxeHitLeft || animation->getCurrentAnimation() == WaterLeft)
+            {
+                m_usingTool = false;
+                animation->setCurrentAnimation(IdleLeft);
+            }
+            else if (animation->getCurrentAnimation() == AxeHitUp || animation->getCurrentAnimation() == WaterUp)
+            {
+                m_usingTool = false;
+                animation->setCurrentAnimation(IdleUp);
+            }
+            else if (animation->getCurrentAnimation() == AxeHitDown || animation->getCurrentAnimation() == WaterDown)
+            {
+                m_usingTool = false;
+                animation->setCurrentAnimation(IdleDown);
+            }
         }
-        else if (animation->getCurrentAnimation() == AxeHitLeft && animation->getCurrentFrameIndex() == 7)
-        {
-            m_usingTool = false;
-            animation->setCurrentAnimation(IdleLeft);
-        }
-        else if (animation->getCurrentAnimation() == AxeHitUp && animation->getCurrentFrameIndex() == 7)
-        {
-            m_usingTool = false;
-            animation->setCurrentAnimation(IdleUp);
-        }
-        else if (animation->getCurrentAnimation() == AxeHitDown && animation->getCurrentFrameIndex() == 7)
-        {
-            m_usingTool = false;
-            animation->setCurrentAnimation(IdleDown);
-        }
-      
     }
 }
