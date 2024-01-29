@@ -512,7 +512,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"....EngineAssetsChomBombsChomb AllChomb4.png"
+                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb4.png"
                         }, 
                         {
                          "name":"Type",
@@ -534,7 +534,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..EngineAssetsChomBombsChomb AllChomb1.png"
+                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb1.png"
                         }, 
                         {
                          "name":"Type",
@@ -556,7 +556,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..EngineAssetsChomBombsChomb AllChomb2.png"
+                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb2.png"
                         }, 
                         {
                          "name":"Type",
@@ -578,7 +578,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..EngineAssetsChomBombsChomb AllChomb1.png"
+                         "value":"C:\/FH\/3.Semester\/bomberpflanzen\/Game\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb3.png"
                         }, 
                         {
                          "name":"Type",

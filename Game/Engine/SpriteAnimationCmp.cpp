@@ -40,6 +40,7 @@ namespace mmt_gd
 		m_animationTime += deltaTime * m_animationSpeed;
 		m_animationFrame = (int)m_animationTime % m_animations[m_currentAnimation];
 
+
 		int spriteOffsetX;
 		int spriteOffsetY;
 		if (vertical)

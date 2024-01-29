@@ -140,7 +140,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             }
         }
 
-        auto patchCmp = std::make_shared<PatchCmp>(gameObject);
+        auto patchCmp = std::make_shared<PatchCmp>(*gameObject);
         for (int i = 0; i < 4; i++)
         {
             patchCmp->addPlant(loadPlants(layer, i, type
@@ -152,7 +152,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         GameObjectManager::instance().addGameObject(gameObject);
     };
 
-    std::shared_ptr<GameObject> ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
+     std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
     {
         auto gameObject = std::make_shared<GameObject>(type + std::to_string(index));
 
@@ -163,21 +163,28 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             false,
             4);
         animationCmp->addAnimation({
-           {MoveUp, 8},
-           {MoveLeftUp, 8},
-           {MoveRight, 8},
-           {MoveRightDown, 8},
-           {MoveDown, 8},
-           {MoveLeftDown, 8},
-           {MoveLeft, 8},
-           {MoveRightUp, 8},
+            {IdleDown , 4},
+            {IdleLeft , 4},
+            {IdleUp , 4},
+            {MoveDown , 6},
+            {MoveLeft , 6},
+            {MoveUp , 6},
+            {CryIdle , 4},
+            {CryLeft , 4},
+            {CryBack, 4},
+            {ExplosionIdle, 7},
+            {ExplosionLeft, 7},
+            {ExplosionBack, 2},
+            {Smoke, 6}, 
             });
 
+        animationCmp->setCurrentAnimation(IdleDown);
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
+        return gameObject;
     };
 }
 
