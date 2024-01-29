@@ -529,7 +529,12 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..EngineAssetsChomBombsChomb AllChomb1.png"
+                         "value":"....EngineAssetsChomBombsChomb AllChomb4.png"
+                        }, 
+                        {
+                         "name":"Type",
+                         "type":"string",
+                         "value":"Green"
                         }],
                  "rotation":0,
                  "type":"Patch",
@@ -541,12 +546,17 @@
                 {
                  "height":64,
                  "id":5,
-                 "name":"PatchDarkGreen",
+                 "name":"PatchYellow",
                  "properties":[
                         {
                          "name":"Texture",
                          "type":"string",
                          "value":"..EngineAssetsChomBombsChomb AllChomb1.png"
+                        }, 
+                        {
+                         "name":"Type",
+                         "type":"string",
+                         "value":"Yellow"
                         }],
                  "rotation":0,
                  "type":"Patch",
@@ -563,7 +573,12 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..EngineAssetsChomBombsChomb AllChomb1.png"
+                         "value":"..EngineAssetsChomBombsChomb AllChomb2.png"
+                        }, 
+                        {
+                         "name":"Type",
+                         "type":"string",
+                         "value":"Blue"
                         }],
                  "rotation":0,
                  "type":"Patch",
@@ -581,6 +596,11 @@
                          "name":"Texture",
                          "type":"string",
                          "value":"..EngineAssetsChomBombsChomb AllChomb1.png"
+                        }, 
+                        {
+                         "name":"Type",
+                         "type":"string",
+                         "value":"Red"
                         }],
                  "rotation":0,
                  "type":"Patch",

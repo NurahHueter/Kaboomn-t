@@ -8,7 +8,9 @@
 #include "SpriteRenderCmp.h"
 #include "CameraCmp.h"
 #include "HealthCmp.h"
+#include "PlantTypes.h"
 #include "ObjectTypes.h"
+#include "PatchCmp.h"
 #include "Tileson.hpp"
 #include "AssetManager.h"
 #include "RigidBodyCmp.h"
@@ -25,6 +27,10 @@ namespace mmt_gd
         if (object.getType() == "Player")
         {
             loadPlayer(object, layer);
+        }
+        if (object.getType() == "Patch")
+        {
+            loadPatch(object, layer);
         }
     }
 
@@ -90,5 +96,70 @@ namespace mmt_gd
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
     }
+    void ObjectFactory::loadPatch(tson::Object& object, const tson::Layer& layer)
+    {
+        std::shared_ptr<sf::Texture> texture;
+        std::string texturePath;
+        std::string type;
+
+        auto gameObject = std::make_shared<GameObject>(object.getName());
+        gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
+
+        for (const auto* property : object.getProperties().get())
+        {
+            auto name = property->getName();
+            if (name == "Texture")
+            {
+                if ((texturePath = property->getValue<std::string>()).length() > 0)
+                {
+                    AssetManager::instance().LoadTexture(object.getName(), texturePath);
+                    texture = AssetManager::instance().m_Textures[object.getName()];
+                }
+            }
+            if (name == "Type")
+            {
+                type = property->getValue<std::string>();
+            }
+        }
+
+        auto patchCmp = std::make_shared<PatchCmp>(gameObject);
+        for (int i = 0; i < 4; i++)
+        {
+            patchCmp->addPlant(loadPlants(layer, i, type
+            , texture ));
+        }
+
+        gameObject->addComponent(patchCmp);
+        gameObject->init();
+        GameObjectManager::instance().addGameObject(gameObject);
+    };
+
+    std::shared_ptr<GameObject> ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
+    {
+        auto gameObject = std::make_shared<GameObject>(type + std::to_string(index));
+
+        auto animationCmp = std::make_shared<SpriteAnimationCmp>(*gameObject, RenderManager::instance().getWindow(),
+            texture,
+            7,
+            13,
+            false,
+            4);
+        animationCmp->addAnimation({
+           {MoveUp, 8},
+           {MoveLeftUp, 8},
+           {MoveRight, 8},
+           {MoveRightDown, 8},
+           {MoveDown, 8},
+           {MoveLeftDown, 8},
+           {MoveLeft, 8},
+           {MoveRightUp, 8},
+            });
+
+        RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
+        gameObject->addComponent(animationCmp);
+
+        gameObject->init();
+        GameObjectManager::instance().addGameObject(gameObject);
+    };
 }
 

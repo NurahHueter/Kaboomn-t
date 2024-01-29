@@ -138,6 +138,9 @@
     <ClCompile Include="Astar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PatchCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -237,6 +240,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AnimationTypes.h">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantTypes.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
   </ItemGroup>
