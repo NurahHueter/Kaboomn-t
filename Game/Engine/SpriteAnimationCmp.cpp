@@ -37,6 +37,7 @@ namespace mmt_gd
 
 	void SpriteAnimationCmp::update(float deltaTime)
 	{
+		//flag ob man dazu rehcnen darf oder nciht
 		m_animationTime += deltaTime * m_animationSpeed;
 		m_animationFrame = (int)m_animationTime % m_animations[m_currentAnimation];
 
@@ -78,7 +79,7 @@ namespace mmt_gd
 	int SpriteAnimationCmp::getCurrentAnimationIndex() {
 		auto it = std::find(m_animationOrder.begin(), m_animationOrder.end(), m_currentAnimation);
 		if (it != m_animationOrder.end()) {
-			return std::distance(m_animationOrder.begin(), it);
+			return std::distance(m_animationOrder.begin(),it);
 		}
 		else {
 			return -1; 
