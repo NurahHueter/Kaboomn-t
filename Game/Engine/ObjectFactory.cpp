@@ -35,6 +35,10 @@ namespace mmt_gd
         {
             loadPatch(object, layer);
         }
+        if (object.getType() == "Collider")
+        {
+            loadStaticCollider(object, layer);
+        }
     }
 
     void ObjectFactory::loadPlayer(tson::Object& object, const tson::Layer& layer)
@@ -108,12 +112,25 @@ namespace mmt_gd
             gameObject->addComponent(std::make_shared<MoveCmp>(*gameObject, 100.f));
 gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         }
+
+
+        const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
+            sf::FloatRect(gameObject->getPosition().x,
+                gameObject->getPosition().y,
+                object.getSize().x/2,
+                object.getSize().y/2),
+            false);
+        gameObject->addComponent(boxCollider);
+
+
+        PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
         animationCmp->init();
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
+
     }
     void ObjectFactory::loadPatch(tson::Object& object, const tson::Layer& layer)
     {
@@ -198,5 +215,58 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         GameObjectManager::instance().addGameObject(gameObject);
         return gameObject;
     };
+
+
+     void ObjectFactory::loadStaticCollider(tson::Object& object,
+         const tson::Layer& layer)
+     {
+         auto gameObject = std::make_shared<GameObject>(object.getName());
+         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
+        // gameObject->setType(ObjectType::StaticCollider);
+
+
+         std::string id;
+
+
+         float velocity{};
+         float mass;
+
+   /*      for (const auto* property : object.getProperties().get())
+         {
+             auto name = property->getName();
+
+             if (name == "id")
+             {
+                 if ((id = property->getValue<std::string>()).length() > 0)
+                 {
+
+                     gameObject->setId(id);
+                 }
+             }
+             else if (name == "mass")
+             {
+                 mass = property->getValue<float>();
+             }
+         }*/
+
+
+         ////Collider
+         //gameObject->addComponent(std::make_shared<RigidBodyCmp>(*gameObject,
+         //    mass, sf::Vector2f(0.f, 0.f), gameObject->getPosition()));
+         const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
+             sf::FloatRect(gameObject->getPosition().x,
+                 gameObject->getPosition().y,
+                 object.getSize().x,
+                 object.getSize().y),
+             false);
+
+         gameObject->addComponent(boxCollider);
+
+         PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
+
+         gameObject->init();
+         GameObjectManager::instance().addGameObject(gameObject);
+     }
+
 }
 
