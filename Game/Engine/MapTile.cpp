@@ -89,7 +89,7 @@ namespace mmt_gd
 				// calculate position of tile
 				Vector2f position;
 				position.x = i % layer.getSize().x * static_cast<float>( tileSize.x);
-				position.y = static_cast<float>(i) / layer.getSize().x * static_cast<float>(tileSize.y);
+				position.y = i / layer.getSize().x * static_cast<float>(tileSize.y);
 				//position += offset;
 
 				// number of tiles in tile set texture (horizontally)

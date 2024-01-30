@@ -441,7 +441,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 136, 137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 136, 137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 136, 137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 136, 0, 172, 173, 0, 0, 0, 172, 173, 0, 0, 0, 0, 0, 0, 135, 136, 137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, 176, 177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, 173, 0, 135, 136, 137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, 176, 177, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 172, 173, 0, 135, 136, 137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, 173, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, 173, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, 173, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 176, 177, 0, 0, 172, 173, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -496,6 +496,34 @@
          "type":"tilelayer",
          "visible":true,
          "width":60,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":10,
+         "name":"Objektebene 2",
+         "objects":[
+                {
+                 "height":29.3333,
+                 "id":72,
+                 "name":"Player",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Characters\\PremiumCharakterSpritesheet.png"
+                        }],
+                 "rotation":0,
+                 "type":"Player",
+                 "visible":true,
+                 "width":33.3333,
+                 "x":436.33335,
+                 "y":472.83335
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -593,35 +621,18 @@
                  "y":607.666666666667
                 }, 
                 {
-                 "height":29.3333333333333,
-                 "id":1,
-                 "name":"Player",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Characters\\PremiumCharakterSpritesheet.png"
-                        }],
-                 "rotation":0,
-                 "type":"Player",
-                 "visible":true,
-                 "width":33.3333333333334,
-                 "x":434.666666666667,
-                 "y":471.333333333333
-                }, 
-                {
                  "height":606,
                  "id":8,
                  "name":"WallL",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":14,
+                 "width":12.3636363636364,
                  "x":188,
                  "y":177
                 }, 
                 {
-                 "height":12,
+                 "height":6.54545454545462,
                  "id":9,
                  "name":"WallD",
                  "rotation":0,
@@ -629,7 +640,7 @@
                  "visible":true,
                  "width":584.333333333333,
                  "x":203.666666666667,
-                 "y":770
+                 "y":775.454545454545
                 }, 
                 {
                  "height":591.333333333333,
@@ -638,45 +649,45 @@
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":19.3333333333333,
-                 "x":768,
+                 "width":14.0833333333333,
+                 "x":773.25,
                  "y":176
                 }, 
                 {
-                 "height":12.5,
+                 "height":9.5,
                  "id":11,
                  "name":"WallU",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":558,
+                 "width":563,
                  "x":208,
                  "y":176
                 }, 
                 {
-                 "height":126.5,
+                 "height":127.409090909091,
                  "id":13,
                  "name":"Fence51",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":10,
-                 "x":531.25,
-                 "y":190.25
+                 "width":3,
+                 "x":534.5,
+                 "y":187.522727272727
                 }, 
                 {
-                 "height":11.75,
+                 "height":6.25,
                  "id":14,
                  "name":"Fence50",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":15,
-                 "x":542.5,
-                 "y":305
+                 "width":18.25,
+                 "x":538.886363636364,
+                 "y":308.75
                 }, 
                 {
-                 "height":12.25,
+                 "height":5.75,
                  "id":15,
                  "name":"Fence49",
                  "rotation":0,
@@ -684,54 +695,32 @@
                  "visible":true,
                  "width":90.25,
                  "x":592,
-                 "y":306
+                 "y":309
                 }, 
                 {
-                 "height":69.5,
+                 "height":72,
                  "id":16,
                  "name":"Fence48",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":9.25,
-                 "x":676.25,
-                 "y":319
+                 "width":4.5,
+                 "x":678,
+                 "y":316.5
                 }, 
                 {
-                 "height":12.75,
+                 "height":6.31818181818181,
                  "id":17,
                  "name":"Fence47",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":31,
+                 "width":127.909090909091,
                  "x":644.5,
-                 "y":383.25
+                 "y":389.5
                 }, 
                 {
-                 "height":12.25,
-                 "id":18,
-                 "name":"Fence46",
-                 "rotation":0,
-                 "type":"Collider",
-                 "visible":true,
-                 "width":79.75,
-                 "x":687.25,
-                 "y":385.5
-                }, 
-                {
-                 "height":6.5,
-                 "id":20,
-                 "name":"Fence45",
-                 "rotation":0,
-                 "type":"Collider",
-                 "visible":true,
-                 "width":8.75,
-                 "x":676.75,
-                 "y":390.5
-                }, 
-                {
-                 "height":12.25,
+                 "height":8.75,
                  "id":21,
                  "name":"Fence44",
                  "rotation":0,
@@ -739,10 +728,10 @@
                  "visible":true,
                  "width":12.25,
                  "x":728.25,
-                 "y":274.25
+                 "y":277.75
                 }, 
                 {
-                 "height":13.75,
+                 "height":10.75,
                  "id":22,
                  "name":"Fence43",
                  "rotation":0,
@@ -750,10 +739,10 @@
                  "visible":true,
                  "width":16,
                  "x":736,
-                 "y":240.25
+                 "y":243.25
                 }, 
                 {
-                 "height":12.75,
+                 "height":10.25,
                  "id":23,
                  "name":"Fence42",
                  "rotation":0,
@@ -761,10 +750,10 @@
                  "visible":true,
                  "width":16.25,
                  "x":679.5,
-                 "y":242.5
+                 "y":245
                 }, 
                 {
-                 "height":14.25,
+                 "height":11.5,
                  "id":24,
                  "name":"Fence41",
                  "rotation":0,
@@ -772,10 +761,10 @@
                  "visible":true,
                  "width":17.75,
                  "x":669.25,
-                 "y":192.5
+                 "y":195.25
                 }, 
                 {
-                 "height":14,
+                 "height":12,
                  "id":25,
                  "name":"Fence40",
                  "rotation":0,
@@ -783,7 +772,7 @@
                  "visible":true,
                  "width":17.75,
                  "x":621.75,
-                 "y":224.5
+                 "y":226.5
                 }, 
                 {
                  "height":12.75,
@@ -896,59 +885,59 @@
                  "y":496
                 }, 
                 {
-                 "height":90,
+                 "height":86.9090909090909,
                  "id":36,
                  "name":"Fence29",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":12.25,
-                 "x":289.75,
-                 "y":434
+                 "width":3.88636363636363,
+                 "x":293.75,
+                 "y":437.090909090909
                 }, 
                 {
-                 "height":11,
+                 "height":6.09090909090912,
                  "id":37,
                  "name":"Fence28",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":12.75,
-                 "x":303.25,
-                 "y":514.25
+                 "width":16.75,
+                 "x":298.886363636364,
+                 "y":517.704545454545
                 }, 
                 {
-                 "height":10.5,
+                 "height":5.22727272727269,
                  "id":38,
                  "name":"Fence27",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":11.75,
-                 "x":303,
-                 "y":434.5
+                 "width":15.75,
+                 "x":299.545454545455,
+                 "y":436.863636363636
                 }, 
                 {
-                 "height":12.75,
+                 "height":5.29545454545456,
                  "id":39,
                  "name":"Fence26",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":26.25,
-                 "x":354.75,
-                 "y":432.5
+                 "width":21.3409090909091,
+                 "x":357.477272727273,
+                 "y":437.045454545455
                 }, 
                 {
-                 "height":16.5,
+                 "height":18.6818181818182,
                  "id":40,
                  "name":"Fence25",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":10.5,
-                 "x":370.75,
-                 "y":446
+                 "width":4.86363636363637,
+                 "x":373.659090909091,
+                 "y":443.818181818182
                 }, 
                 {
                  "height":15.75,
@@ -995,7 +984,7 @@
                  "y":545.25
                 }, 
                 {
-                 "height":13.25,
+                 "height":5.75,
                  "id":45,
                  "name":"Fence20",
                  "rotation":0,
@@ -1003,29 +992,29 @@
                  "visible":true,
                  "width":58.25,
                  "x":594.25,
-                 "y":592.75
+                 "y":597.375
                 }, 
                 {
-                 "height":77.5,
+                 "height":76.0454545454545,
                  "id":46,
                  "name":"Fence19",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":11.25,
-                 "x":642.5,
+                 "width":5,
+                 "x":645.875,
                  "y":607
                 }, 
                 {
-                 "height":12,
+                 "height":6.25,
                  "id":47,
                  "name":"Fence18",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":76.25,
+                 "width":80.5,
                  "x":564,
-                 "y":673
+                 "y":677
                 }, 
                 {
                  "height":14.5,
@@ -1149,96 +1138,95 @@
                  "y":609.5
                 }, 
                 {
-                 "height":60.5,
+                 "height":56.6818181818181,
                  "id":59,
                  "name":"Fence6",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":11.5,
-                 "x":450.25,
-                 "y":593
+                 "width":5.5,
+                 "x":452.977272727273,
+                 "y":596.818181818182
                 }, 
                 {
-                 "height":74.25,
+                 "height":72.0681818181818,
                  "id":60,
                  "name":"Fence5",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":11.5,
-                 "x":450,
+                 "width":4.95454545454538,
+                 "x":453.272727272727,
                  "y":691.5
                 }, 
                 {
-                 "height":12.5,
+                 "height":5.77272727272725,
                  "id":61,
                  "name":"Fence4",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":124.5,
-                 "x":210.5,
-                 "y":593.25
+                 "width":121.409090909091,
+                 "x":213.590909090909,
+                 "y":597.25
                 }, 
                 {
-                 "height":10.75,
+                 "height":5.84090909090901,
                  "id":62,
                  "name":"Fence3",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":48.75,
+                 "width":51.4772727272727,
                  "x":399.5,
-                 "y":593.75
+                 "y":596.840909090909
                 }, 
                 {
-                 "height":158.25,
+                 "height":158.613636363636,
                  "id":63,
                  "name":"Fence2",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":9.75,
-                 "x":211.75,
-                 "y":607
+                 "width":5.02272727272725,
+                 "x":213.386363636364,
+                 "y":604.818181818182
                 }, 
                 {
-                 "height":11.75,
+                 "height":6.29545454545462,
                  "id":64,
                  "name":"Fence1",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":225.75,
-                 "x":222.75,
-                 "y":754.25
-                },
-            
+                 "width":232.113636363636,
+                 "x":220.022727272727,
+                 "y":757.159090909091
+                }, 
                 {
-                 "height":12.5,
+                 "height":5.40909090909088,
                  "id":65,
                  "name":"Fence55",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":89.25,
-                 "x":290.5,
-                 "y":272.5
+                 "width":84.1590909090909,
+                 "x":293.954545454545,
+                 "y":277.409090909091
                 }, 
                 {
-                 "height":63.75,
+                 "height":66.1136363636364,
                  "id":68,
                  "name":"Fence54",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":10,
-                 "x":291.25,
-                 "y":286.75
+                 "width":4.18181818181813,
+                 "x":293.613636363636,
+                 "y":284.386363636364
                 }, 
                 {
-                 "height":12.25,
+                 "height":6.25,
                  "id":69,
                  "name":"Fence53",
                  "rotation":0,
@@ -1246,18 +1234,41 @@
                  "visible":true,
                  "width":40.5,
                  "x":323.5,
-                 "y":354.25
-                }, 
+                 "y":357.159090909091
+                },
+            
                 {
-                 "height":14.75,
+                 "height":16.0227272727273,
                  "id":70,
                  "name":"Fence52",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":7.5,
-                 "x":372.25,
-                 "y":286.75
+                 "width":4.04545454545456,
+                 "x":374.068181818182,
+                 "y":284.204545454545
+                }, 
+                {
+                 "height":11,
+                 "id":73,
+                 "name":"Fence56",
+                 "rotation":0,
+                 "type":"Collider",
+                 "visible":true,
+                 "width":17.75,
+                 "x":686.375,
+                 "y":307
+                }, 
+                {
+                 "height":14,
+                 "id":74,
+                 "name":"Fence57",
+                 "rotation":0,
+                 "type":"Collider",
+                 "visible":true,
+                 "width":17.75,
+                 "x":734.125,
+                 "y":368.25
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1336,8 +1347,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":10,
- "nextobjectid":72,
+ "nextlayerid":11,
+ "nextobjectid":75,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
