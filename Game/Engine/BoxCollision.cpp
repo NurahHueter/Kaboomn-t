@@ -5,6 +5,7 @@
 #include "IComponent.h"
 #include "RigidBodyCmp.h"
 #include "PhysicsManager.h"
+#include "MoveCmp.h"
 
 namespace mmt_gd
 {
@@ -19,6 +20,15 @@ namespace mmt_gd
 	}
 	void BoxCollisionCmp::update(float deltaTime)
 	{
-		m_shape = sf::FloatRect(gameObject.getPosition(), m_shape.getSize());
+		//calibration PlayerBoundingbox
+		if (gameObject.getComponent<MoveCmp>())
+		{
+			m_shape = sf::FloatRect(gameObject.getPosition() + sf::Vector2f(16, 16), m_shape.getSize());
+		}
+		else
+		{
+			m_shape = sf::FloatRect(gameObject.getPosition(), m_shape.getSize());
+		}
+		
 	}
 }

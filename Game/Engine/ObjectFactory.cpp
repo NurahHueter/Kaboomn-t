@@ -12,6 +12,8 @@
 #include "PlantTypes.h"
 #include "ObjectTypes.h"
 #include "PatchCmp.h"
+#include "PlantCmp.h"
+#include "PlantAICmp.h"
 #include "Tileson.hpp"
 #include "AssetManager.h"
 #include "RigidBodyCmp.h"
@@ -33,14 +35,17 @@ namespace mmt_gd
         {
             loadPatch(object, layer);
         }
+        if (object.getType() == "Collider")
+        {
+            loadStaticCollider(object, layer);
+        }
     }
 
     void ObjectFactory::loadPlayer(tson::Object& object, const tson::Layer& layer)
     {
-
         auto gameObject = std::make_shared<GameObject>(object.getName());
         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
-        //gameObject->setType(ObjectType::Spaceship);
+        gameObject->setType(ObjectType::Player);
         std::shared_ptr<sf::Texture> texture;
         std::string texturePath;
 
@@ -107,12 +112,25 @@ namespace mmt_gd
             gameObject->addComponent(std::make_shared<MoveCmp>(*gameObject, 100.f));
 gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         }
+
+
+        const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
+            sf::FloatRect(gameObject->getPosition().x,
+                gameObject->getPosition().y,
+                object.getSize().x/2,
+                object.getSize().y/2),
+            false);
+        gameObject->addComponent(boxCollider);
+
+
+        PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
         animationCmp->init();
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
+
     }
     void ObjectFactory::loadPatch(tson::Object& object, const tson::Layer& layer)
     {
@@ -158,7 +176,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
      std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
     {
         auto gameObject = std::make_shared<GameObject>(type + std::to_string(index));
-
+        gameObject->setType(Plants);
         auto animationCmp = std::make_shared<SpriteAnimationCmp>(*gameObject, RenderManager::instance().getWindow(),
             texture,
             7,
@@ -185,9 +203,70 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
+        const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(animationCmp->getTextureRect()), true);
+
+        gameObject->addComponent(trigger);
+        PhysicsManager::instance().addBoxCollisionCmp(trigger);
+
+        gameObject->addComponent(std::make_shared<PlantCmp>(*gameObject)); 
+        gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject));
+
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
         return gameObject;
     };
+
+
+     void ObjectFactory::loadStaticCollider(tson::Object& object,
+         const tson::Layer& layer)
+     {
+         auto gameObject = std::make_shared<GameObject>(object.getName());
+         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
+        // gameObject->setType(ObjectType::StaticCollider);
+
+
+         std::string id;
+
+
+         float velocity{};
+         float mass;
+
+   /*      for (const auto* property : object.getProperties().get())
+         {
+             auto name = property->getName();
+
+             if (name == "id")
+             {
+                 if ((id = property->getValue<std::string>()).length() > 0)
+                 {
+
+                     gameObject->setId(id);
+                 }
+             }
+             else if (name == "mass")
+             {
+                 mass = property->getValue<float>();
+             }
+         }*/
+
+
+         ////Collider
+         //gameObject->addComponent(std::make_shared<RigidBodyCmp>(*gameObject,
+         //    mass, sf::Vector2f(0.f, 0.f), gameObject->getPosition()));
+         const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
+             sf::FloatRect(gameObject->getPosition().x,
+                 gameObject->getPosition().y,
+                 object.getSize().x,
+                 object.getSize().y),
+             false);
+
+         gameObject->addComponent(boxCollider);
+
+         PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
+
+         gameObject->init();
+         GameObjectManager::instance().addGameObject(gameObject);
+     }
+
 }
 

@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "RenderManager.h"
 #include "ObjectFactory.h"
+#include <math.h>
 
 namespace mmt_gd
 {
@@ -61,7 +62,7 @@ namespace mmt_gd
 
 		for (int layerIdx = 0; layerIdx < static_cast<int>(map->getLayers().size()); layerIdx++)
 		{
-			auto layer = map->getLayers()[layerIdx];
+			auto& layer = map->getLayers()[layerIdx];
 
 			layers[layerIdx].m_name = layer.getName();
 			layers[layerIdx].m_dimension = Vector2i(layer.getSize().x, layer.getSize().y);
@@ -87,8 +88,8 @@ namespace mmt_gd
 				
 				// calculate position of tile
 				Vector2f position;
-				position.x = i % layer.getSize().x * static_cast<float>(tileSize.x);
-				position.y = i / layer.getSize().x * static_cast<float>(tileSize.y);
+				position.x = i % layer.getSize().x * static_cast<float>( tileSize.x);
+				position.y = static_cast<float>(i) / layer.getSize().x * static_cast<float>(tileSize.y);
 				//position += offset;
 
 				// number of tiles in tile set texture (horizontally)
@@ -100,7 +101,7 @@ namespace mmt_gd
 				const int idxY = idx / tileCountX;
 				
 				// calculate source area of tile in tile set texture
-				IntRect source(idxX * tileSize.x, idxY * tileSize.y, tileSize.x, tileSize.y);
+				IntRect source(idxX * tileSize.x, idxY * tileSize.y, tileSize.x, tileSize.y+1);
 
 				//add Tile Sprite
 				const auto sprite = std::make_shared<sf::Sprite>();
