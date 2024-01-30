@@ -165,7 +165,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             7,
             13,
             false,
-            4);
+            2);
         animationCmp->addAnimation({
             {IdleDown , 4},
             {IdleLeft , 4},

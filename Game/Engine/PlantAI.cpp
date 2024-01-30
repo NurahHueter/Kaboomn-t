@@ -18,10 +18,10 @@ namespace mmt_gd
 			currentState = Happy;
 			animationCmp->setCurrentAnimation(IdleDown);
 		}
-		else if(sanity < 50.f && currentState != Sad)
+		else if(sanity < 50.f && currentState != Sad && currentState != Explode)
 		{
 			currentState = Sad;
-			animationCmp->setCurrentAnimation(CryIdle);
+			animationCmp->setCurrentAnimation(MoveUp);
 		}
 		else if (sanity <= 0.f && currentState != Explode)
 		{
@@ -47,11 +47,11 @@ namespace mmt_gd
 	{
 		auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
 		auto frame = gameObject.getComponent<SpriteAnimationCmp>()->getCurrentFrameIndex();
-		if (frame == 6)
+		if (frame == 5)
 		{
 			animationCmp->setCurrentAnimation(Smoke);
 		}
-		if (animationCmp->getCurrentAnimation() == Smoke && frame == 5)
+		if (animationCmp->getCurrentAnimation() == Smoke && frame == 4)
 		{
 			gameObject.markForDelete();
 		}
