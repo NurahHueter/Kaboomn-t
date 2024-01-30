@@ -166,6 +166,8 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="PlantAI.cpp" />
+    <ClCompile Include="PlantCmp.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RigidBodyCmp.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -199,7 +201,9 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="PatchCmp.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhysicsManager.h" />
-    <ClInclude Include="PlantAI.h" />
+    <ClInclude Include="PlantAICmp.h" />
+    <ClInclude Include="PlantCmp.h" />
+    <ClInclude Include="PlantHud.h" />
     <ClInclude Include="PlantTypes.h" />
     <ClInclude Include="RigidBodyCmp.h" />
     <ClInclude Include="BoxCollisionCmp.h" />
