@@ -16,7 +16,7 @@ namespace mmt_gd
             m_componentList.erase(it);
         }
     }
-
+   
     void GameObject::update(const float deltaTime) const
     {
         for (const auto& comp : m_componentList)

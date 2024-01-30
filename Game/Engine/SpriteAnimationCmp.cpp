@@ -24,7 +24,7 @@ namespace mmt_gd
 			if(std::shared_ptr<sf::Texture> tempP = p_texture.lock()) 
 			{
 				sprite->setTexture(*tempP);
-				sprite->setTextureRect(sf::IntRect(0, 0, tempP->getSize().x / TILING_X, tempP->getSize().y / TILING_Y));				
+				sprite->setTextureRect(sf::IntRect(0, 0, tempP->getSize().x / TILING_X, tempP->getSize().y / TILING_Y));	
 			}
 			else
 			{
@@ -37,7 +37,10 @@ namespace mmt_gd
 
 	void SpriteAnimationCmp::update(float deltaTime)
 	{
-		//flag ob man dazu rehcnen darf oder nciht
+		if (m_mirror)
+		{
+			sprite->setScale(-1, -1);
+		}
 		m_animationTime += deltaTime * m_animationSpeed;
 		m_animationFrame = (int)m_animationTime % m_animations[m_currentAnimation];
 

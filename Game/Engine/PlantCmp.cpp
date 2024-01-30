@@ -6,7 +6,6 @@ namespace mmt_gd
 	void PlantCmp::update(float deltaTime)
 	{
 		m_love -= 1.f * deltaTime;
-		m_sanity -= 10.f * deltaTime;
 		m_water -= 1.f * deltaTime;
 
 		if (m_water < 60.f)

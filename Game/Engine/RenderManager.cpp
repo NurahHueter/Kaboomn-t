@@ -64,16 +64,24 @@ namespace mmt_gd
 
         for (auto& layer : m_layers)
         {
+            std::vector<std::weak_ptr<IRenderComponent>> newVec;
             for (auto& comp : m_CmpInLayer[layer.first])
             {
                 if (std::shared_ptr<IRenderComponent> tempP = comp.lock())
                 {
+                    newVec.push_back(comp);
+
                     if (tempP->getGameObject().isActive())
                     {
                         tempP->draw();
                     }
                 } 
+                else
+                {
+                    std::cout << "Nothing du huans breakpoint" << std::endl;
+                }
             }
+            m_CmpInLayer[layer.first] = newVec;
         }
     }
 }
