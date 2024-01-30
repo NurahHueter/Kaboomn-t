@@ -169,7 +169,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             }
         }
 
-        auto patchCmp = std::make_shared<PatchCmp>(*gameObject);
+        auto patchCmp = std::make_shared<PatchCmp>(*gameObject, sf::FloatRect(object.getPosition().x, object.getPosition().y, object.getSize().x, object.getSize().y));
         for (int i = 0; i < 4; i++)
         {
             auto plant = loadPlants(layer, i, type, texture);
@@ -290,6 +290,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
+        animationCmp->init();
         const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(animationCmp->getTextureRect()), true);
 
         gameObject->addComponent(trigger);

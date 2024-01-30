@@ -30,7 +30,7 @@ struct Manifold
 
        void addBoxCollisionCmp(std::weak_ptr<BoxCollisionCmp> component);
        std::vector<std::weak_ptr<BoxCollisionCmp>> m_bodies;
-       //const std::map<GameObject*, GameObject*> getCollisionPairs() { return m_collisionPairs; };
+       const std::map<GameObject*, GameObject*> getCollisionPairs() { return m_collisionPairs; };
 
         void update();
         void shutdown();

@@ -13,11 +13,10 @@ namespace mmt_gd
         auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
         auto sanity = gameObject.getComponent<PlantCmp>()->getSanity();
 		
-		if (sanity > 50.f)
+		if (sanity > 50.f && currentState != Explode)
 		{
 			currentState = Happy;
-			animationCmp->setCurrentAnimation(MoveLeft);
-			animationCmp->mirror(true);
+			animationCmp->setCurrentAnimation(IdleLeft);
 		}
 		else if(sanity < 50.f && currentState != Sad && currentState != Explode)
 		{
@@ -33,6 +32,9 @@ namespace mmt_gd
 
 		switch (currentState)
 		{
+		case Happy:
+			happy(deltaTime);
+			break;
 		case Explode:
 			explode(deltaTime);
 			break;
@@ -55,7 +57,13 @@ namespace mmt_gd
 		if (animationCmp->getCurrentAnimation() == Smoke && frame == 4)
 		{
 			gameObject.markForDelete();
-			gameObject.setActive(false);
 		}
 	};
+
+	void PlantAICmp::happy(float deltaTime)
+	{
+		//float randomX = m_respawnBounds.left + static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * m_respawnBounds.width;
+		//float randomY = m_respawnBounds.top + static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * m_respawnBounds.height;
+		//this->gameObject.setPosition(sf::Vector2f(randomX, randomY));
+	}
 }

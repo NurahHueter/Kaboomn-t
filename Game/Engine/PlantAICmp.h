@@ -18,6 +18,7 @@ namespace mmt_gd
 		bool init() override { return true; };
 		void update(float deltaTime) override;
 		void explode(float deltaTime);
+		void happy(float deltaTime);
 
 	private:
 		AIState currentState = Happy;
