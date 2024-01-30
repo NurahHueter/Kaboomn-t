@@ -19,6 +19,7 @@ namespace mmt_gd
         static void processTsonObject(tson::Object& object, const tson::Layer& layer);
         static void loadPlayer(tson::Object& object, const tson::Layer& layer);
         static void loadPatch(tson::Object& object, const tson::Layer& layer);
+        static void loadCow(tson::Object& object, const tson::Layer& layer);
         static std::shared_ptr<GameObject> loadPlants(const tson::Layer& layer,int index, std::string type, std::shared_ptr<sf::Texture> texture);
         static void loadStaticCollider(tson::Object& object, const tson::Layer& layer);
     };

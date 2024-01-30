@@ -20,6 +20,7 @@
 #include "BoxCollisionCmp.h"
 #include "PhysicsManager.h"
 #include"AnimationTypes.h"
+#include "CowAICmp.h"
 
 
 namespace mmt_gd
@@ -38,6 +39,10 @@ namespace mmt_gd
         if (object.getType() == "Collider")
         {
             loadStaticCollider(object, layer);
+        }
+        if (object.getType() == "Cow")
+        {
+            loadCow(object, layer);
         }
     }
 
@@ -171,7 +176,69 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         gameObject->addComponent(patchCmp);
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
-    };
+    }
+    void ObjectFactory::loadCow(tson::Object& object, const tson::Layer& layer)
+    {
+        auto gameObject = std::make_shared<GameObject>(object.getName());
+        gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
+        gameObject->setType(ObjectType::Cow);
+        std::shared_ptr<sf::Texture> texture;
+        std::string texturePath;
+
+        for (const auto* property : object.getProperties().get())
+        {
+            auto name = property->getName();
+            if (name == "Texture")
+            {
+                if ((texturePath = property->getValue<std::string>()).length() > 0)
+                {
+                    AssetManager::instance().LoadTexture(object.getName(), texturePath);
+                    texture = AssetManager::instance().m_Textures[object.getName()];
+                }
+            }
+        }
+
+        std::shared_ptr<SpriteAnimationCmp> animationCmp;
+
+
+            animationCmp = std::make_shared<SpriteAnimationCmp>(*gameObject, RenderManager::instance().getWindow(),
+                texture,
+                8,
+                8,
+                false,
+                2);
+            animationCmp->addAnimation({
+               {CowIdleRight, 3},
+               {CowRunRight, 8},
+               {CowSitDownAndUp, 7},
+               {CowIdleSit, 3},
+               {CowIdleSleep, 4},
+               {CowIdleChew, 7},
+               {CowIdleEat, 4},
+               {CowIdleLove, 6},
+                });
+        
+
+
+        const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
+            sf::FloatRect(gameObject->getPosition().x,
+                gameObject->getPosition().y,
+                object.getSize().x / 2,
+                object.getSize().y / 2),
+            false);
+        gameObject->addComponent(boxCollider);
+
+        gameObject->addComponent(std::make_shared<CowAICmp>(*gameObject, 100.f));
+        PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
+        animationCmp->init();
+        RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
+        gameObject->addComponent(animationCmp);
+
+        gameObject->init();
+        GameObjectManager::instance().addGameObject(gameObject);
+
+    }
+    ;
 
      std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
     {
