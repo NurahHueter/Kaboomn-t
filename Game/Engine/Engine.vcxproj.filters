@@ -150,11 +150,11 @@
     <ClCompile Include="PlantAI.cpp">
       <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
-    <ClCompile Include="CowAICmp.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="CowAICmp.cpp">
       <Filter>Source Files\Components\CustomComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="CowAICmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

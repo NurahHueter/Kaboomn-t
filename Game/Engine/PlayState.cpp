@@ -23,6 +23,7 @@ namespace mmt_gd
         mapGo->init();
 
         GameObjectManager::instance().addGameObject(mapGo);
+        
     }
 
     void PlayState::exit()

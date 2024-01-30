@@ -25,6 +25,7 @@
 
 namespace mmt_gd
 {
+    std::vector<sf::Vector2f> ObjectFactory::m_patchPositions;
     void ObjectFactory::processTsonObject(tson::Object& object, const tson::Layer& layer)
     {
         
@@ -137,11 +138,15 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         GameObjectManager::instance().addGameObject(gameObject);
 
     }
+
+  
     void ObjectFactory::loadPatch(tson::Object& object, const tson::Layer& layer)
     {
         std::shared_ptr<sf::Texture> texture;
         std::string texturePath;
         std::string type;
+
+
 
         auto gameObject = std::make_shared<GameObject>(object.getName());
         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
@@ -166,8 +171,11 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         auto patchCmp = std::make_shared<PatchCmp>(*gameObject);
         for (int i = 0; i < 4; i++)
         {
-            patchCmp->addPlant(loadPlants(layer, i, type
-            , texture ));
+            auto plant = loadPlants(layer, i, type, texture);
+            patchCmp->addPlant(plant);
+
+            // Füge die Position zum Vektor hinzu
+          
         }
 
         auto bounds = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(gameObject->getPosition(), sf::Vector2f(object.getSize().x, object.getSize().y)), true);
@@ -235,10 +243,13 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
                 object.getSize().y ),
             false);
         gameObject->addComponent(boxCollider);
-
+        gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject, sf::Vector2f(1.f, 1.f), animationCmp->getTextureRect().getSize().x, animationCmp->getTextureRect().getSize().y));
         gameObject->addComponent(std::make_shared<CowAICmp>(*gameObject, 100.f));
         PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
         animationCmp->init();
+
+
+
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
@@ -288,6 +299,8 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
+
+        m_patchPositions.push_back(sf::Vector2f(gameObject->getPosition().x, gameObject->getPosition().y));
         return gameObject;
     };
 

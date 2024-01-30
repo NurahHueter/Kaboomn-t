@@ -8,24 +8,36 @@
 #include "VectorAlgebra2D.h"
 #include "MapTile.h"
 #include "Astar.h"
+#include "ObjectFactory.h"
 
+#include <random>
 namespace mmt_gd
 {
     bool SteeringCmp::init() 
     {
         //// Position from the ai on the grid
-        //int idxw_player = (gameObject.getPosition().x + (m_sizeX / 2)) / MapTile::m_tileSize.x;    
-        //int idxh_player = (gameObject.getPosition().y + (m_sizeY / 2)) / MapTile::m_tileSize.x;
+        int idxw_player = (gameObject.getPosition().x + (m_sizeX / 2)) / MapTile::m_tileSize.x;    
+        int idxh_player = (gameObject.getPosition().y + (m_sizeY / 2)) / MapTile::m_tileSize.x;
 
-        //m_target = GameObjectManager::instance().getGameObject("Player")->getPosition();
-        //// Create start and goal nodes
-        //Node start(idxh_player, idxw_player, 0, 0); 
-        //Node goal((m_target.y  / MapTile::m_tileSize.x), (m_target.x / MapTile::m_tileSize.y),0,0); 
-        //
-        //// Call A* algorithm
-        //m_pathlist = AStar(MapTile::m_LayerKachelWithBuffer, start, goal);
+        m_target = GameObjectManager::instance().getGameObject("Player")->getPosition();
+        // Create start and goal nodes
+        Node start(idxh_player, idxw_player, 0, 0); 
+        Node goal((m_target.y  / MapTile::m_tileSize.x), (m_target.x / MapTile::m_tileSize.y),0,0); 
+        
+        // Call A* algorithm
+        m_pathlist = AStar(MapTile::m_LayerKachelWithBuffer, start, goal);
+
+
+        auto plantObject= GameObjectManager::instance().getObjectsByType(Plants);
+        
+        //random plants posiiton
+        int rand = std::rand() % plantObject.size();
+
+        std::cout<< plantObject[rand].lock()->getPosition().x;
+        
 
         return true;
+     
     };
     void SteeringCmp::update(float deltaTime)
     {
@@ -35,7 +47,7 @@ namespace mmt_gd
   //      static sf::Clock movementClock; 
 		//static sf::Clock movementClock2;
 
-
+     
   //      if (movementClock2.getElapsedTime().asSeconds() >= 2.f)
   //      {	
 		//	int idxw_player = (gameObject.getPosition().x + (m_sizeX / 2)) / MapTile::m_tileSize.x;         

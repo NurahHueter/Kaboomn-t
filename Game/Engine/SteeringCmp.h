@@ -14,7 +14,7 @@ namespace mmt_gd
 		void update(float deltaTime) override;
 		void setTarget(sf::Vector2f target) { m_target = target; };
 		bool reachedTarget() { return m_reachedTarget; };
-
+		
 
 	private:
 		int m_sizeX;
