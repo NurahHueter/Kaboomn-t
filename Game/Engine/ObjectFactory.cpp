@@ -204,18 +204,26 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             animationCmp = std::make_shared<SpriteAnimationCmp>(*gameObject, RenderManager::instance().getWindow(),
                 texture,
                 8,
-                8,
+                16,
                 false,
-                2);
+                4);
             animationCmp->addAnimation({
                {CowIdleRight, 3},
                {CowRunRight, 8},
-               {CowSitDownAndUp, 7},
-               {CowIdleSit, 3},
-               {CowIdleSleep, 4},
-               {CowIdleChew, 7},
-               {CowIdleEat, 4},
-               {CowIdleLove, 6},
+               {CowSitDownAndUpRight, 7},
+               {CowIdleSitRight, 3},
+               {CowIdleSleepRight, 4},
+               {CowIdleChewRight, 7},
+               {CowIdleEatRight, 4},
+               {CowIdleLoveRight, 6},
+               {CowIdleLeft, 3},
+               {CowRunLeft, 8},
+               {CowSitDownAndUpLeft, 7},
+               {CowIdleSitLeft, 3},
+               {CowIdleSleepLeft, 4},
+               {CowIdleChewLeft, 7},
+               {CowIdleEatLeft, 4},
+               {CowIdleLoveLeft, 6},
                 });
         
 
@@ -223,8 +231,8 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
             sf::FloatRect(gameObject->getPosition().x,
                 gameObject->getPosition().y,
-                object.getSize().x / 2,
-                object.getSize().y / 2),
+                object.getSize().x ,
+                object.getSize().y ),
             false);
         gameObject->addComponent(boxCollider);
 

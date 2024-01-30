@@ -20,7 +20,7 @@ namespace mmt_gd
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
-		GameStateManager::instance().setState("PlayState");
+		GameStateManager::instance().setState("MenuState");
 	}
 
 	void Game::Run()
@@ -44,9 +44,9 @@ namespace mmt_gd
 		{
 			GameStateManager::instance().setState("MenuState");
 		}
-		else if (InputManager::instance().isKeyUp("SpaceGameState", 1))
+		else if (InputManager::instance().isKeyUp("PlayState", 1))
 		{
-			GameStateManager::instance().setState("SpaceGameState");
+			GameStateManager::instance().setState("PlayState");
 		}
 
 

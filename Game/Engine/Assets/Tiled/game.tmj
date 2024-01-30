@@ -1282,21 +1282,106 @@
          "name":"ObjectCow",
          "objects":[
                 {
-                 "height":11.6666666666667,
+                 "height":16,
                  "id":75,
+                 "name":"Cow6",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":549,
+                 "y":256.333333333333
+                }, 
+                {
+                 "height":16,
+                 "id":78,
+                 "name":"Cow5",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":591.333333333333,
+                 "y":255.333333333333
+                }, 
+                {
+                 "height":16,
+                 "id":79,
+                 "name":"Cow4",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":644.666666666667,
+                 "y":239
+                }, 
+                {
+                 "height":16,
+                 "id":80,
+                 "name":"Cow3",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":638,
+                 "y":270.666666666667
+                }, 
+                {
+                 "height":16,
+                 "id":81,
+                 "name":"Cow2",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":561.666666666667,
+                 "y":223.666666666667
+                }, 
+                {
+                 "height":16,
+                 "id":82,
                  "name":"Cow1",
                  "properties":[
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimations.png"
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
                         }],
                  "rotation":0,
                  "type":"Cow",
                  "visible":true,
-                 "width":13,
-                 "x":571.333333333333,
-                 "y":276.333333333333
+                 "width":16,
+                 "x":740.333333333333,
+                 "y":305.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1376,7 +1461,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":78,
+ "nextobjectid":83,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
