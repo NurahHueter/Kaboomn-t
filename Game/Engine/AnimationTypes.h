@@ -34,5 +34,13 @@ namespace mmt_gd
         ExplosionLeft,
         ExplosionBack,
         Smoke,
+        CowIdleRight, 
+        CowRunRight,
+        CowSitDownAndUp,
+        CowIdleSit,
+        CowIdleSleep,
+        CowIdleChew, 
+        CowIdleEat, 
+        CowIdleLove, 
 	};
 }

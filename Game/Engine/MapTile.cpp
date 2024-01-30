@@ -91,7 +91,6 @@ namespace mmt_gd
 				position.x = i % layer.getSize().x * static_cast<float>( tileSize.x);
 				position.y = i / layer.getSize().x * static_cast<float>(tileSize.y);
 				//position += offset;
-
 				// number of tiles in tile set texture (horizontally)
 				const int tileCountX = texture.getSize().x / tileSize.x;
 

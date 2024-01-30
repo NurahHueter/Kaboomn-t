@@ -885,7 +885,7 @@
                  "y":496
                 }, 
                 {
-                 "height":86.9090909090909,
+                 "height":89.0909090909091,
                  "id":36,
                  "name":"Fence29",
                  "rotation":0,
@@ -893,7 +893,7 @@
                  "visible":true,
                  "width":3.88636363636363,
                  "x":293.75,
-                 "y":437.090909090909
+                 "y":434.909090909091
                 }, 
                 {
                  "height":6.09090909090912,
@@ -913,9 +913,9 @@
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":15.75,
-                 "x":299.545454545455,
-                 "y":436.863636363636
+                 "width":13.0227272727273,
+                 "x":301.363636363637,
+                 "y":434.863636363636
                 }, 
                 {
                  "height":5.29545454545456,
@@ -990,12 +990,12 @@
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":58.25,
-                 "x":594.25,
-                 "y":597.375
+                 "width":43.7045454545455,
+                 "x":598.25,
+                 "y":594.102272727273
                 }, 
                 {
-                 "height":76.0454545454545,
+                 "height":88.9545454545454,
                  "id":46,
                  "name":"Fence19",
                  "rotation":0,
@@ -1003,7 +1003,7 @@
                  "visible":true,
                  "width":5,
                  "x":645.875,
-                 "y":607
+                 "y":594.090909090909
                 }, 
                 {
                  "height":6.25,
@@ -1211,8 +1211,8 @@
                  "type":"Collider",
                  "visible":true,
                  "width":84.1590909090909,
-                 "x":293.954545454545,
-                 "y":277.409090909091
+                 "x":293.772727272727,
+                 "y":276.136363636364
                 }, 
                 {
                  "height":66.1136363636364,
@@ -1223,7 +1223,7 @@
                  "visible":true,
                  "width":4.18181818181813,
                  "x":293.613636363636,
-                 "y":284.386363636364
+                 "y":285.295454545455
                 }, 
                 {
                  "height":6.25,
@@ -1269,6 +1269,34 @@
                  "width":17.75,
                  "x":734.125,
                  "y":368.25
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":11,
+         "name":"ObjectCow",
+         "objects":[
+                {
+                 "height":11.6666666666667,
+                 "id":75,
+                 "name":"Cow1",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimations.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":13,
+                 "x":571.333333333333,
+                 "y":276.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1347,8 +1375,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":75,
+ "nextlayerid":12,
+ "nextobjectid":78,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
