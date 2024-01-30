@@ -170,6 +170,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="PlantAI.cpp" />
     <ClCompile Include="PlantCmp.cpp" />
+    <ClCompile Include="PlantHudCmp.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RigidBodyCmp.cpp" />
     <ClCompile Include="PlayState.cpp" />

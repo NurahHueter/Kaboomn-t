@@ -13,6 +13,7 @@
 #include "ObjectTypes.h"
 #include "PatchCmp.h"
 #include "PlantCmp.h"
+#include "PlantHud.h"
 #include "PlantAICmp.h"
 #include "Tileson.hpp"
 #include "AssetManager.h"
@@ -285,6 +286,10 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
 
         gameObject->addComponent(std::make_shared<PlantCmp>(*gameObject)); 
         gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject));
+
+        auto hud = std::make_shared<PlantHudCmp>(*gameObject, RenderManager::instance().getWindow());
+        RenderManager::instance().addCompToLayer(layer.getName(), hud);
+        gameObject->addComponent(hud);
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);

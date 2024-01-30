@@ -68,7 +68,6 @@ namespace mmt_gd
 			if (event.type == sf::Event::Closed)
 			{
 				GameStateManager::instance().CloseGame();
-				Game::~Game();
 				RenderManager::instance().getWindow().close();
 			}
 
