@@ -19,7 +19,7 @@ namespace mmt_gd
 
     void PhysicsManager::update()
     {
-        m_collisionPairs.clear();
+        //m_collisionPairs.clear();
         findCollisions(m_bodies);
     }
 
@@ -57,7 +57,7 @@ namespace mmt_gd
                     normal,
                     penetration))
                 {
-                    m_collisionPairs.insert(std::make_pair(&body1->getGameObject(), &body2->getGameObject()));
+ /*                   m_collisionPairs.insert(std::make_pair(&body1->getGameObject(), &body2->getGameObject()));*/
                     sf::Vector2f separationVector = normal * penetration;
                     // When body1 == Player
                     if (body1->getGameObject().getComponent<MoveCmp>())
