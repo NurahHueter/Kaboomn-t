@@ -12,7 +12,7 @@ namespace mmt_gd
 	{
         auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
         auto sanity = gameObject.getComponent<PlantCmp>()->getSanity();
-		std::cout << sanity << std::endl;
+		
 		if (sanity > 50.f && currentState != Happy)
 		{
 			currentState = Happy;
