@@ -17,10 +17,7 @@ namespace mmt_gd
 
 	void SpriteRenderCmp::update(float deltetime)
 	{
-		if (m_mirror)
-		{
-			sprite->setScale(-1, 1);
-		}
+	
 		sprite->setPosition(gameObject.getPosition());
 	}
 

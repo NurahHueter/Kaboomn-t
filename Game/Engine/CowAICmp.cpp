@@ -9,7 +9,7 @@ namespace mmt_gd
 {
 	bool CowAICmp::init()
 	{
-		gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleSleep);
+		gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleEatRight);
 		return true;
 	}
 

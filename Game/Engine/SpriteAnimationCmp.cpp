@@ -37,10 +37,7 @@ namespace mmt_gd
 
 	void SpriteAnimationCmp::update(float deltaTime)
 	{
-		if (m_mirror)
-		{
-			sprite->setScale(-1, -1);
-		}
+	
 		m_animationTime += deltaTime * m_animationSpeed;
 		m_animationFrame = (int)m_animationTime % m_animations[m_currentAnimation];
 
