@@ -31,13 +31,13 @@ namespace mmt_gd
 
             if (i % 2 == 0)
             {
-                centerX = bounds->m_shape.left + (i / 2) * smallRectWidth + smallRectWidth / 2;
-                centerY = bounds->m_shape.top + smallRectHeight / 2;
+                centerX = (bounds->m_shape.left + (i / 2) * smallRectWidth + smallRectWidth / 2) - smallRectWidth;
+                centerY = (bounds->m_shape.top + smallRectHeight / 2) -2* smallRectHeight;
             }
             else
             {
-                centerX = bounds->m_shape.left + ((i - 1) / 2) * smallRectWidth + smallRectWidth / 2;
-                centerY = bounds->m_shape.top + smallRectHeight * 2.5f;
+                centerX = (bounds->m_shape.left + ((i - 1) / 2) * smallRectWidth + smallRectWidth / 2) - smallRectWidth;
+                centerY = (bounds->m_shape.top + smallRectHeight * 2.5f) - 2*smallRectHeight;
             }
 
            const auto spriteBounds = m_plants[i]->getComponent<SpriteAnimationCmp>()->getTextureRect();

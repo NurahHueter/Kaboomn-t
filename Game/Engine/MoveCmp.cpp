@@ -33,7 +33,6 @@ namespace mmt_gd
                 velocity.y = m_velocity;
                 animation->setCurrentAnimation(MoveDown);
             }
-
             else if (InputManager::instance().isKeyPressed("left", gameObject.getPlayerIdx()))
             {
                 velocity.x = -m_velocity;
