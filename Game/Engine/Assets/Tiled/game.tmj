@@ -512,7 +512,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb4.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb4fix.png"
                         }, 
                         {
                          "name":"Type",
@@ -556,7 +556,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb2.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb2fix.png"
                         }, 
                         {
                          "name":"Type",
@@ -578,7 +578,7 @@
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb3.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb3fix.png"
                         }, 
                         {
                          "name":"Type",

@@ -21,7 +21,7 @@ namespace mmt_gd
 		else if(sanity < 50.f && currentState != Sad && currentState != Explode)
 		{
 			currentState = Sad;
-			animationCmp->setCurrentAnimation(MoveUp);
+			animationCmp->setCurrentAnimation(CryIdle);
 		}
 		else if (sanity <= 0.f && currentState != Explode)
 		{
