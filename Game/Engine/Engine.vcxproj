@@ -147,6 +147,8 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="Astar.cpp" />
     <ClCompile Include="BoxCollision.cpp" />
     <ClCompile Include="CameraCmp.cpp" />
+    <ClCompile Include="CowAICmp.cpp" />
+    <ClCompile Include="CowAICmp.h" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Engine.cpp" />

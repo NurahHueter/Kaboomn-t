@@ -12,13 +12,14 @@ namespace mmt_gd
 	{
         auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
         auto sanity = gameObject.getComponent<PlantCmp>()->getSanity();
-		std::cout << sanity << std::endl;
-		if (sanity > 50.f && currentState != Happy)
+		
+		if (sanity > 50.f)
 		{
 			currentState = Happy;
-			animationCmp->setCurrentAnimation(IdleDown);
+			animationCmp->setCurrentAnimation(MoveLeft);
+			animationCmp->mirror(true);
 		}
-		else if(sanity < 50.f && currentState != Sad)
+		else if(sanity < 50.f && currentState != Sad && currentState != Explode)
 		{
 			currentState = Sad;
 			animationCmp->setCurrentAnimation(CryIdle);
@@ -47,13 +48,14 @@ namespace mmt_gd
 	{
 		auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
 		auto frame = gameObject.getComponent<SpriteAnimationCmp>()->getCurrentFrameIndex();
-		if (frame == 6)
+		if (frame == 5)
 		{
 			animationCmp->setCurrentAnimation(Smoke);
 		}
-		if (animationCmp->getCurrentAnimation() == Smoke && frame == 5)
+		if (animationCmp->getCurrentAnimation() == Smoke && frame == 4)
 		{
 			gameObject.markForDelete();
+			gameObject.setActive(false);
 		}
 	};
 }

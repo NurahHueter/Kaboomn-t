@@ -30,14 +30,14 @@ struct Manifold
 
        void addBoxCollisionCmp(std::weak_ptr<BoxCollisionCmp> component);
        std::vector<std::weak_ptr<BoxCollisionCmp>> m_bodies;
-       const std::map<GameObject*, GameObject*> getCollisionPairs() { return m_collisionPairs; };
+       //const std::map<GameObject*, GameObject*> getCollisionPairs() { return m_collisionPairs; };
 
         void update();
         void shutdown();
     private:
         
         std::vector<Manifold>  m_manifolds;
-        std::map<GameObject*, GameObject*> m_collisionPairs;
+        //std::map<GameObject*, GameObject*> m_collisionPairs;
         //void resolveCollisions(std::vector<Manifold>& m_manifolds);
         bool aabbVsAabb(const sf::FloatRect& a, const sf::FloatRect& b, sf::Vector2f& normal, float& penetration); // returns true if interseciton
         void findCollisions(std::vector<std::weak_ptr<BoxCollisionCmp>>& m_bodies);
