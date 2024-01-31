@@ -13,13 +13,20 @@ namespace mmt_gd
 	class PlantAICmp : public IComponent
 	{
 	public:
-		PlantAICmp(GameObject& gameObject)
-			:IComponent(gameObject) {};
+		PlantAICmp(GameObject& gameObject, std::weak_ptr<GameObject> patch)
+			:IComponent(gameObject), m_patch(patch){};
 		bool init() override { return true; };
 		void update(float deltaTime) override;
 		void explode(float deltaTime);
+		void happy(float deltaTime);
 
 	private:
 		AIState currentState = Happy;
+		float m_timerIdle = 0.f;
+		float m_timeIntervallIdle = 1.5f;
+		sf::Vector2f m_pointToGo = {};
+		std::weak_ptr<GameObject> m_patch;
+		bool m_isWalking = false;
+		sf::Vector2f m_direction = {};
 	};
 }

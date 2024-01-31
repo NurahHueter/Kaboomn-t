@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "InputManager.h"
 #include "GameStateManager.h"
+#include "SpriteAnimationCmp.h"
+#include "PlantCmp.h"
 #include "GameState.h"
 #include "GameObject.h"
 #include "GameObjectManager.h"
@@ -37,8 +39,25 @@ namespace mmt_gd
         PhysicsManager::instance().update();
         GameObjectManager::instance().update(deltaTime);
 
-    
-
+        const auto coll_pairs = PhysicsManager::instance().getCollisionPairs();
+        for (const auto p : coll_pairs)
+        {
+            if (p.first->getType() == ObjectType::Plants && p.second->getType() == Player)
+            {
+                const auto& playerAnimation = GameObjectManager::instance().getGameObject("Player")->getComponent<SpriteAnimationCmp>()->getCurrentAnimation();
+                if (playerAnimation == WaterDown 
+                    || playerAnimation == WaterUp
+                    || playerAnimation == WaterLeft
+                    || playerAnimation == WaterRight)
+                {
+                    p.first->getComponent<PlantCmp>()->watering();
+                }
+                if (InputManager::instance().isKeyPressed("pet", 1))
+                {
+                    p.first->getComponent<PlantCmp>()->pet();
+                }
+            }
+        }
     }
 
     void PlayState::draw()

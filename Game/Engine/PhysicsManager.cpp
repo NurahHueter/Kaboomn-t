@@ -57,7 +57,7 @@ namespace mmt_gd
                     normal,
                     penetration))
                 {
-                    if (body1->isLogicTrigger() || body1->isLogicTrigger())
+                    if (body1->isLogicTrigger() || body2->isLogicTrigger())
                     {
                         if (body1->isLogicTrigger())
                         {
