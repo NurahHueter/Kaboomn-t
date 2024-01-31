@@ -17,6 +17,10 @@ namespace mmt_gd
 		float getWater() const { return m_water; };
 		float getAffection() const { return m_love; };
 
+		void cowAttack(bool getingEaten) { m_getingEaten = m_getingEaten; };
+		void getHitfromExplosion();
+		void friendDied() { m_lonelyness += 0.5f; };
+
 		void pet();
 		void watering();
 	private:
@@ -24,6 +28,12 @@ namespace mmt_gd
 		float m_sanity = 100.f;
 		float m_water = 100.f;
 		float m_love = 100.f;
+
+		float m_lonelyness = 1.f;
+		float m_dryingOut = 1.f;
+		float m_happy = 1.f;
+
+		bool m_getingEaten = false;
 		const float M_MAXSANITY = 100.f;
 		const float M_MAXWATER = 100.f;
 		const float M_LOVE = 100.f;

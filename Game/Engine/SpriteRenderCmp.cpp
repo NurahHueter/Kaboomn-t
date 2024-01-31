@@ -9,6 +9,7 @@ namespace mmt_gd
 	{
 		if (std::shared_ptr<sf::Texture> tempP = p_texture.lock()) //check if Texture is nullptr
 		{
+			
 			sprite->setTexture(*tempP);
 			return true;
 		}
@@ -17,7 +18,6 @@ namespace mmt_gd
 
 	void SpriteRenderCmp::update(float deltetime)
 	{
-	
 		sprite->setPosition(gameObject.getPosition());
 	}
 

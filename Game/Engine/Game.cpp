@@ -68,7 +68,6 @@ namespace mmt_gd
 			if (event.type == sf::Event::Closed)
 			{
 				GameStateManager::instance().CloseGame();
-				Game::~Game();
 				RenderManager::instance().getWindow().close();
 			}
 
@@ -93,6 +92,7 @@ namespace mmt_gd
 			InputManager::instance().bind("down", sf::Keyboard::Key::S, 1);
 			InputManager::instance().bind("left", sf::Keyboard::Key::A, 1);
 			InputManager::instance().bind("right", sf::Keyboard::Key::D, 1);
+			InputManager::instance().bind("pet", sf::Keyboard::Key::E, 1);
 			InputManager::instance().bind("leftclick", sf::Mouse::Left, 1);
 			InputManager::instance().bind("debugdraw", sf::Keyboard::Key::Num0, 1);
 			InputManager::instance().bind("space", sf::Keyboard::Key::Space, 1);

@@ -4,6 +4,8 @@
 #include "GameObject.h"
 #include "AnimationTypes.h"
 #include "SpriteAnimationCmp.h"
+#include "PatchCmp.h"
+#include "VectorAlgebra2D.h"
 
 namespace mmt_gd
 {
@@ -13,11 +15,9 @@ namespace mmt_gd
         auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
         auto sanity = gameObject.getComponent<PlantCmp>()->getSanity();
 		
-		if (sanity > 50.f)
+		if (sanity > 50.f && currentState != Explode)
 		{
 			currentState = Happy;
-			animationCmp->setCurrentAnimation(MoveLeft);
-			animationCmp->mirror(true);
 		}
 		else if(sanity < 50.f && currentState != Sad && currentState != Explode)
 		{
@@ -33,6 +33,9 @@ namespace mmt_gd
 
 		switch (currentState)
 		{
+		case Happy:
+			happy(deltaTime);
+			break;
 		case Explode:
 			explode(deltaTime);
 			break;
@@ -55,7 +58,43 @@ namespace mmt_gd
 		if (animationCmp->getCurrentAnimation() == Smoke && frame == 4)
 		{
 			gameObject.markForDelete();
-			gameObject.setActive(false);
 		}
 	};
+
+	void PlantAICmp::happy(float deltaTime)
+	{
+		auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
+
+		if (m_timerIdle == 0.f)
+		{
+			animationCmp->setCurrentAnimation(IdleDown);
+		}
+		m_timerIdle += deltaTime;
+		if (m_timerIdle > m_timeIntervallIdle && !m_isWalking)
+		{
+			m_isWalking = true;
+			animationCmp->setCurrentAnimation(MoveDown);
+			if (std::shared_ptr<GameObject> tempP = m_patch.lock())
+			{
+				const auto& bounds	= tempP->getComponent<PatchCmp>()->getBound();
+				float randomX = bounds.left + static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * bounds.width;
+				float randomY = bounds.top + static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * bounds.height;
+				m_pointToGo = { randomX, randomY };
+			}
+			m_direction = MathUtil::unitVector(m_pointToGo - gameObject.getPosition());
+
+		}
+		if (m_isWalking)
+		{
+			float distanceX = std::abs(gameObject.getPosition().x - m_pointToGo.x);
+			float distanceY = std::abs(gameObject.getPosition().y - m_pointToGo.y);
+			if (distanceX < 2.f || distanceY < 2.f)
+			{
+				m_timerIdle = 0.f;
+				m_isWalking = false;
+			}
+
+			gameObject.setPosition(gameObject.getPosition() + m_direction * 2.f * deltaTime);
+		}
+	}
 }

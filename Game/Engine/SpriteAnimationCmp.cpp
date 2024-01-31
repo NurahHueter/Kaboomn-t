@@ -4,6 +4,7 @@
 #include"SpriteRenderCmp.h"
 #include"AnimationTypes.h"
 #include "GameObject.h"
+#include "SteeringCmp.h"
 namespace mmt_gd
 {
 	SpriteAnimationCmp::SpriteAnimationCmp(
@@ -53,12 +54,25 @@ namespace mmt_gd
 			spriteOffsetX = m_animationFrame * sprite->getTextureRect().width;
 			spriteOffsetY = getCurrentAnimationIndex() * sprite->getTextureRect().height;
 		}
-		sprite->setTextureRect(sf::IntRect(
-			spriteOffsetX,
-			spriteOffsetY,
-			sprite->getTextureRect().width,
-			sprite->getTextureRect().height));
-		sprite->setPosition(gameObject.getPosition());
+		if (gameObject.getComponent<SteeringCmp>())
+		{
+			sprite->setTextureRect(sf::IntRect(
+				spriteOffsetX,
+				spriteOffsetY,
+				sprite->getTextureRect().width,
+				sprite->getTextureRect().height));
+			sprite->setPosition(gameObject.getPosition() - sf::Vector2f(8, 8));
+		}
+		else
+		{
+			sprite->setTextureRect(sf::IntRect(
+				spriteOffsetX,
+				spriteOffsetY,
+				sprite->getTextureRect().width,
+				sprite->getTextureRect().height));
+			sprite->setPosition(gameObject.getPosition());
+		}
+		
 	}
 
 	void SpriteAnimationCmp::addAnimation(AnimationType animation, int frames)

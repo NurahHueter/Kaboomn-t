@@ -17,12 +17,13 @@ namespace mmt_gd
 			rigidBody = gameObject.getComponent<RigidBodyCmp>();
 		}
 		
+		
 		return true;
 	}
 	void BoxCollisionCmp::update(float deltaTime)
 	{
 		//calibration PlayerBoundingbox
-		if (gameObject.getComponent<SpriteAnimationCmp>())
+		if (gameObject.getType() == Cow || gameObject.getType() == Player)
 		{
 
 			m_shape = sf::FloatRect(gameObject.getPosition() + 

@@ -141,4 +141,11 @@ namespace MathUtil
 		assert(axis != sf::Vector2<T>());
 		return dotProduct(vector, axis) / squaredLength(axis) * axis;
 	}
+
+	template <typename T>
+	sf::Vector2f lerp(const sf::Vector2<T>& start, const sf::Vector2<T>& end, float t)
+	{
+		t = std::max(0.f, std::min(1.f, t));
+		return (1.f - t) * start + t * end;
+	};
 }

@@ -13,6 +13,7 @@
 #include "ObjectTypes.h"
 #include "PatchCmp.h"
 #include "PlantCmp.h"
+#include "PlantHud.h"
 #include "PlantAICmp.h"
 #include "Tileson.hpp"
 #include "AssetManager.h"
@@ -25,6 +26,7 @@
 
 namespace mmt_gd
 {
+    std::vector<sf::Vector2f> ObjectFactory::m_patchPositions;
     void ObjectFactory::processTsonObject(tson::Object& object, const tson::Layer& layer)
     {
         
@@ -137,11 +139,15 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         GameObjectManager::instance().addGameObject(gameObject);
 
     }
+
+  
     void ObjectFactory::loadPatch(tson::Object& object, const tson::Layer& layer)
     {
         std::shared_ptr<sf::Texture> texture;
         std::string texturePath;
         std::string type;
+
+
 
         auto gameObject = std::make_shared<GameObject>(object.getName());
         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
@@ -163,11 +169,14 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             }
         }
 
-        auto patchCmp = std::make_shared<PatchCmp>(*gameObject);
+        auto patchCmp = std::make_shared<PatchCmp>(*gameObject, sf::FloatRect(object.getPosition().x, object.getPosition().y, object.getSize().x, object.getSize().y));
         for (int i = 0; i < 4; i++)
         {
-            patchCmp->addPlant(loadPlants(layer, i, type
-            , texture ));
+            auto plant = loadPlants(layer, gameObject, i, type, texture);
+            patchCmp->addPlant(plant);
+
+            // Füge die Position zum Vektor hinzu
+          
         }
 
         auto bounds = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(gameObject->getPosition(), sf::Vector2f(object.getSize().x, object.getSize().y)), true);
@@ -180,11 +189,11 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
     void ObjectFactory::loadCow(tson::Object& object, const tson::Layer& layer)
     {
         auto gameObject = std::make_shared<GameObject>(object.getName());
+      //probieren, irgendwie zu überschreiben
         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
         gameObject->setType(ObjectType::Cow);
         std::shared_ptr<sf::Texture> texture;
         std::string texturePath;
-
         for (const auto* property : object.getProperties().get())
         {
             auto name = property->getName();
@@ -228,17 +237,24 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         
 
 
-        const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
+       /* const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
             sf::FloatRect(gameObject->getPosition().x,
                 gameObject->getPosition().y,
                 object.getSize().x ,
                 object.getSize().y ),
             false);
-        gameObject->addComponent(boxCollider);
-
+        gameObject->addComponent(boxCollider);*/
+        // PhysicsManager::instance().addBoxCollisionCmp(boxCollider); 
+        
+        //gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject, sf::Vector2f(1.f, 1.f), animationCmp->getTextureRect().getSize().x/3, animationCmp->getTextureRect().getSize().y/3));
+            gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject));
+       // std::cout << animationCmp->getTextureRect().getSize().x << "SIzeY" << animationCmp->getTextureRect().getSize().y << std::endl;
         gameObject->addComponent(std::make_shared<CowAICmp>(*gameObject, 100.f));
-        PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
+       
         animationCmp->init();
+
+
+
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
@@ -248,7 +264,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
     }
     ;
 
-     std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
+     std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, std::shared_ptr<GameObject> patch, int index, std::string type, std::shared_ptr<sf::Texture> texture)
     {
         auto gameObject = std::make_shared<GameObject>(type + std::to_string(index));
         gameObject->setType(Plants);
@@ -278,16 +294,23 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
 
+        animationCmp->init();
         const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(animationCmp->getTextureRect()), true);
 
         gameObject->addComponent(trigger);
         PhysicsManager::instance().addBoxCollisionCmp(trigger);
 
         gameObject->addComponent(std::make_shared<PlantCmp>(*gameObject)); 
-        gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject));
+        gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject, patch));
+
+        auto hud = std::make_shared<PlantHudCmp>(*gameObject, RenderManager::instance().getWindow());
+        RenderManager::instance().addCompToLayer(layer.getName(), hud);
+        gameObject->addComponent(hud);
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
+
+        m_patchPositions.push_back(sf::Vector2f(gameObject->getPosition().x, gameObject->getPosition().y));
         return gameObject;
     };
 
