@@ -17,7 +17,7 @@ namespace mmt_gd
 			m_sanity -= m_lonelyness * deltaTime;
 		}
 
-		if ((m_water && m_love) > 60.f)
+		if (m_water  > 60.f && m_love > 60.f)
 		{
 			if (m_sanity <= M_MAXSANITY)
 			{

@@ -172,7 +172,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         auto patchCmp = std::make_shared<PatchCmp>(*gameObject, sf::FloatRect(object.getPosition().x, object.getPosition().y, object.getSize().x, object.getSize().y));
         for (int i = 0; i < 4; i++)
         {
-            auto plant = loadPlants(layer, i, type, texture);
+            auto plant = loadPlants(layer, gameObject, i, type, texture);
             patchCmp->addPlant(plant);
 
             // Füge die Position zum Vektor hinzu
@@ -260,7 +260,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
     }
     ;
 
-     std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, int index, std::string type, std::shared_ptr<sf::Texture> texture)
+     std::shared_ptr<GameObject>ObjectFactory::loadPlants(const tson::Layer& layer, std::shared_ptr<GameObject> patch, int index, std::string type, std::shared_ptr<sf::Texture> texture)
     {
         auto gameObject = std::make_shared<GameObject>(type + std::to_string(index));
         gameObject->setType(Plants);
@@ -297,7 +297,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         PhysicsManager::instance().addBoxCollisionCmp(trigger);
 
         gameObject->addComponent(std::make_shared<PlantCmp>(*gameObject)); 
-        gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject));
+        gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject, patch));
 
         auto hud = std::make_shared<PlantHudCmp>(*gameObject, RenderManager::instance().getWindow());
         RenderManager::instance().addCompToLayer(layer.getName(), hud);
