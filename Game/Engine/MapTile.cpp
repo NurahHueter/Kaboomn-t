@@ -27,7 +27,7 @@ namespace mmt_gd
 
 		//ground
 		auto& layerData2 = map->getLayers()[1].getData();
-
+		auto& layerData5 = map->getLayers()[5].getData();
 		//collider
 		auto& layerData4 = map->getLayers()[6].getData();
 
@@ -43,7 +43,7 @@ namespace mmt_gd
 			for (int j = 0; j < numCols; ++j)
 			{
 				// Überprüfe, ob entweder layerData1 oder layerData2 an dieser Position nicht null ist
-				if (layerData2[i * numCols + j] != 0 && layerData4[i * numCols + j] == 0)
+				if (layerData2[i * numCols + j] != 0 && layerData4[i * numCols + j] == 0 && layerData5[i * numCols + j] == 0)
 				{
 					m_LayerKachel[i].emplace_back(1);
 				}
