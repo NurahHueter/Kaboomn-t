@@ -76,10 +76,6 @@ namespace mmt_gd
                         tempP->draw();
                     }
                 } 
-                else
-                {
-                    std::cout << "Nothing du huans breakpoint" << std::endl;
-                }
             }
             m_CmpInLayer[layer.first] = newVec;
         }

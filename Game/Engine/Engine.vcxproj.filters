@@ -22,9 +22,6 @@
     <Filter Include="Header Files\Manager\GameStateManager">
       <UniqueIdentifier>{da1da965-b6ca-415b-9449-9d3441b8f3a7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Manager">
-      <UniqueIdentifier>{8d7ba076-96a5-4f1c-89f8-8e520cb75ffe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{9878e344-1c11-47aa-941d-9a0d2fe4e5d7}</UniqueIdentifier>
     </Filter>
@@ -61,6 +58,9 @@
     <Filter Include="Header Files\Components\CustomComponents">
       <UniqueIdentifier>{55d176e3-3422-4629-9727-1bc91ce73799}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjects\Manager">
+      <UniqueIdentifier>{8d7ba076-96a5-4f1c-89f8-8e520cb75ffe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -73,10 +73,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files\Manager</Filter>
+      <Filter>Source Files\GameObjects\Manager</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files\Manager</Filter>
+      <Filter>Source Files\GameObjects\Manager</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\GameObjects</Filter>
@@ -85,16 +85,16 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
-      <Filter>Source Files\Manager</Filter>
+      <Filter>Source Files\GameObjects\Manager</Filter>
     </ClCompile>
     <ClCompile Include="DebugDraw.cpp">
       <Filter>Source Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GameStateManager.cpp">
-      <Filter>Source Files\Manager</Filter>
+      <Filter>Source Files\GameObjects\Manager</Filter>
     </ClCompile>
     <ClCompile Include="RenderManager.cpp">
-      <Filter>Source Files\Manager</Filter>
+      <Filter>Source Files\GameObjects\Manager</Filter>
     </ClCompile>
     <ClCompile Include="ObjectFactory.cpp">
       <Filter>Source Files\GameObjects</Filter>
@@ -118,7 +118,7 @@
       <Filter>Source Files\Components\Components</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsManager.cpp">
-      <Filter>Source Files\Manager</Filter>
+      <Filter>Source Files\GameObjects\Manager</Filter>
     </ClCompile>
     <ClCompile Include="PlayState.cpp">
       <Filter>Source Files\States</Filter>
@@ -155,6 +155,9 @@
     </ClCompile>
     <ClCompile Include="CowAICmp.h">
       <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="PlantHudCmp.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
