@@ -12,8 +12,5 @@ namespace mmt_gd
 		void update(float deltaTime) override;
 		void draw() override;
 
-	protected:
-
-
 	};
 }

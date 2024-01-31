@@ -19,7 +19,7 @@ namespace mmt_gd
 		void handlePathCompletion();
 		void setTarget(sf::Vector2f target) { m_target = target; };
 		bool reachedTarget() { return m_reachedTarget; };
-		bool m_start = false;
+		bool m_astarStart = false;
 		bool m_firstRun = false;
 		
 
