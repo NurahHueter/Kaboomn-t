@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
 #include "GameObject.h"
+#include "SpriteAnimationCmp.h"
 #include "CameraCmp.h"
 namespace mmt_gd
 {
@@ -17,7 +18,8 @@ namespace mmt_gd
 	{
 		if (std::shared_ptr<GameObject> tempP = m_target.lock())
 		{
-			view.setCenter(tempP->getPosition());
+			auto textureRect = tempP->getComponent<SpriteAnimationCmp>()->getTextureRect();
+			view.setCenter(tempP->getPosition().x + textureRect.width / 2.f, tempP->getPosition().y + textureRect.height / 2.f);
 		}
 	}
 

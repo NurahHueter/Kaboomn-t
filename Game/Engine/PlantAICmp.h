@@ -17,16 +17,18 @@ namespace mmt_gd
 			:IComponent(gameObject), m_patch(patch){};
 		bool init() override { return true; };
 		void update(float deltaTime) override;
+		bool isExploding() const { return m_explosion; };
 		void explode(float deltaTime);
 		void happy(float deltaTime);
 
 	private:
 		AIState currentState = Happy;
 		float m_timerIdle = 0.f;
-		float m_timeIntervallIdle = 5.f;
+		float m_timeIntervallIdle = 3.f;
 		sf::Vector2f m_pointToGo = {};
 		std::weak_ptr<GameObject> m_patch;
 		bool m_isWalking = false;
+		bool m_explosion = false;
 		float m_interpolationSpeed = 2.f;
 		sf::Vector2f m_direction = {};
 	};
