@@ -23,9 +23,9 @@ namespace mmt_gd
 		void sleep();
 		bool m_despawn = false;
 		float m_rand = 0 ;
-		AIStateCow currentState = Sleep;
-		
+			
 	private:
+		AIStateCow currentState = Sleep;
 		sf::Vector2f m_startPos;
 	};
 }

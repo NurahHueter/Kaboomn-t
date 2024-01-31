@@ -12,7 +12,7 @@ namespace mmt_gd
 		void update(float deltaTime) override;
 		void getDamage();
 		void gainHealth();
-		int getHealth() { return m_currentHealth; };
+		int getHealth() const { return m_currentHealth; };
 		void draw() override;
 
 	protected:

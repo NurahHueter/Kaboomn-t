@@ -45,7 +45,7 @@ namespace mmt_gd
 
     void SteeringCmp::update(float deltaTime)
     {
-        if (m_start)
+        if (m_astarStart)
         {
             float distanceThreshold = 0.2f;
 
@@ -95,6 +95,6 @@ namespace mmt_gd
     {
         const auto& spriteAnimationCmp = gameObject.getComponent<SpriteAnimationCmp>();
         spriteAnimationCmp->setCurrentAnimation(CowIdleChewLeft);
-        m_start = false;
+        m_astarStart = false;
     }
 }
