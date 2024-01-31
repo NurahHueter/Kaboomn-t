@@ -18,7 +18,7 @@ namespace mmt_gd
 
 
         //AXE
-        if (InputManager::instance().isMouseDown("leftclick", gameObject.getPlayerIdx() && !m_usingTool))
+        if (InputManager::instance().isMouseDown("leftclick", 1) && !m_usingTool)
         {
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);
@@ -45,7 +45,7 @@ namespace mmt_gd
 
 
         //WATER
-        else if (InputManager::instance().isKeyPressed("space", gameObject.getPlayerIdx() && !m_usingTool))
+        else if (InputManager::instance().isKeyPressed("space", 1) && !m_usingTool)
         {
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);

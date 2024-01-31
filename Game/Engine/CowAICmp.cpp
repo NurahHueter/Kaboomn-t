@@ -1,92 +1,84 @@
+#pragma once
 #include "pch.h"
 #include "CowAICmp.h"
 #include "AnimationTypes.h"
 #include "SpriteAnimationCmp.h"
 #include "GameObject.h"
 #include "InputManager.h"
-
+#include <random>
+#include "SteeringCmp.h"
 
 namespace mmt_gd
 {
-
     bool CowAICmp::init()
     {
-        gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleEatLeft);
+        auto spriteAnimationCmp = gameObject.getComponent<SpriteAnimationCmp>();
+        spriteAnimationCmp->setCurrentAnimation(CowIdleSleepRight);
+
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<float> distribution(15.0f, 35.0f);
+
+        m_startPos = gameObject.getPosition();
+        m_rand = distribution(gen);
+
         return true;
     }
 
     void CowAICmp::update(float deltaTime)
     {
+        static sf::Clock movementClock;
 
-        //    const auto player = GameObjectManager::instance().getGameObject("Player");
-        //    const auto texture = player->getComponent<SpriteAnimationCmp>()->getTextureRect().getSize();
-        //    playerPosition = sf::Vector2f(player->getPosition().x + texture.x / 2, player->getPosition().y + texture.y / 2);
+        if (movementClock.getElapsedTime().asSeconds() >= m_rand && !gameObject.getComponent<SteeringCmp>()->m_start)
+        {
+            currentState = Attack;
+        }
 
+        if (m_despawn)
+        {
+            currentState = Despawn;
+            m_despawn = false;
+            movementClock.restart();
+        }
 
-        //    distance_x = std::abs(playerPosition.x - gameObject.getPosition().x);
-        //    distance_y = std::abs(playerPosition.y - gameObject.getPosition().y);
+        switch (currentState)
+        {
+        case Sleep:
+            sleep();
+            break;
+        case Attack:
+            attack();
+            break;
+        case Despawn:
+            despawn();
+            break;
+        default:
+            break;
+        };
+    }
 
-        //    if (distance_x < m_attackRange || distance_y < m_attackRange)
-        //    {
-        //        currentState = Attack;
-        //    }
-        //    if (distance_x > m_attackRange || distance_y > m_attackRange)
-        //    {
-        //        currentState = Patrol;
-        //    }
-        //    //if (gameObject.getComponent<HealthCmp>()->getHealth() == 1
-        //    //    && (distance_x < m_attackRange || distance_y < m_attackRange))
-        //    //{
-        //    //    currentState = Flee;
-        //    //};
+    void CowAICmp::attack()
+    {
+        auto steeringCmp = gameObject.getComponent<SteeringCmp>();
+        steeringCmp->m_start = true;
+        steeringCmp->m_firstRun = true;
+    }
 
-        //    switch (currentState)
-        //    {
-        //    case Patrol:
-        //        patrol();
-        //        break;
-        //    case Attack:
-        //        attack();
-        //        break;
-        //        //case Flee:
-        //        //    flee();
-        //        //    break;
-        //    default:
-        //        break;
-        //    }
-        //};
+    void CowAICmp::sleep()
+    {
+        gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleSleepLeft);
+    }
 
+    void CowAICmp::despawn()
+    {
+        auto steeringCmp = gameObject.getComponent<SteeringCmp>();
+        steeringCmp->m_start = false;
+        steeringCmp->m_firstRun = false;
 
-        //void CowAICmp::patrol()
-        //{
+        steeringCmp->clearPath();
+        gameObject.setPosition(m_startPos);
+        steeringCmp->init();
 
-        //    if (m_patrolPoints.size() > 1)
-        //    {
-        //        gameObject.getComponent<SteeringCmp>()->setTarget(m_patrolPoints[m_currentWayPoint]);
-        //        float distanceToTarget = MathUtil::length(m_patrolPoints[m_currentWayPoint] - gameObject.getPosition());
-        //        float patrolRadius = 20.0f;
-        //        if (distanceToTarget <= patrolRadius)
-        //        {
-        //            m_currentWayPoint++;
-        //            if (m_currentWayPoint >= m_patrolPoints.size())
-        //            {
-        //                m_currentWayPoint = 0;
-        //            }
-        //        }
-        //    }
-        //};
-        //void CowAICmp::attack()
-        //{
-        //    gameObject.getComponent<SteeringCmp>()->setTarget(playerPosition);
-        //    gameObject.getComponent<ProjectileCmp>()->shoot(playerPosition);
-
-        //};
-        ////void AIControllerCmp::flee()
-        ////{
-        ////    auto playerPosition = GameObjectManager::instance().getGameObject("Player")->getPosition();
-        ////    sf::Vector2f fleePoint = sf::Vector2f(playerPosition.x * -1, playerPosition.y * -1);
-
-        ////    gameObject.getComponent<SteeringCmp>()->setTarget(fleePoint);
-        ////};
+        currentState = Sleep;
     }
 }

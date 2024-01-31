@@ -11,9 +11,16 @@ namespace mmt_gd
 		SteeringCmp(GameObject& gameObjectPlayer)
 			: IComponent(gameObjectPlayer) {};
 		bool init() override;
+		void clearPath();
 		void update(float deltaTime) override;
+		void moveTowardsNextWaypoint(float deltaTime);
+		void updateAnimationAndPosition(const sf::Vector2f& direction, const sf::Vector2f& newPosition, const sf::Vector2f& nextWaypoint);
+		bool hasReachedNextWaypoint(const sf::Vector2f& currentPosition, const sf::Vector2f& nextWaypoint);
+		void handlePathCompletion();
 		void setTarget(sf::Vector2f target) { m_target = target; };
 		bool reachedTarget() { return m_reachedTarget; };
+		bool m_start = false;
+		bool m_firstRun = false;
 		
 
 	private:
@@ -23,6 +30,7 @@ namespace mmt_gd
 		sf::Vector2f m_target;
 		sf::Vector2f m_velocity;
 		sf::Vector2f direction = { 0.f, 0.f };
+
 		std::vector<std::pair<int, int>> m_pathlist;
 	};
 }

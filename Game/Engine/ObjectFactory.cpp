@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "ObjectFactory.h"
 #include "GameObject.h"
@@ -247,9 +248,15 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         // PhysicsManager::instance().addBoxCollisionCmp(boxCollider); 
         
         //gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject, sf::Vector2f(1.f, 1.f), animationCmp->getTextureRect().getSize().x/3, animationCmp->getTextureRect().getSize().y/3));
-            gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject));
+        gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject));
        // std::cout << animationCmp->getTextureRect().getSize().x << "SIzeY" << animationCmp->getTextureRect().getSize().y << std::endl;
-        gameObject->addComponent(std::make_shared<CowAICmp>(*gameObject, 100.f));
+        gameObject->addComponent(std::make_shared<CowAICmp>(*gameObject));
+        animationCmp->init();        
+        
+        const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(animationCmp->getTextureRect()), true);
+
+        gameObject->addComponent(trigger);
+        PhysicsManager::instance().addBoxCollisionCmp(trigger);
        
         animationCmp->init();
 

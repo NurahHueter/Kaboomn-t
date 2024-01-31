@@ -23,7 +23,7 @@ namespace mmt_gd
 	void BoxCollisionCmp::update(float deltaTime)
 	{
 		//calibration PlayerBoundingbox
-		if (gameObject.getType() == Cow || gameObject.getType() == Player)
+		if ( gameObject.getType() == Player)
 		{
 
 			m_shape = sf::FloatRect(gameObject.getPosition() + 
@@ -32,6 +32,15 @@ namespace mmt_gd
 					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().width/3),
 					m_shape.getSize());
 		}
+		else if (gameObject.getType() == Cow)
+		{
+			m_shape = sf::FloatRect(gameObject.getPosition() -
+				sf::Vector2f(
+					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().height / 4,
+					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().width / 4),
+				m_shape.getSize());
+		}
+		
 		else
 		{
 			m_shape = sf::FloatRect(gameObject.getPosition(), m_shape.getSize());
