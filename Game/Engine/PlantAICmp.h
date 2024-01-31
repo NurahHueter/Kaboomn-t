@@ -23,10 +23,11 @@ namespace mmt_gd
 	private:
 		AIState currentState = Happy;
 		float m_timerIdle = 0.f;
-		float m_timeIntervallIdle = 1.5f;
+		float m_timeIntervallIdle = 5.f;
 		sf::Vector2f m_pointToGo = {};
 		std::weak_ptr<GameObject> m_patch;
 		bool m_isWalking = false;
+		float m_interpolationSpeed = 2.f;
 		sf::Vector2f m_direction = {};
 	};
 }
