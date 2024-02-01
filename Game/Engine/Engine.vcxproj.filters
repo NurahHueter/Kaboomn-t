@@ -153,11 +153,14 @@
     <ClCompile Include="CowAICmp.cpp">
       <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
-    <ClCompile Include="CowAICmp.h">
+    <ClCompile Include="CowAiCmp.h">
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClCompile>
     <ClCompile Include="PlantHudCmp.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IconCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +279,9 @@
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
     <ClInclude Include="PlantHud.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="IconCmp.h">
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
   </ItemGroup>

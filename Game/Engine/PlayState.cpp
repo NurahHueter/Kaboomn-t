@@ -55,7 +55,7 @@ namespace mmt_gd
         const auto coll_pairs = PhysicsManager::instance().getCollisionPairs();
         for (const auto p : coll_pairs)
         {
-            if (p.first->getType() == ObjectType::Plants && p.second->getType() == Player)
+            if (p.first->getType() == ObjectType::Player && p.second->getType() == Plants)
             {
                 const auto& playerAnimation = GameObjectManager::instance().getGameObject("Player")->getComponent<SpriteAnimationCmp>()->getCurrentAnimation();
                 if (playerAnimation == WaterDown 
@@ -63,12 +63,12 @@ namespace mmt_gd
                     || playerAnimation == WaterLeft
                     || playerAnimation == WaterRight)
                 {
-                    p.first->getComponent<PlantCmp>()->watering();
+                    p.second->getComponent<PlantCmp>()->watering();
                 }
                 if (InputManager::instance().isKeyPressed("pet", 1))
                 {
                     AssetManager::instance().m_Music["Hm"]->play();
-                    p.first->getComponent<PlantCmp>()->pet();
+                    p.second->getComponent<PlantCmp>()->pet();
                 }
                
             }

@@ -148,13 +148,14 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="BoxCollision.cpp" />
     <ClCompile Include="CameraCmp.cpp" />
     <ClCompile Include="CowAICmp.cpp" />
-    <ClCompile Include="CowAICmp.h" />
+    <ClCompile Include="CowAiCmp.h" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="IconCmp.cpp" />
     <ClCompile Include="WaterNotiCmp.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MapTile.cpp" />
@@ -189,6 +190,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="IconCmp.h" />
     <ClInclude Include="WaterNotiCmp.h" />
     <ClInclude Include="IRenderComponent.h" />
     <ClInclude Include="MapTile.h" />
