@@ -27,7 +27,7 @@ namespace mmt_gd
         RenderManager::instance().getWindow().clear({ 0, 0, 0 });
         sf::Text text;
         text.setFont(*AssetManager::instance().m_Font["font"]); 
-        text.setString("Press 2 to start the game, press 1 to come back tp Startscreen");
+        text.setString("Press 2 to start the game, press 1 to come back to Startscreen");
         text.setCharacterSize(24); 
         text.setFillColor(sf::Color::White);
 

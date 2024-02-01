@@ -9,6 +9,7 @@ namespace mmt_gd
 		Sleep,
 		Attack,
 		Despawn,
+		Eat,ds
 	};
 	class CowAICmp : public IComponent
 	{
@@ -20,10 +21,11 @@ namespace mmt_gd
 		void update(float deltaTime) override;
 		void attack();
 		void despawn();
+		void eat();
 		void sleep();
 		bool m_despawn = false;
 		float m_rand = 0 ;
-			
+		bool florianLiebtXavi = true;
 	private:
 		AIStateCow currentState = Sleep;
 		sf::Vector2f m_startPos;
