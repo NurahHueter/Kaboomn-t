@@ -19,14 +19,11 @@ namespace mmt_gd
 
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_real_distribution<float> distribution(15.0f, 35.0f);
+        std::uniform_real_distribution<float> distribution(5.0f, 15.0f);
 
         m_startPos = gameObject.getPosition();
         m_rand = distribution(gen);
-        gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
-        auto steeringCmp = gameObject.getComponent<SteeringCmp>();
-        steeringCmp->m_astarStart = false;
-        steeringCmp->m_firstRun = false;
+        currentState = Sleep;
         return true;
     }
 
@@ -37,11 +34,16 @@ namespace mmt_gd
         if (movementClock.getElapsedTime().asSeconds() >= m_rand && 
             !gameObject.getComponent<SteeringCmp>()->m_astarStart)
         {
+            gameObject.getComponent<SteeringCmp>()->init();
+            std::cout << "ATTACK" << std::endl;
+            gameObject.getComponent<SteeringCmp>()->m_astarStart = true;
             currentState = Attack;
         }
 
         if (m_despawn)
         {
+            std::cout << "DESPAWN" << std::endl;
+            gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
             m_despawn = false;
             currentState = Despawn;
             
@@ -50,8 +52,10 @@ namespace mmt_gd
 
         if (gameObject.getComponent<SteeringCmp>()->m_foundTarget)
         {
-            gameObject.getComponent<SteeringCmp>()->m_foundTarget=false;
+            std::cout << "Eat" << std::endl;
             currentState = Eat;
+            gameObject.getComponent<SteeringCmp>()->m_foundTarget=false;
+           
         }
 
         switch (currentState)
@@ -76,7 +80,6 @@ namespace mmt_gd
     void CowAICmp::attack()
     {
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
-        //steeringCmp->init();
         steeringCmp->m_astarStart = true;
         steeringCmp->m_firstRun = true;
         gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
@@ -100,7 +103,6 @@ namespace mmt_gd
         gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
         steeringCmp->clearPath();
         gameObject.setPosition(m_startPos);
-        steeringCmp->init();
 
         currentState = Sleep;
     }
