@@ -139,7 +139,7 @@
          "name":"Ground",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":60,
          "x":0,
          "y":0
@@ -210,7 +210,7 @@
          "name":"Deko",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":60,
          "x":0,
          "y":0
@@ -501,34 +501,6 @@
         }, 
         {
          "draworder":"topdown",
-         "id":10,
-         "name":"Objects",
-         "objects":[
-                {
-                 "height":29.3333,
-                 "id":72,
-                 "name":"Player",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Characters\\PremiumCharakterSpritesheet.png"
-                        }],
-                 "rotation":0,
-                 "type":"Player",
-                 "visible":true,
-                 "width":33.3333,
-                 "x":436.33335,
-                 "y":472.83335
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
          "id":3,
          "name":"Objects",
          "objects":[
@@ -704,6 +676,23 @@
                  "width":63.3333333333334,
                  "x":304.67,
                  "y":288.67
+                }, 
+                {
+                 "height":29.3333,
+                 "id":72,
+                 "name":"Player",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Characters\\PremiumCharakterSpritesheet.png"
+                        }],
+                 "rotation":0,
+                 "type":"Player",
+                 "visible":true,
+                 "width":33.3333,
+                 "x":436.33335,
+                 "y":472.83335
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1324,17 +1313,6 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":11,
-         "name":"ObjectCow",
-         "objects":[],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":false,
          "x":0,
          "y":0
         }, 

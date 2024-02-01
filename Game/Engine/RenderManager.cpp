@@ -62,24 +62,16 @@ namespace mmt_gd
     }
     void RenderManager::sort(std::vector<std::weak_ptr<IRenderComponent>>& layer)
     {
-        for (int j = 1; j < layer.size(); j++)
-        {
-            int i = j - 1;
-            if (std::shared_ptr<IRenderComponent> tempP = layer[i].lock())
+        std::sort(layer.begin(), layer.end(), [](const auto& lhs, const auto& rhs)
             {
-                if (std::shared_ptr<IRenderComponent> key = layer[j].lock())
-                {
-                    std::cout << tempP->getGameObject().getDrawPoint().y << key->getGameObject().getDrawPoint().y << std::endl;
-                    while (i >= 0 && (tempP->getGameObject().getDrawPoint().y > key->getGameObject().getDrawPoint().y))
-                    {
-                        layer[i + 1] = layer[i];
-                        i--;
-                    }
-                    layer[i + 1] = key;
-                }
+                auto leftLock = lhs.lock();
+                auto rightLock = rhs.lock();
 
-            }
-        }
+                if (!leftLock || !rightLock)
+                    return false;
+
+                return leftLock->getGameObject().getDrawPoint().y < rightLock->getGameObject().getDrawPoint().y;
+            });
     };
 
     void RenderManager::draw()
