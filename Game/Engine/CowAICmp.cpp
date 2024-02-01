@@ -23,7 +23,10 @@ namespace mmt_gd
 
         m_startPos = gameObject.getPosition();
         m_rand = distribution(gen);
-
+        gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
+        auto steeringCmp = gameObject.getComponent<SteeringCmp>();
+        steeringCmp->m_astarStart = false;
+        steeringCmp->m_firstRun = false;
         return true;
     }
 
