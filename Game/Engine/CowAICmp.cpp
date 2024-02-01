@@ -7,7 +7,9 @@
 #include "InputManager.h"
 #include <random>
 #include "SteeringCmp.h"
-
+#include "PlantAICmp.h"
+#include "PlantCmp.h"
+#include "GameObjectManager.h"
 namespace mmt_gd
 {
     bool CowAICmp::init()
@@ -84,12 +86,12 @@ namespace mmt_gd
     }
     void CowAICmp::eat()
     {
-
         gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleChewRight);
 
     }
     void CowAICmp::despawn()
     {
+       // gameObject.getComponent<PlantCmp>()->cowAttack(false);
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
         steeringCmp->m_astarStart = false;
         steeringCmp->m_firstRun = false;

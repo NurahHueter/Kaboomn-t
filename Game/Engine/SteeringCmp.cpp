@@ -12,7 +12,7 @@
 #include <random>
 #include "BoxCollisionCmp.h"
 #include "CowAICmp.h"
-
+#include "PlantCmp.h"
 namespace mmt_gd
 {
     bool SteeringCmp::init()
@@ -26,9 +26,10 @@ namespace mmt_gd
         if (plantObject.size() != 0)
         {
             std::uniform_int_distribution<int> distribution(0, plantObject.size() - 1);
-            int rand = distribution(gen);
-            sf::Vector2f plantPosition = plantObject[rand].lock()->getPosition();
+            int m_rand = distribution(gen);
+            sf::Vector2f plantPosition = plantObject[m_rand].lock()->getPosition();
 
+           
             Node start(idxh_player + 1, idxw_player + 1, 0, 0);
             int plantPositionxint = static_cast<int>(plantPosition.x) / 16;
             int plantPositionyint = static_cast<int>(plantPosition.y) / 16;
@@ -90,7 +91,13 @@ namespace mmt_gd
     void SteeringCmp::updateAnimationAndPosition(const sf::Vector2f& direction, const sf::Vector2f& newPosition, const sf::Vector2f& nextWaypoint)
     {
         const auto& spriteAnimationCmp = gameObject.getComponent<SpriteAnimationCmp>();
-        spriteAnimationCmp->setCurrentAnimation((direction.x >= 0) ? CowRunRight : CowRunLeft);
+
+        if (direction.x >= 0 && spriteAnimationCmp->getCurrentAnimation() != CowRunRight) {
+            spriteAnimationCmp->setCurrentAnimation(CowRunRight);
+        }
+        else if (direction.x < 0 && spriteAnimationCmp->getCurrentAnimation() != CowRunLeft) {
+            spriteAnimationCmp->setCurrentAnimation(CowRunLeft);
+        }
 
         gameObject.setPosition(newPosition);
     }
@@ -105,5 +112,6 @@ namespace mmt_gd
     {
         m_foundTarget = true;
         m_astarStart = false;
+       
     }
 }

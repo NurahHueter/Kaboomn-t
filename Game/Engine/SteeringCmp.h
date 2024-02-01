@@ -22,7 +22,7 @@ namespace mmt_gd
 		bool m_foundTarget = false;
 		bool m_astarStart = false;
 		bool m_firstRun = false;
-		
+
 
 	private:
 		

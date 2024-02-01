@@ -11,6 +11,7 @@ namespace mmt_gd
 		Despawn,
 		Eat,ds
 	};
+	class PlantCmp;
 	class CowAICmp : public IComponent
 	{
 	public:
@@ -25,7 +26,7 @@ namespace mmt_gd
 		void sleep();
 		bool m_despawn = false;
 		float m_rand = 0 ;
-		bool florianLiebtXavi = true;
+
 	private:
 		AIStateCow currentState = Sleep;
 		sf::Vector2f m_startPos;
