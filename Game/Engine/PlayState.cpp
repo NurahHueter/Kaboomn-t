@@ -97,7 +97,7 @@ namespace mmt_gd
         RenderManager::instance().draw();
 
        
-          /*  for (auto body : PhysicsManager::instance().m_bodies)
+            for (auto body : PhysicsManager::instance().m_bodies)
             {
                 if (std::shared_ptr<BoxCollisionCmp> tempP = body.lock())
                 {
@@ -112,7 +112,7 @@ namespace mmt_gd
                         RenderManager::instance().getWindow().draw(m_debugGeometry);
                     }
                 }
-            }*/
+            }
         
         RenderManager::instance().getWindow().display();
     }
