@@ -14,36 +14,36 @@ namespace mmt_gd
 
 	using namespace sf;
 	using namespace std;
+
 	std::vector<std::vector<int>> MapTile::m_LayerKachel;
-	std::vector<std::vector<int>> MapTile::m_LayerKachelWithBuffer;
 	sf::Vector2f MapTile::m_tileSize;
 
 	void MapTile::loadMap(const std::unique_ptr<tson::Map>& map, const fs::path resourcePath)
-	{
-		
+	{	
 		const int numRows = 60;
 		const int numCols = 60;
-		//if layer 4 = 0 and layer 2 != 0
 
 		//ground
-		auto& layerData2 = map->getLayers()[1].getData();
-		auto& layerData5 = map->getLayers()[5].getData();
+		auto& layerGround = map->getLayers()[1].getData();
+
 		//collider
-		auto& layerData4 = map->getLayers()[6].getData();
+		auto& layerCollider1 = map->getLayers()[5].getData();
+		auto& layerCollider2 = map->getLayers()[6].getData();
 
 		m_LayerKachel.reserve(numRows);
 
-		// Eine Reihe Polster für das Flugzeug - TODO
 
 		for (int i = 0; i < numRows; ++i)
 		{
-			m_LayerKachel.emplace_back(); // Fügt eine leere Zeile hinzu
+			m_LayerKachel.emplace_back(); 
 			m_LayerKachel[i].reserve(numCols);
 
 			for (int j = 0; j < numCols; ++j)
 			{
-				// Überprüfe, ob entweder layerData1 oder layerData2 an dieser Position nicht null ist
-				if (layerData2[i * numCols + j] != 0 && layerData4[i * numCols + j] == 0 && layerData5[i * numCols + j] == 0)
+			
+				if (layerGround[i * numCols + j] != 0 &&
+					layerCollider1[i * numCols + j] == 0 &&
+					layerCollider2[i * numCols + j] == 0)
 				{
 					m_LayerKachel[i].emplace_back(1);
 				}
@@ -52,44 +52,6 @@ namespace mmt_gd
 					m_LayerKachel[i].emplace_back(0);
 				}
 			}
-		}
-
-		m_LayerKachelWithBuffer = m_LayerKachel;
-
-		for (int i = 0; i < numRows; ++i)
-		{
-			for (int j = 0; j < numCols; ++j)
-			{
-				// Überprüfe, ob die Zelle im ersten Array den Wert 9 hat
-				if (m_LayerKachel[i][j] == 0)
-				{
-					// Überprüfe und setze die angrenzenden Zellen im zweiten Array auf 9
-					for (int di = -1; di <= 1; ++di)
-					{
-						for (int dj = -1; dj <= 1; ++dj)
-						{
-							int ni = i + di;
-							int nj = j + dj;
-
-							// Überprüfe, ob die Nachbarzellen innerhalb der Grenzen liegen
-							if (ni >= 0 && ni < numRows && nj >= 0 && nj < numCols && m_LayerKachelWithBuffer[ni][nj] != 0)
-							{
-								m_LayerKachelWithBuffer[ni][nj] = 0;
-							}
-						}
-					}
-				}
-			}
-		}
-
-
-		for (int i = 0; i < numRows; ++i)
-		{
-			for (int j = 0; j < numCols; ++j)
-			{
-				std::cout << m_LayerKachel[i][j] << " ";
-			}
-			std::cout << std::endl;
 		}
 
 
