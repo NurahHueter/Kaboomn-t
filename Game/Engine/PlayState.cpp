@@ -31,8 +31,9 @@ namespace mmt_gd
         GameObjectManager::instance().addGameObject(mapGo);
 
         //music
+        AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
         AssetManager::instance().LoadMusic("Hm", "../Engine/Assets/Sounds/seHm.mp3");
-        
+        AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
         AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
         AssetManager::instance().m_Music["BackGround"]->play();
         AssetManager::instance().m_Music["BackGround"]->setLoop(true);
@@ -88,6 +89,7 @@ namespace mmt_gd
                 && p.second->getType() == Player
                 && InputManager::instance().isKeyUp("space",1))
             {
+                AssetManager::instance().m_Music["Water"]->play();
                 p.second->getComponent<WaterNotiCmp>()->addWater();
                
             }
@@ -105,7 +107,7 @@ namespace mmt_gd
         RenderManager::instance().draw();
 
        
-          /*  for (auto body : PhysicsManager::instance().m_bodies)
+           for (auto body : PhysicsManager::instance().m_bodies)
             {
                 if (std::shared_ptr<BoxCollisionCmp> tempP = body.lock())
                 {
@@ -120,7 +122,7 @@ namespace mmt_gd
                         RenderManager::instance().getWindow().draw(m_debugGeometry);
                     }
                 }
-            }*/
+            }
         
         RenderManager::instance().getWindow().display();
     }

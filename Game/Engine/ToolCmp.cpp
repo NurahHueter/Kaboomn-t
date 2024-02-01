@@ -7,6 +7,7 @@
 #include "ToolCmp.h"
 #include "RigidBodyCmp.h"
 #include "WaterNotiCmp.h"
+#include "AssetManager.h"
 
 
 namespace mmt_gd
@@ -21,6 +22,7 @@ namespace mmt_gd
         //AXE
         if (InputManager::instance().isMouseDown("leftclick", 1) && !m_usingTool)
         {
+            AssetManager::instance().m_Music["Axe"]->play();
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);
 
@@ -50,6 +52,7 @@ namespace mmt_gd
             && !m_usingTool 
             && gameObject.getComponent<WaterNotiCmp>()->m_waterAmount>0)
         {
+            AssetManager::instance().m_Music["Water"]->play();
             gameObject.getComponent<WaterNotiCmp>()->looseWater();
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);

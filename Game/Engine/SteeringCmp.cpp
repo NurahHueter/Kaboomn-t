@@ -33,6 +33,7 @@ namespace mmt_gd
             Node start(idxh_player + 1, idxw_player + 1, 0, 0);
             int plantPositionxint = static_cast<int>(plantPosition.x) / 16;
             int plantPositionyint = static_cast<int>(plantPosition.y) / 16;
+            std::cout << plantPositionxint << " X " << plantPositionyint << std::endl;
             Node goal(plantPositionyint + 1, plantPositionxint + 1, 0, 0);
 
             m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
