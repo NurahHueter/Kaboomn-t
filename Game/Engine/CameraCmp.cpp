@@ -8,6 +8,7 @@ namespace mmt_gd
 	bool CameraCmp::init()
 	{
 		view.setSize(size);
+		view.zoom(0.25f);
 		return true;
 	}
 	void CameraCmp::setTarget(std::weak_ptr<GameObject> target)
@@ -20,6 +21,21 @@ namespace mmt_gd
 		{
 			auto textureRect = tempP->getComponent<SpriteAnimationCmp>()->getTextureRect();
 			view.setCenter(tempP->getPosition().x + textureRect.width / 2.f, tempP->getPosition().y + textureRect.height / 2.f);
+		}
+
+		if (isShaking)
+		{
+			float shakeOffsetX = (rand() % 11) - 5.f;
+			float shakeOffsetY = (rand() % 11) - 5.f;
+			view.move(shakeOffsetX, shakeOffsetY);
+			shaking += 1.f * deltaTime;
+
+			if (shaking > 1.5)
+			{
+				shaking = 0;
+				isShaking = false;
+			}
+				
 		}
 	}
 

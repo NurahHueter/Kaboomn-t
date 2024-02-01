@@ -25,6 +25,7 @@ namespace mmt_gd
         mapTile.getObjectLayer(map);
         mapGo->init();
 
+
         GameObjectManager::instance().addGameObject(mapGo);
         
     }
@@ -44,10 +45,6 @@ namespace mmt_gd
         const auto coll_pairs = PhysicsManager::instance().getCollisionPairs();
         for (const auto p : coll_pairs)
         {
-            if (!p.first || !p.second)
-            {
-                continue;
-            }
             if (p.first->getType() == ObjectType::Plants && p.second->getType() == Player)
             {
                 const auto& playerAnimation = GameObjectManager::instance().getGameObject("Player")->getComponent<SpriteAnimationCmp>()->getCurrentAnimation();

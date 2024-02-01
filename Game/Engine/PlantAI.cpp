@@ -4,6 +4,9 @@
 #include "GameObject.h"
 #include "AnimationTypes.h"
 #include "SpriteAnimationCmp.h"
+#include "GameObjectManager.h"
+#include "CameraCmp.h"
+
 #include "PatchCmp.h"
 #include "VectorAlgebra2D.h"
 
@@ -53,6 +56,7 @@ namespace mmt_gd
 		auto frame = gameObject.getComponent<SpriteAnimationCmp>()->getCurrentFrameIndex();
 		if (m_explosion)
 		{
+			GameObjectManager::instance().getGameObject("Player")->getComponent<CameraCmp>()->screenShake();
 			m_explosion = false;
 		}
 		if (frame == 5)

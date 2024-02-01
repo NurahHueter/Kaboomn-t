@@ -14,7 +14,7 @@ namespace mmt_gd
 	{
 	public:
 		PlantAICmp(GameObject& gameObject, std::weak_ptr<GameObject> patch)
-			:IComponent(gameObject), m_patch(patch){};
+			:IComponent(gameObject), m_patch(patch) {};
 		bool init() override { return true; };
 		void update(float deltaTime) override;
 		bool isExploding() const { return m_explosion; };
@@ -31,5 +31,7 @@ namespace mmt_gd
 		bool m_explosion = false;
 		float m_interpolationSpeed = 2.f;
 		sf::Vector2f m_direction = {};
+		//sf::SoundBuffer m_explosionSound;
+		//sf::Sound m_explosionSound = {m_explosionSound};
 	};
 }

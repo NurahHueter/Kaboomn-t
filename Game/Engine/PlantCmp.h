@@ -31,6 +31,7 @@ namespace mmt_gd
 
 		float m_lonelyness = 1.f;
 		float m_dryingOut = 1.f;
+
 		float m_happy = 1.f;
 
 		bool m_getingEaten = false;
