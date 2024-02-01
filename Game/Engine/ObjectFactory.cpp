@@ -261,7 +261,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         
         const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(animationCmp->getTextureRect()), true);
 
-        gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height));
+        gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height / 2));
         gameObject->addComponent(trigger);
         PhysicsManager::instance().addBoxCollisionCmp(trigger);
        
