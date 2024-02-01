@@ -13,14 +13,14 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		RenderManager::instance().getWindow().create({ 800, 640 }, "SFML Window");
+		RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
 		bindInput();
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
-		GameStateManager::instance().setState("MenuState");
+		GameStateManager::instance().setState("PlayState");
 	}
 
 	void Game::Run()

@@ -5,6 +5,7 @@
 #include "GameStateManager.h"
 #include "SpriteAnimationCmp.h"
 #include "PlantCmp.h"
+#include "PlantAICmp.h"
 #include "GameState.h"
 #include "GameObject.h"
 #include "GameObjectManager.h"
@@ -25,6 +26,7 @@ namespace mmt_gd
         mapTile.getObjectLayer(map);
         mapGo->init();
 
+
         GameObjectManager::instance().addGameObject(mapGo);
         
     }
@@ -37,8 +39,9 @@ namespace mmt_gd
 
     void PlayState::update(float deltaTime)
     {
-        PhysicsManager::instance().update();
         GameObjectManager::instance().update(deltaTime);
+        PhysicsManager::instance().update();
+        
 
         const auto coll_pairs = PhysicsManager::instance().getCollisionPairs();
         for (const auto p : coll_pairs)
@@ -66,6 +69,10 @@ namespace mmt_gd
                     std::cout << "KONTATK" << std::endl;
                     p.first->getComponent<CowAICmp>()->m_despawn=true;
                 }
+            }
+            if ((p.first->getType() == ObjectType::Plants && p.first->getComponent<PlantAICmp>()->isExploding()) && p.second->getType() == Plants)
+            {
+                    p.second->getComponent<PlantCmp>()->getHitfromExplosion();
             }
         }
     }

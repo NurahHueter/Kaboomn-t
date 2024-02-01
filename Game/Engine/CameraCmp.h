@@ -19,11 +19,13 @@ namespace mmt_gd
 		void setViewPort(sf::FloatRect& viewPort);
 
 		void setTarget(std::weak_ptr<GameObject> target);
+		void screenShake() { isShaking = true; };
 		
 	protected:
 		sf::Vector2f size;
 		sf::View view;
-
+		float shaking = 0;
+		bool isShaking = false;
 		std::weak_ptr<GameObject> m_target;
 	};
 };
