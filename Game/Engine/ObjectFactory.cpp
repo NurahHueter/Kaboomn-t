@@ -348,12 +348,11 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
          //Well
          if (object.getId() == 42)
              {
-              std::cout << "DRINNNNNNNNNNNNNNNNNNNN" << std::endl;
               const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject,
                   sf::FloatRect(gameObject->getPosition().x,
                       gameObject->getPosition().y,
-                      object.getSize().x,
-                      object.getSize().y),
+                      object.getSize().x+10,
+                      object.getSize().y+10),
                   true);
 
                   gameObject->addComponent(trigger);

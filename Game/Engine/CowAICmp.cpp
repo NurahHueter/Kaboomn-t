@@ -19,7 +19,7 @@ namespace mmt_gd
 
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_real_distribution<float> distribution(5.0f, 15.0f);
+        std::uniform_real_distribution<float> distribution(15.0f, 35.0f);
 
         m_startPos = gameObject.getPosition();
         m_rand = distribution(gen);
@@ -35,16 +35,15 @@ namespace mmt_gd
             !gameObject.getComponent<SteeringCmp>()->m_astarStart)
         {
             gameObject.getComponent<SteeringCmp>()->init();
-            std::cout << "ATTACK" << std::endl;
             gameObject.getComponent<SteeringCmp>()->m_astarStart = true;
             currentState = Attack;
         }
 
         if (m_despawn)
         {
-            std::cout << "DESPAWN" << std::endl;
             gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
             m_despawn = false;
+            gameObject.getComponent<SteeringCmp>()->m_astarStart = true;
             currentState = Despawn;
             
             movementClock.restart();
@@ -52,7 +51,6 @@ namespace mmt_gd
 
         if (gameObject.getComponent<SteeringCmp>()->m_foundTarget)
         {
-            std::cout << "Eat" << std::endl;
             currentState = Eat;
             gameObject.getComponent<SteeringCmp>()->m_foundTarget=false;
            
