@@ -62,7 +62,7 @@ namespace mmt_gd
     }
     void RenderManager::sort(std::vector<std::weak_ptr<IRenderComponent>>& layer)
     {
-      /*  std::sort(layer.begin(), layer.end(), [](const auto& lhs, const auto& rhs)
+        std::sort(layer.begin(), layer.end(), [](const auto& lhs, const auto& rhs)
             {
                 auto leftLock = lhs.lock();
                 auto rightLock = rhs.lock();
@@ -71,7 +71,7 @@ namespace mmt_gd
                     return false;
 
                 return leftLock->getGameObject().getDrawPoint().y < rightLock->getGameObject().getDrawPoint().y;
-            });*/
+            });
     };
 
     void RenderManager::draw()
@@ -82,13 +82,13 @@ namespace mmt_gd
         for (auto& layer : m_layers)
         {
             std::vector<std::weak_ptr<IRenderComponent>> newVec;
-            //for (auto layerSort : m_layertoSort)
-            //{
-            //    if (layer.first == layerSort)
-            //    {
-            //        sort(m_CmpInLayer[layer.first]);
-            //    }
-            //}
+            for (auto layerSort : m_layertoSort)
+            {
+                if (layer.first == layerSort)
+                {
+                    sort(m_CmpInLayer[layer.first]);
+                }
+            }
             
             for (auto& comp : m_CmpInLayer[layer.first])
             {
