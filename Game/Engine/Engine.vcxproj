@@ -155,7 +155,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
-    <ClCompile Include="HealthCmp.cpp" />
+    <ClCompile Include="WaterNotiCmp.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="MenüState.cpp" />
@@ -189,7 +189,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="GameObjectManager.h" />
-    <ClInclude Include="HealthCmp.h" />
+    <ClInclude Include="WaterNotiCmp.h" />
     <ClInclude Include="IRenderComponent.h" />
     <ClInclude Include="MapTile.h" />
     <ClInclude Include="IComponent.h" />

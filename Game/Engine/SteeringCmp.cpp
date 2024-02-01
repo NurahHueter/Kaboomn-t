@@ -23,17 +23,23 @@ namespace mmt_gd
         auto plantObject = GameObjectManager::instance().getObjectsByType(Plants);
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<int> distribution(0, plantObject.size() - 1);
-        int rand = distribution(gen);
+        if (plantObject.size() != 0)
+        {
+            std::uniform_int_distribution<int> distribution(0, plantObject.size() - 1);
+            int rand = distribution(gen);
+            sf::Vector2f plantPosition = plantObject[rand].lock()->getPosition();
 
-        sf::Vector2f plantPosition = plantObject[rand].lock()->getPosition();
+            Node start(idxh_player + 1, idxw_player + 1, 0, 0);
+            int plantPositionxint = static_cast<int>(plantPosition.x) / 16;
+            int plantPositionyint = static_cast<int>(plantPosition.y) / 16;
+            Node goal(plantPositionyint + 1, plantPositionxint + 1, 0, 0);
 
-        Node start(idxh_player + 1, idxw_player + 1, 0, 0);
-        int plantPositionxint = static_cast<int>(plantPosition.x) / 16;
-        int plantPositionyint = static_cast<int>(plantPosition.y) / 16;
-        Node goal(plantPositionyint + 1, plantPositionxint + 1, 0, 0);
+            m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
+        }
+       
+        
 
-        m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
+       
 
         return true;
     }

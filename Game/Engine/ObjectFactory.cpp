@@ -9,7 +9,7 @@
 #include "SteeringCmp.h"
 #include "SpriteRenderCmp.h"
 #include "CameraCmp.h"
-#include "HealthCmp.h"
+#include "WaterNotiCmp.h"
 #include "PlantTypes.h"
 #include "ObjectTypes.h"
 #include "PatchCmp.h"
@@ -23,6 +23,7 @@
 #include "PhysicsManager.h"
 #include"AnimationTypes.h"
 #include "CowAICmp.h"
+#include "WaterNotiCmp.h"
 
 
 namespace mmt_gd
@@ -130,7 +131,11 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             false);
         gameObject->addComponent(boxCollider);
 
-
+        const auto waterNotiCmp = std::make_shared<WaterNotiCmp>(*gameObject,
+            RenderManager::instance().getWindow(),
+            5);
+        RenderManager::instance().addCompToLayer(layer.getName(), waterNotiCmp);
+        gameObject->addComponent(waterNotiCmp);
         PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
         animationCmp->init();
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
@@ -261,6 +266,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         animationCmp->init();
 
 
+       
 
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
@@ -333,41 +339,41 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
          std::string id;
 
 
-         float velocity{};
-         float mass;
 
-   /*      for (const auto* property : object.getProperties().get())
-         {
-             auto name = property->getName();
-
-             if (name == "id")
+         //Well
+         if (object.getId() == 42)
              {
-                 if ((id = property->getValue<std::string>()).length() > 0)
-                 {
+              std::cout << "DRINNNNNNNNNNNNNNNNNNNN" << std::endl;
+              const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject,
+                  sf::FloatRect(gameObject->getPosition().x,
+                      gameObject->getPosition().y,
+                      object.getSize().x,
+                      object.getSize().y),
+                  true);
 
-                     gameObject->setId(id);
-                 }
+                  gameObject->addComponent(trigger);
+                  PhysicsManager::instance().addBoxCollisionCmp(trigger);
+                  gameObject->setType(Trigger);
              }
-             else if (name == "mass")
-             {
-                 mass = property->getValue<float>();
-             }
-         }*/
+         
+          
+              ////Collider
+                 //gameObject->addComponent(std::make_shared<RigidBodyCmp>(*gameObject,
+                 //    mass, sf::Vector2f(0.f, 0.f), gameObject->getPosition()));
+              const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
+                  sf::FloatRect(gameObject->getPosition().x,
+                      gameObject->getPosition().y,
+                      object.getSize().x,
+                      object.getSize().y),
+                  false);
+              gameObject->addComponent(boxCollider);
+              PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
+          
 
+   
+      
 
-         ////Collider
-         //gameObject->addComponent(std::make_shared<RigidBodyCmp>(*gameObject,
-         //    mass, sf::Vector2f(0.f, 0.f), gameObject->getPosition()));
-         const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
-             sf::FloatRect(gameObject->getPosition().x,
-                 gameObject->getPosition().y,
-                 object.getSize().x,
-                 object.getSize().y),
-             false);
-
-         gameObject->addComponent(boxCollider);
-
-         PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
+        
 
          gameObject->init();
          GameObjectManager::instance().addGameObject(gameObject);

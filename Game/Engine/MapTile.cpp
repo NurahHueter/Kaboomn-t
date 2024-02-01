@@ -35,12 +35,12 @@ namespace mmt_gd
 
 		for (int i = 0; i < numRows; ++i)
 		{
-			m_LayerKachel.emplace_back(); // Fügt eine leere Zeile hinzu
+			m_LayerKachel.emplace_back(); 
 			m_LayerKachel[i].reserve(numCols);
 
 			for (int j = 0; j < numCols; ++j)
 			{
-				// Überprüfe, ob entweder layerData1 oder layerData2 an dieser Position nicht null ist
+			
 				if (layerGround[i * numCols + j] != 0 &&
 					layerCollider1[i * numCols + j] == 0 &&
 					layerCollider2[i * numCols + j] == 0)

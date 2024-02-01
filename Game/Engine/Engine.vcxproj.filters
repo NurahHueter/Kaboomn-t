@@ -126,7 +126,7 @@
     <ClCompile Include="SpriteAnimationCmp.cpp">
       <Filter>Source Files\Components\Components</Filter>
     </ClCompile>
-    <ClCompile Include="HealthCmp.cpp">
+    <ClCompile Include="WaterNotiCmp.cpp">
       <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
     <ClCompile Include="CameraCmp.cpp">
@@ -248,7 +248,7 @@
     <ClInclude Include="ObjectTypes.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="HealthCmp.h">
+    <ClInclude Include="WaterNotiCmp.h">
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
     <ClInclude Include="SteeringCmp.h">

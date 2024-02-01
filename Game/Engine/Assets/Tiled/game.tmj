@@ -1116,37 +1116,15 @@
                  "y":609.5
                 }, 
                 {
-                 "height":23.8181818181818,
-                 "id":60,
-                 "name":"Fence11",
-                 "rotation":0,
-                 "type":"Collider",
-                 "visible":true,
-                 "width":4.95454545454538,
-                 "x":421.272727272727,
-                 "y":659.25
-                }, 
-                {
                  "height":5.77272727272725,
                  "id":61,
                  "name":"Fence4",
                  "rotation":0,
                  "type":"Collider",
                  "visible":true,
-                 "width":112.909090909091,
+                 "width":199.534090909091,
                  "x":220.340909090909,
                  "y":660.75
-                }, 
-                {
-                 "height":5.84090909090901,
-                 "id":62,
-                 "name":"Fence3",
-                 "rotation":0,
-                 "type":"Collider",
-                 "visible":true,
-                 "width":34.9772727272727,
-                 "x":384.75,
-                 "y":659.590909090909
                 }, 
                 {
                  "height":102.613636363636,
@@ -1235,10 +1213,9 @@
                  "width":17.75,
                  "x":734.125,
                  "y":368.25
-                },
-            
+                }, 
                 {
-                 "height":43.3182,
+                 "height":102.4432,
                  "id":86,
                  "name":"Fence5",
                  "rotation":0,
@@ -1246,11 +1223,11 @@
                  "visible":true,
                  "width":4.95455,
                  "x":420.772725,
-                 "y":719.9659
+                 "y":660.8409
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

@@ -11,6 +11,8 @@
 #include "GameObjectManager.h"
 #include "PhysicsManager.h"
 #include "CowAICmp.h"
+#include "ToolCmp.h"
+#include "WaterNotiCmp.h"
 namespace mmt_gd
 {
     void PlayState::init()
@@ -73,9 +75,18 @@ namespace mmt_gd
                     p.first->getComponent<CowAICmp>()->m_despawn=true;
                 }
             }
-            if ((p.first->getType() == ObjectType::Plants && p.first->getComponent<PlantAICmp>()->isExploding()) && p.second->getType() == Plants)
+            if ((p.first->getType() == ObjectType::Plants 
+                && p.first->getComponent<PlantAICmp>()->isExploding()) 
+                && p.second->getType() == Plants)
             {
                     p.second->getComponent<PlantCmp>()->getHitfromExplosion();
+            }
+            if (p.first->getType() == ObjectType::Trigger 
+                && p.second->getType() == Player
+                && InputManager::instance().isKeyUp("space",1))
+            {
+                p.second->getComponent<WaterNotiCmp>()->addWater();
+                std::cout << "WELLLLL" << std::endl;
             }
         }
     }
@@ -86,7 +97,7 @@ namespace mmt_gd
         RenderManager::instance().draw();
 
        
-            for (auto body : PhysicsManager::instance().m_bodies)
+          /*  for (auto body : PhysicsManager::instance().m_bodies)
             {
                 if (std::shared_ptr<BoxCollisionCmp> tempP = body.lock())
                 {
@@ -101,7 +112,7 @@ namespace mmt_gd
                         RenderManager::instance().getWindow().draw(m_debugGeometry);
                     }
                 }
-            }
+            }*/
         
         RenderManager::instance().getWindow().display();
     }

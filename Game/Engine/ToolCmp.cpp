@@ -6,6 +6,7 @@
 #include "ToolCmp.h"
 #include "ToolCmp.h"
 #include "RigidBodyCmp.h"
+#include "WaterNotiCmp.h"
 
 
 namespace mmt_gd
@@ -45,8 +46,11 @@ namespace mmt_gd
 
 
         //WATER
-        else if (InputManager::instance().isKeyPressed("space", 1) && !m_usingTool)
+        else if (InputManager::instance().isKeyPressed("space", 1) 
+            && !m_usingTool 
+            && gameObject.getComponent<WaterNotiCmp>()->m_waterAmount>0)
         {
+            gameObject.getComponent<WaterNotiCmp>()->looseWater();
             m_usingTool = true;
             //animation->setCurrentFrameIndex(0);
             animation->setCurrentAnimationTime(0);
@@ -66,13 +70,11 @@ namespace mmt_gd
             {
                 animation->setCurrentAnimation(WaterRight);
             }
-
         }
 
 
         if (animation->getCurrentFrameIndex() == 7)
         {
-           
             if (animation->getCurrentAnimation() == AxeHitRight || animation->getCurrentAnimation() == WaterRight)
             {
                 m_usingTool = false;

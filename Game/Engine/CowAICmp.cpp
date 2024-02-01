@@ -29,7 +29,8 @@ namespace mmt_gd
     {
         static sf::Clock movementClock;
 
-        if (movementClock.getElapsedTime().asSeconds() >= m_rand && !gameObject.getComponent<SteeringCmp>()->m_astarStart)
+        if (movementClock.getElapsedTime().asSeconds() >= m_rand && 
+            !gameObject.getComponent<SteeringCmp>()->m_astarStart)
         {
             currentState = Attack;
         }
@@ -70,6 +71,7 @@ namespace mmt_gd
     void CowAICmp::attack()
     {
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
+        //steeringCmp->init();
         steeringCmp->m_astarStart = true;
         steeringCmp->m_firstRun = true;
         gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
