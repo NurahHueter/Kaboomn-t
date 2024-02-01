@@ -124,8 +124,8 @@ namespace mmt_gd
         sf::Vector2f getMiddle();
         sf::Vector2f getDrawPoint();
 
-        sf::Vector2f m_middle = {};
-        sf::Vector2f m_drawPoint = {};
+        sf::Vector2f m_middle = {1.f, 1.f};
+        sf::Vector2f m_drawPoint = {1.f, 1.f};
     protected:
         std::string m_id = "unnamed"; ///< unique name of object, e.g. player
         int m_idx = 0; ///< unique name of object, e.g. player
