@@ -30,14 +30,9 @@ namespace mmt_gd
 
         GameObjectManager::instance().addGameObject(mapGo);
 
-        //music
-        AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
-        AssetManager::instance().LoadMusic("Hm", "../Engine/Assets/Sounds/seHm.mp3");
-        AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
-        AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
         AssetManager::instance().m_Music["BackGround"]->play();
         AssetManager::instance().m_Music["BackGround"]->setLoop(true);
-        
+
     }
 
     void PlayState::exit()
@@ -50,35 +45,83 @@ namespace mmt_gd
     {
         GameObjectManager::instance().update(deltaTime);
         PhysicsManager::instance().update();
-        
+        auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
+        auto cowObjects = GameObjectManager::instance().getObjectsByType(Cow);
+        auto& playerPosition = GameObjectManager::instance().getGameObject("Player")->getPosition();
+
+        if (InputManager::instance().isKeyUp("space", 1))
+        {
+            
+
+            for (auto p : plantObjects)
+            {
+                auto plant = p.lock();
+                if (plant)
+                {
+                    float distance = std::sqrt(std::pow(plant->getPosition().x - playerPosition.x, 2) + std::pow(plant->getPosition().y - playerPosition.y, 2));
+                    if (distance < 32.f)
+                    {
+                        // Pflanze gie�en
+                        auto plantComponent = plant->getComponent<PlantCmp>();
+                        if (plantComponent)
+                        {
+                            plantComponent->watering();
+                        }
+                    }
+                }
+            }
+        }
+
+
+        if (InputManager::instance().isKeyUp("pet", 1))
+        {
+            for (auto p : plantObjects)
+            {
+                auto plant = p.lock();
+                if (plant)
+                {
+                    float distance = std::sqrt(std::pow(plant->getPosition().x - playerPosition.x, 2) + std::pow(plant->getPosition().y - playerPosition.y, 2));
+                    if (distance < 32.f)
+                    {
+                        // Pflanze gie�en
+                        auto plantComponent = plant->getComponent<PlantCmp>();
+                        if (plantComponent)
+                        {
+                            AssetManager::instance().m_Music["Pet"]->play();
+                            plantComponent->pet();
+                        }
+                    }
+                }
+            }
+        }
+
+
+        if (InputManager::instance().isMouseDown("leftclick", 1))
+        {
+            for (auto c : cowObjects)
+            {
+                auto cow = c.lock();
+                if (cow)
+                {
+                    float distance = std::sqrt(std::pow(cow->getPosition().x - playerPosition.x, 2) + std::pow(cow->getPosition().y - playerPosition.y, 2));
+                    if (distance < 32.f)
+                    {
+                        auto plantComponent = cow->getComponent<CowAICmp>();
+                        if (plantComponent)
+                        {
+                            plantComponent->m_despawn = true;
+                        }
+                    }
+                }
+            }
+        }
+
 
         const auto coll_pairs = PhysicsManager::instance().getCollisionPairs();
         for (const auto p : coll_pairs)
         {
-            if (p.first->getType() == ObjectType::Player && p.second->getType() == Plants)
-            {
-                const auto& playerAnimation = GameObjectManager::instance().getGameObject("Player")->getComponent<SpriteAnimationCmp>()->getCurrentAnimation();
-                if (playerAnimation == WaterDown 
-                    || playerAnimation == WaterUp
-                    || playerAnimation == WaterLeft
-                    || playerAnimation == WaterRight)
-                {
-                    p.second->getComponent<PlantCmp>()->watering();
-                }
-                if (InputManager::instance().isKeyPressed("pet", 1))
-                {
-                    AssetManager::instance().m_Music["Hm"]->play();
-                    p.second->getComponent<PlantCmp>()->pet();
-                }
-               
-            }
-            if (p.first->getType() == ObjectType::Cow && p.second->getType() == Player)
-            {
-                if (InputManager::instance().isMouseDown("leftclick", 1))
-                {
-                    p.first->getComponent<CowAICmp>()->m_despawn=true;
-                }
-            }
+        
+
             if ((p.first->getType() == ObjectType::Plants 
                 && p.first->getComponent<PlantAICmp>()->isExploding()) 
                 && p.second->getType() == Plants)
@@ -89,13 +132,13 @@ namespace mmt_gd
                 && p.second->getType() == Player
                 && InputManager::instance().isKeyUp("space",1))
             {
+              
                 AssetManager::instance().m_Music["Water"]->play();
                 p.second->getComponent<WaterNotiCmp>()->addWater();
                
             }
             if (p.first->getType() == Cow && p.second->getType() == ObjectType::Plants)
             {
-                std::cout << "WELLLLL" << std::endl;
                 p.second->getComponent<PlantCmp>()->cowAttack(true);
             }
         }
@@ -106,7 +149,7 @@ namespace mmt_gd
         RenderManager::instance().getWindow().clear({0, 0, 0});
         RenderManager::instance().draw();
 
-       
+       /*
            for (auto body : PhysicsManager::instance().m_bodies)
             {
                 if (std::shared_ptr<BoxCollisionCmp> tempP = body.lock())
@@ -122,7 +165,7 @@ namespace mmt_gd
                         RenderManager::instance().getWindow().draw(m_debugGeometry);
                     }
                 }
-            }
+            }*/
         
         RenderManager::instance().getWindow().display();
     }

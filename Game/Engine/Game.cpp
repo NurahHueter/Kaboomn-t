@@ -13,15 +13,21 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		//RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
-		RenderManager::instance().getWindow().create({1200, 1200}, "SFML Window");
+		RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
+		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
+
+		AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
+		AssetManager::instance().LoadMusic("Pet", "../Engine/Assets/Sounds/seHm.mp3");
+		AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
+		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
+
 
 		bindInput();
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
-		GameStateManager::instance().setState("PlayState");
+		GameStateManager::instance().setState("MenuState");
 	}
 
 	void Game::Run()

@@ -22,8 +22,8 @@ namespace mmt_gd
         //AXE
         if (InputManager::instance().isMouseDown("leftclick", 1) && !m_usingTool)
         {
-            AssetManager::instance().m_Music["Axe"]->play();
             m_usingTool = true;
+            AssetManager::instance().m_Music["Axe"]->play();
             //animation->setCurrentFrameIndex(0);
 
             //reset the current animation cycle to index 0 so it always starts at 0

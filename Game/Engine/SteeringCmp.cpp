@@ -38,10 +38,6 @@ namespace mmt_gd
 
             m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
         }
-       
-        
-
-       
 
         return true;
     }
@@ -107,12 +103,11 @@ namespace mmt_gd
     {
         float distanceToNextWaypoint = MathUtil::length(nextWaypoint - currentPosition);
         return distanceToNextWaypoint < 0.2f;
+
     }
 
     void SteeringCmp::handlePathCompletion()
     {
-        m_foundTarget = true;
-        m_astarStart = false;
-       
+        m_foundTarget = true;       
     }
 }
