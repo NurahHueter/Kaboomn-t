@@ -86,7 +86,12 @@ namespace mmt_gd
                 && InputManager::instance().isKeyUp("space",1))
             {
                 p.second->getComponent<WaterNotiCmp>()->addWater();
+               
+            }
+            if (p.first->getType() == Cow && p.second->getType() == ObjectType::Plants)
+            {
                 std::cout << "WELLLLL" << std::endl;
+                p.second->getComponent<PlantCmp>()->cowAttack(true);
             }
         }
     }

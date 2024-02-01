@@ -17,7 +17,10 @@ namespace mmt_gd
 		float getWater() const { return m_water; };
 		float getAffection() const { return m_love; };
 
-		void cowAttack(bool getingEaten) { m_getingEaten = m_getingEaten; };
+		void cowAttack(bool getingEaten) {
+			m_getingEaten = getingEaten;
+		}
+
 		void getHitfromExplosion();
 		void friendDied() { m_lonelyness += 0.5f; };
 

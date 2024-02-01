@@ -28,8 +28,9 @@ namespace mmt_gd
 
 		if (m_getingEaten)
 		{
-			m_sanity -= 3.f;
+			m_sanity -= 10.f * deltaTime ;
 		}
+		m_getingEaten = false;
 	};
 	void PlantCmp::pet()
 	{
