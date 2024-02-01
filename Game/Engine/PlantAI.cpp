@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "PlantAICmp.h"
 #include "PlantCmp.h"

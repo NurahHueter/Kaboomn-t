@@ -23,6 +23,7 @@ namespace mmt_gd
 
 		void pet();
 		void watering();
+
 	private:
 		PlantType m_type = PlantType::Green;
 		float m_sanity = 100.f;

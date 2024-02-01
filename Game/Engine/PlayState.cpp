@@ -10,6 +10,7 @@
 #include "GameObject.h"
 #include "GameObjectManager.h"
 #include "PhysicsManager.h"
+#include "CowAICmp.h"
 namespace mmt_gd
 {
     void PlayState::init()
@@ -58,6 +59,15 @@ namespace mmt_gd
                 if (InputManager::instance().isKeyPressed("pet", 1))
                 {
                     p.first->getComponent<PlantCmp>()->pet();
+                }
+               
+            }
+            if (p.first->getType() == ObjectType::Cow && p.second->getType() == Player)
+            {
+                if (InputManager::instance().isMouseDown("leftclick", 1))
+                {
+                    std::cout << "KONTATK" << std::endl;
+                    p.first->getComponent<CowAICmp>()->m_despawn=true;
                 }
             }
             if ((p.first->getType() == ObjectType::Plants && p.first->getComponent<PlantAICmp>()->isExploding()) && p.second->getType() == Plants)
