@@ -150,7 +150,14 @@ namespace mmt_gd
 		int count = 0;
 		for (auto& layer : layers)
 		{
-			RenderManager::instance().addLayer(layer.m_name, count);
+			if (layer.m_name == "Objects")
+			{
+				RenderManager::instance().addLayer(layer.m_name, count, true);
+			}
+			else
+			{
+				RenderManager::instance().addLayer(layer.m_name, count, false);
+			}
 			const auto& tileLayer = std::make_shared<TileLayerCmp>(
 				gameObject,
 				RenderManager::instance().getWindow(),

@@ -140,6 +140,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         animationCmp->init();
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
+        gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height / 1.5f));
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
@@ -260,6 +261,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         
         const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(animationCmp->getTextureRect()), true);
 
+        gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height));
         gameObject->addComponent(trigger);
         PhysicsManager::instance().addBoxCollisionCmp(trigger);
        
@@ -319,6 +321,9 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         auto hud = std::make_shared<PlantHudCmp>(*gameObject, RenderManager::instance().getWindow());
         RenderManager::instance().addCompToLayer(layer.getName(), hud);
         gameObject->addComponent(hud);
+
+        gameObject->setMiddle(gameObject->getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.f, animationCmp->getTextureRect().height / 2.f));
+        gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height));
 
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);

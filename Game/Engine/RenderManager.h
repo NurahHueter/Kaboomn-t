@@ -20,7 +20,7 @@ namespace mmt_gd
         RenderManager& operator = (const RenderManager&) = delete;
 
         void setLayerOrder(std::string layer, int order);
-        void addLayer(std::string layer, int order);
+        void addLayer(std::string layer, int order, bool sort);
         void addCompToLayer(const std::string layer, std::weak_ptr<IRenderComponent> comp);
 
         sf::RenderWindow& getWindow() 
@@ -32,11 +32,12 @@ namespace mmt_gd
         void draw();
 
     private:
+        void sort(std::vector<std::weak_ptr<IRenderComponent>>& layer);
         RenderManager() {}
         ~RenderManager() {}
-
+        std::vector<std::string> m_layertoSort;
         sf::RenderWindow m_window; 
         std::map<std::string, std::vector<std::weak_ptr<IRenderComponent>>> m_CmpInLayer;
-        std::vector<std::pair<std::string, int>> m_layers;
+        std::vector < std::pair < std::string, int>> m_layers;
     };
 }

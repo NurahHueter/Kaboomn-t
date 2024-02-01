@@ -55,11 +55,11 @@ namespace mmt_gd
     }
     void GameObject::setMiddle(sf::Vector2f middle)
     {
-       m_middle = getPosition() - middle;
+       m_middle = middle - getPosition();
     };
     void GameObject::setDrawPoint(sf::Vector2f drawPoint)
     { 
-        m_drawPoint = getPosition() - drawPoint;
+        m_drawPoint = drawPoint - getPosition();
     }; 
     sf::Vector2f GameObject::getMiddle()
     {

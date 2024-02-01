@@ -33,8 +33,8 @@ namespace mmt_gd
 		float m_water = 100.f;
 		float m_love = 100.f;
 
-		float m_lonelyness = 1.f;
-		float m_dryingOut = 1.f;
+		float m_lonelyness = 2.f;
+		float m_dryingOut = 2.f;
 
 		float m_happy = 1.f;
 
