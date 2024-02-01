@@ -26,8 +26,12 @@ namespace mmt_gd
         mapTile.getObjectLayer(map);
         mapGo->init();
 
-
         GameObjectManager::instance().addGameObject(mapGo);
+
+        //music
+        AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
+        AssetManager::instance().m_Music["BackGround"]->play();
+        AssetManager::instance().m_Music["BackGround"]->setLoop(true);
         
     }
 
