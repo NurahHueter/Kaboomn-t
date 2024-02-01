@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "AnimationTypes.h"
 #include "SpriteAnimationCmp.h"
+#include "AssetManager.h"
 #include "GameObjectManager.h"
 #include "CameraCmp.h"
 
@@ -13,7 +14,16 @@
 
 namespace mmt_gd
 {
-
+	bool PlantAICmp::init()
+	{
+		if (!AssetManager::instance().m_SoundBuffer["Explosion"])
+		{
+			AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
+		}
+		m_explosionSound.setBuffer(*AssetManager::instance().m_SoundBuffer["Explosion"]);
+		m_explosionSound.setPitch(2);
+		return true;
+	};
 	void PlantAICmp::update(float deltaTime)
 	{
         auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
@@ -24,7 +34,7 @@ namespace mmt_gd
 			currentState = Happy;
 		}
 		else if(sanity < 50.f && currentState != Sad && currentState != Explode)
-		{
+		{  
 			currentState = Sad;
 			animationCmp->setCurrentAnimation(CryIdle);
 		}
@@ -58,6 +68,7 @@ namespace mmt_gd
 		if (m_explosion)
 		{
 			GameObjectManager::instance().getGameObject("Player")->getComponent<CameraCmp>()->screenShake();
+			m_explosionSound.play();
 			m_explosion = false;
 		}
 		if (frame == 5)
