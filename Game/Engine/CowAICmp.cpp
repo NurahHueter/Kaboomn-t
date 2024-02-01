@@ -91,7 +91,6 @@ namespace mmt_gd
     }
     void CowAICmp::despawn()
     {
-       // gameObject.getComponent<PlantCmp>()->cowAttack(false);
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
         steeringCmp->m_astarStart = false;
         steeringCmp->m_firstRun = false;

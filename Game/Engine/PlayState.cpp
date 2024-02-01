@@ -31,6 +31,8 @@ namespace mmt_gd
         GameObjectManager::instance().addGameObject(mapGo);
 
         //music
+        AssetManager::instance().LoadMusic("Hm", "../Engine/Assets/Sounds/seHm.mp3");
+        
         AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
         AssetManager::instance().m_Music["BackGround"]->play();
         AssetManager::instance().m_Music["BackGround"]->setLoop(true);
@@ -64,6 +66,7 @@ namespace mmt_gd
                 }
                 if (InputManager::instance().isKeyPressed("pet", 1))
                 {
+                    AssetManager::instance().m_Music["Hm"]->play();
                     p.first->getComponent<PlantCmp>()->pet();
                 }
                

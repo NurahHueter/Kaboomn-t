@@ -28,7 +28,7 @@ namespace mmt_gd
 
 		if (m_getingEaten)
 		{
-			m_sanity -= 10.f * deltaTime ;
+			m_sanity -= 5.f * deltaTime ;
 		}
 		m_getingEaten = false;
 	};
