@@ -85,7 +85,7 @@ namespace mmt_gd
 	void PlantAICmp::happy(float deltaTime)
 	{
 		auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
-		sf::Vector2f plantOrigin = gameObject.getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.f, animationCmp->getTextureRect().height / 2.f);
+		sf::Vector2f plantOrigin = gameObject.getMiddle();
 
 		if (m_timerIdle == 0.f)
 		{
@@ -107,12 +107,12 @@ namespace mmt_gd
 				m_pointToGo = { randomX, randomY };
 			}
 
-			m_direction = MathUtil::unitVector(m_pointToGo - plantOrigin);
+			m_direction = MathUtil::unitVector(m_pointToGo - gameObject.getMiddle());
 		}
 
 		if (m_isWalking)
 		{
-			float distance = MathUtil::length(plantOrigin - m_pointToGo);
+			float distance = MathUtil::length(gameObject.getMiddle() - m_pointToGo);
 
 			if (distance < 2.f)
 			{
@@ -120,8 +120,8 @@ namespace mmt_gd
 				m_isWalking = false;
 			}
 
-			sf::Vector2f newPosition = MathUtil::lerp(plantOrigin, m_pointToGo, deltaTime);
+			sf::Vector2f newPosition = MathUtil::lerp(gameObject.getMiddle(), m_pointToGo, deltaTime);
 			gameObject.setPosition(newPosition.x - animationCmp->getTextureRect().width / 2.f, newPosition.y - animationCmp->getTextureRect().height / 2.f);
 		}
 	}
-}
+} 

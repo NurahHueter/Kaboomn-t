@@ -502,7 +502,7 @@
         {
          "draworder":"topdown",
          "id":10,
-         "name":"Objektebene 2",
+         "name":"Objects",
          "objects":[
                 {
                  "height":29.3333,
@@ -523,58 +523,121 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
          "id":3,
-         "name":"ObjectFence",
+         "name":"Objects",
          "objects":[
                 {
-                 "height":64,
-                 "id":3,
-                 "name":"PatchGreen",
+                 "height":16,
+                 "id":80,
+                 "name":"Cow3",
                  "properties":[
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb4fix.png"
-                        }, 
-                        {
-                         "name":"Type",
-                         "type":"string",
-                         "value":"Green"
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
                         }],
                  "rotation":0,
-                 "type":"Patch",
+                 "type":"Cow",
                  "visible":true,
-                 "width":63.3333333333334,
-                 "x":304.67,
-                 "y":288.67
+                 "width":16,
+                 "x":592,
+                 "y":256
+                }, 
+                {
+                 "height":16,
+                 "id":81,
+                 "name":"Cow2",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":544,
+                 "y":224
+                }, 
+                {
+                 "height":16,
+                 "id":82,
+                 "name":"Cow1",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":736,
+                 "y":304
+                }, 
+                {
+                 "height":16,
+                 "id":84,
+                 "name":"Cow4",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":256,
+                 "y":688
+                }, 
+                {
+                 "height":16,
+                 "id":85,
+                 "name":"Cow5",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
+                        }],
+                 "rotation":0,
+                 "type":"Cow",
+                 "visible":true,
+                 "width":16,
+                 "x":336,
+                 "y":688
                 }, 
                 {
                  "height":64,
-                 "id":5,
-                 "name":"PatchYellow",
+                 "id":7,
+                 "name":"PatchRed",
                  "properties":[
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb1fix.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb3fix.png"
                         }, 
                         {
                          "name":"Type",
                          "type":"string",
-                         "value":"Yellow"
+                         "value":"Red"
                         }],
                  "rotation":0,
                  "type":"Patch",
                  "visible":true,
                  "width":63.3333,
-                 "x":608.000016666667,
-                 "y":319
+                 "x":576.000016666667,
+                 "y":607.666666666667
                 }, 
                 {
                  "height":64,
@@ -600,26 +663,59 @@
                 }, 
                 {
                  "height":64,
-                 "id":7,
-                 "name":"PatchRed",
+                 "id":5,
+                 "name":"PatchYellow",
                  "properties":[
                         {
                          "name":"Texture",
                          "type":"string",
-                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb3fix.png"
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb1fix.png"
                         }, 
                         {
                          "name":"Type",
                          "type":"string",
-                         "value":"Red"
+                         "value":"Yellow"
                         }],
                  "rotation":0,
                  "type":"Patch",
                  "visible":true,
                  "width":63.3333,
-                 "x":576.000016666667,
-                 "y":607.666666666667
+                 "x":608.000016666667,
+                 "y":319
                 }, 
+                {
+                 "height":64,
+                 "id":3,
+                 "name":"PatchGreen",
+                 "properties":[
+                        {
+                         "name":"Texture",
+                         "type":"string",
+                         "value":"..\/Engine\/Assets\/ChomBombs\/Chomb\/Chomb4fix.png"
+                        }, 
+                        {
+                         "name":"Type",
+                         "type":"string",
+                         "value":"Green"
+                        }],
+                 "rotation":0,
+                 "type":"Patch",
+                 "visible":true,
+                 "width":63.3333333333334,
+                 "x":304.67,
+                 "y":288.67
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":3,
+         "name":"ColliderObj",
+         "objects":[
                 {
                  "height":606,
                  "id":8,
@@ -1235,92 +1331,7 @@
          "draworder":"topdown",
          "id":11,
          "name":"ObjectCow",
-         "objects":[
-                {
-                 "height":16,
-                 "id":80,
-                 "name":"Cow3",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
-                        }],
-                 "rotation":0,
-                 "type":"Cow",
-                 "visible":true,
-                 "width":16,
-                 "x":592,
-                 "y":256
-                }, 
-                {
-                 "height":16,
-                 "id":81,
-                 "name":"Cow2",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
-                        }],
-                 "rotation":0,
-                 "type":"Cow",
-                 "visible":true,
-                 "width":16,
-                 "x":544,
-                 "y":224
-                }, 
-                {
-                 "height":16,
-                 "id":82,
-                 "name":"Cow1",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
-                        }],
-                 "rotation":0,
-                 "type":"Cow",
-                 "visible":true,
-                 "width":16,
-                 "x":736,
-                 "y":304
-                }, 
-                {
-                 "height":16,
-                 "id":84,
-                 "name":"Cow4",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
-                        }],
-                 "rotation":0,
-                 "type":"Cow",
-                 "visible":true,
-                 "width":16,
-                 "x":256,
-                 "y":688
-                }, 
-                {
-                 "height":16,
-                 "id":85,
-                 "name":"Cow5",
-                 "properties":[
-                        {
-                         "name":"Texture",
-                         "type":"string",
-                         "value":"..\\Engine\\Assets\\SproutLands\\Animals\\Cow\\BrownCowAnimationsAll.png"
-                        }],
-                 "rotation":0,
-                 "type":"Cow",
-                 "visible":true,
-                 "width":16,
-                 "x":336,
-                 "y":688
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":false,

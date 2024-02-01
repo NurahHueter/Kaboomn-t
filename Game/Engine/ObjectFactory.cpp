@@ -320,6 +320,9 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         RenderManager::instance().addCompToLayer(layer.getName(), hud);
         gameObject->addComponent(hud);
 
+        gameObject->setMiddle(gameObject->getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.f, animationCmp->getTextureRect().height / 2.f));
+        gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height));
+
         gameObject->init();
         GameObjectManager::instance().addGameObject(gameObject);
 
