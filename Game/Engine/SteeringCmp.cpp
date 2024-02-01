@@ -40,7 +40,11 @@ namespace mmt_gd
 
     void SteeringCmp::clearPath()
     {
-        m_pathlist.clear();
+        if (!m_pathlist.empty())
+        {
+            m_pathlist.clear();
+        }
+      
     }
 
     void SteeringCmp::update(float deltaTime)
@@ -93,8 +97,7 @@ namespace mmt_gd
 
     void SteeringCmp::handlePathCompletion()
     {
-        const auto& spriteAnimationCmp = gameObject.getComponent<SpriteAnimationCmp>();
-        spriteAnimationCmp->setCurrentAnimation(CowIdleChewLeft);
+        m_foundTarget = true;
         m_astarStart = false;
     }
 }

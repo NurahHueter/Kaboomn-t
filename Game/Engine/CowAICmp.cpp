@@ -36,9 +36,16 @@ namespace mmt_gd
 
         if (m_despawn)
         {
-            currentState = Despawn;
             m_despawn = false;
+            currentState = Despawn;
+            
             movementClock.restart();
+        }
+
+        if (gameObject.getComponent<SteeringCmp>()->m_foundTarget)
+        {
+            gameObject.getComponent<SteeringCmp>()->m_foundTarget=false;
+            currentState = Eat;
         }
 
         switch (currentState)
@@ -48,6 +55,9 @@ namespace mmt_gd
             break;
         case Attack:
             attack();
+            break;
+        case Eat:
+            eat();
             break;
         case Despawn:
             despawn();
@@ -62,23 +72,31 @@ namespace mmt_gd
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
         steeringCmp->m_astarStart = true;
         steeringCmp->m_firstRun = true;
+        gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
     }
 
     void CowAICmp::sleep()
     {
         gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleSleepLeft);
+        gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
     }
+    void CowAICmp::eat()
+    {
 
+        gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleChewRight);
+
+    }
     void CowAICmp::despawn()
     {
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
         steeringCmp->m_astarStart = false;
         steeringCmp->m_firstRun = false;
-
+        gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
         steeringCmp->clearPath();
         gameObject.setPosition(m_startPos);
         steeringCmp->init();
 
         currentState = Sleep;
     }
+  
 }
