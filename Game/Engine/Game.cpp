@@ -13,14 +13,22 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		RenderManager::instance().getWindow().create({ 800, 640 }, "SFML Window");
+		RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
+		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
+		AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
+		AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
+		AssetManager::instance().LoadMusic("Pet", "../Engine/Assets/Sounds/seHm.mp3");
+		AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
+		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
+		AssetManager::instance().LoadMusic("Cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
 		bindInput();
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
-		GameStateManager::instance().setState("PlayState");
+		GameStateManager::instance().addState("EndState", std::make_shared<EndState>());
+		GameStateManager::instance().setState("MenuState");
 	}
 
 	void Game::Run()
@@ -44,9 +52,23 @@ namespace mmt_gd
 		{
 			GameStateManager::instance().setState("MenuState");
 		}
-		else if (InputManager::instance().isKeyUp("SpaceGameState", 1))
+		else if (InputManager::instance().isKeyUp("PlayState", 1))
 		{
-			GameStateManager::instance().setState("SpaceGameState");
+			m_isInGame = true;
+			GameStateManager::instance().setState("PlayState");
+		}
+
+		else if (InputManager::instance().isKeyUp("EndState", 1) )
+		{
+			GameStateManager::instance().setState("EndState");
+		}
+		auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
+		if (plantObjects.size() < 12 && m_isInGame)
+		{
+			m_isInGame = false;
+			std::cout << "Verloren" << std::endl;
+			AssetManager::instance().m_Music["BackGround"]->stop();
+			GameStateManager::instance().setState("EndState");
 		}
 
 
@@ -68,7 +90,6 @@ namespace mmt_gd
 			if (event.type == sf::Event::Closed)
 			{
 				GameStateManager::instance().CloseGame();
-				Game::~Game();
 				RenderManager::instance().getWindow().close();
 			}
 
@@ -93,11 +114,14 @@ namespace mmt_gd
 			InputManager::instance().bind("down", sf::Keyboard::Key::S, 1);
 			InputManager::instance().bind("left", sf::Keyboard::Key::A, 1);
 			InputManager::instance().bind("right", sf::Keyboard::Key::D, 1);
+			InputManager::instance().bind("pet", sf::Keyboard::Key::E, 1);
+			InputManager::instance().bind("res", sf::Keyboard::Key::R, 1);
 			InputManager::instance().bind("leftclick", sf::Mouse::Left, 1);
 			InputManager::instance().bind("debugdraw", sf::Keyboard::Key::Num0, 1);
 			InputManager::instance().bind("space", sf::Keyboard::Key::Space, 1);
 			InputManager::instance().bind("MenuState", sf::Keyboard::Key::Num1, 1);
 			InputManager::instance().bind("PlayState", sf::Keyboard::Key::Num2, 1);
+			InputManager::instance().bind("EndState", sf::Keyboard::Key::Num3, 1);
 	}
 }
 

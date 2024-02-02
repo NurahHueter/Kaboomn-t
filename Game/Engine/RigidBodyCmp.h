@@ -33,6 +33,7 @@ namespace mmt_gd
 
         void setPosition(sf::Vector2f velocity,float deltaTime) { m_position += velocity*deltaTime; }
         sf::Vector2f getPosition() const { return m_position; }
+
     private:
         float m_mass;
         float m_invMass = 0;        

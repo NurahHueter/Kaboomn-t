@@ -1,8 +1,6 @@
 #pragma once
 
 #include "IComponent.h"
-
-#include <SFML/Graphics.hpp>
 #include <list>
 #include <string>
 #include "ObjectTypes.h"
@@ -120,11 +118,20 @@ namespace mmt_gd
             m_type = type;
         }
 
+
+        void setMiddle(sf::Vector2f middle);
+        void setDrawPoint(sf::Vector2f drawPoint);
+        sf::Vector2f getMiddle();
+        sf::Vector2f getDrawPoint();
+
+        sf::Vector2f m_middle = {1.f, 1.f};
+        sf::Vector2f m_drawPoint = {1.f, 1.f};
     protected:
         std::string m_id = "unnamed"; ///< unique name of object, e.g. player
         int m_idx = 0; ///< unique name of object, e.g. player
         bool        m_wantToDie = false;
         bool        m_isActive = true;
+   
         ObjectType m_type = Default;
 
         std::vector<IComponent::Ptr> m_componentList;

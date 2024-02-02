@@ -1,4 +1,3 @@
-#pragma once
 #pragma once 
 #include "IRenderComponent.h"
 #include "SpriteRenderCmp.h"

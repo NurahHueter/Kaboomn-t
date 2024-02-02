@@ -1,5 +1,7 @@
+#pragma once
 #include "pch.h"
 #include "GameObjectManager.h"
+#include "IRenderComponent.h"
 
 #include "Debug.h"
 namespace mmt_gd
@@ -23,6 +25,7 @@ namespace mmt_gd
             if (goPair.second->isMarkedForDelete())
             {
                 gameObjectsToDelete.push_back(goPair.second);
+                goPair.second->setActive(false);
             }
             else if (goPair.second->isActive())
             {

@@ -8,5 +8,6 @@ namespace mmt_gd
 		Cow,
 		Player,
 		Patch,
+		Trigger,
 	};
 }

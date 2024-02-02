@@ -18,7 +18,7 @@ namespace mmt_gd
     }
 
     void PhysicsManager::update()
-    {
+    { 
         m_collisionPairs.clear();
         findCollisions(m_bodies);
     }
@@ -57,16 +57,30 @@ namespace mmt_gd
                     normal,
                     penetration))
                 {
-                    m_collisionPairs.insert(std::make_pair(&body1->getGameObject(), &body2->getGameObject()));
-                    sf::Vector2f separationVector = normal * penetration;
-                    // When body1 == Player
-                    if (body1->getGameObject().getComponent<MoveCmp>())
-                    {   
-                        body1->getGameObject().setPosition(body1->getGameObject().getPosition() + separationVector);
+                    if (body1->isLogicTrigger() || body2->isLogicTrigger())
+                    {
+                        if (body1->isLogicTrigger())
+                        {
+                            m_collisionPairs.insert(std::make_pair(&body1->getGameObject(), &body2->getGameObject()));
+                        }
+                        if (body2->isLogicTrigger())
+                        {
+                            m_collisionPairs.insert(std::make_pair(&body2->getGameObject(), &body1->getGameObject()));
+                        }
+
                     }
                     else
                     {
-                        body2->getGameObject().setPosition(body2->getGameObject().getPosition() + separationVector);
+                        sf::Vector2f separationVector = normal * penetration;
+
+                        if (body1->getGameObject().getComponent<MoveCmp>())
+                        {
+                            body1->getGameObject().setPosition(body1->getGameObject().getPosition() + separationVector);
+                        }
+                        else
+                        {
+                            body2->getGameObject().setPosition(body2->getGameObject().getPosition() + separationVector);
+                        }
                     }
                 }
             }

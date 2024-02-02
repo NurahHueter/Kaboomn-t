@@ -23,6 +23,7 @@ namespace mmt_gd
         void draw();
         void addState(std::string stateName,std::shared_ptr<GameState> state);
         void setState(std::string stateName);
+        std::shared_ptr<GameState> getState();
         void CloseGame();
 
     private:

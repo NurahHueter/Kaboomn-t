@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "PatchCmp.h"
 #include "GameObject.h"
@@ -7,7 +8,7 @@
 
 namespace mmt_gd
 {
-	void PatchCmp::addPlant(std::shared_ptr<GameObject> plant)
+	void PatchCmp::addPlant(std::weak_ptr<GameObject> plant)
 	{
 		m_plants.push_back(plant);
 	}
@@ -20,31 +21,17 @@ namespace mmt_gd
             return false;
         }
 
-        // Beachten Sie, dass die Größe der kleinen Rechtecke durch m_plants.size() geteilt wird
         float smallRectWidth = bounds->m_shape.width / static_cast<float>(m_plants.size());
         float smallRectHeight = bounds->m_shape.height / static_cast<float>(m_plants.size());
 
-        for (int i = 0; i < m_plants.size(); i++)
+        for (auto plant : m_plants)
         {
-            float centerX;
-            float centerY;
-
-            if (i % 2 == 0)
+            if (std::shared_ptr<GameObject> tempP = plant.lock())
             {
-                centerX = (bounds->m_shape.left + (i / 2) * smallRectWidth + smallRectWidth / 2) - smallRectWidth;
-                centerY = (bounds->m_shape.top + smallRectHeight / 2) -2* smallRectHeight;
-            }
-            else
-            {
-                centerX = (bounds->m_shape.left + ((i - 1) / 2) * smallRectWidth + smallRectWidth / 2) - smallRectWidth;
-                centerY = (bounds->m_shape.top + smallRectHeight * 2.5f) - 2*smallRectHeight;
+                tempP->setPosition(gameObject.getPosition().x + smallRectWidth, 
+                    gameObject.getPosition().y + smallRectHeight);
             }
 
-           const auto spriteBounds = m_plants[i]->getComponent<SpriteAnimationCmp>()->getTextureRect();
-           float spriteCenterX = spriteBounds.width / 2.0f;
-           float spriteCenterY = spriteBounds.height / 2.0f;
-
-           m_plants[i]->setPosition(centerX + spriteCenterX, centerY + spriteCenterY);
         }
 
         return true;

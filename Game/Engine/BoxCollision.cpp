@@ -6,6 +6,7 @@
 #include "RigidBodyCmp.h"
 #include "PhysicsManager.h"
 #include "MoveCmp.h"
+#include "SpriteAnimationCmp.h"
 
 namespace mmt_gd
 {
@@ -16,15 +17,30 @@ namespace mmt_gd
 			rigidBody = gameObject.getComponent<RigidBodyCmp>();
 		}
 		
+		
 		return true;
 	}
 	void BoxCollisionCmp::update(float deltaTime)
 	{
 		//calibration PlayerBoundingbox
-		if (gameObject.getComponent<MoveCmp>())
+		if ( gameObject.getType() == Player)
 		{
-			m_shape = sf::FloatRect(gameObject.getPosition() + sf::Vector2f(16, 16), m_shape.getSize());
+
+			m_shape = sf::FloatRect(gameObject.getPosition() + 
+				sf::Vector2f(
+					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().height/3, 
+					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().width/3),
+					m_shape.getSize());
 		}
+		else if (gameObject.getType() == Cow)
+		{
+			m_shape = sf::FloatRect(gameObject.getPosition() -
+				sf::Vector2f(
+					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().height / 4,
+					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().width / 4),
+				m_shape.getSize());
+		}
+		
 		else
 		{
 			m_shape = sf::FloatRect(gameObject.getPosition(), m_shape.getSize());

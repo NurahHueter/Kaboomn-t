@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "GameObject.h"
 #include "IRenderComponent.h"
@@ -38,7 +39,7 @@ namespace mmt_gd
 
     bool GameObject::init() const
     {
-        for (const auto& comp : m_componentList) 
+        for (const auto& comp : m_componentList)
         {
             if (!comp->init())
             {
@@ -52,5 +53,21 @@ namespace mmt_gd
         }
         return true;
     }
+    void GameObject::setMiddle(sf::Vector2f middle)
+    {
+       m_middle = middle - getPosition();
+    };
+    void GameObject::setDrawPoint(sf::Vector2f drawPoint)
+    { 
+        m_drawPoint = drawPoint - getPosition();
+    }; 
+    sf::Vector2f GameObject::getMiddle()
+    {
+        return getPosition() + m_middle;
+    };
+    sf::Vector2f GameObject::getDrawPoint()
+    {
+        return getPosition() + m_drawPoint;
+    };
 }
      

@@ -143,6 +143,9 @@ namespace MathUtil
 	template <typename T>
 	sf::Vector2<T> projectedVector(const sf::Vector2<T>& vector, const sf::Vector2<T>& axis);
 
+	template <typename T>
+	sf::Vector2f lerp(const sf::Vector2<T>& start, const sf::Vector2<T>& end, float t);
+
 	/// @}
 }
 

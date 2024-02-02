@@ -6,6 +6,8 @@
 #include "ToolCmp.h"
 #include "ToolCmp.h"
 #include "RigidBodyCmp.h"
+#include "WaterNotiCmp.h"
+#include "AssetManager.h"
 
 
 namespace mmt_gd
@@ -18,13 +20,14 @@ namespace mmt_gd
 
 
         //AXE
-        if (InputManager::instance().isMouseDown("leftclick", gameObject.getPlayerIdx() && !m_usingTool))
+        if (InputManager::instance().isMouseDown("leftclick", 1) && !m_usingTool)
         {
             m_usingTool = true;
-            //animation->setCurrentFrameIndex(0);
+            AssetManager::instance().m_Music["Axe"]->play();
 
-            //reset the current animation cycle to index 0 so it always starts at 0
+            animation->setCurrentFrameIndex(0);
             animation->setCurrentAnimationTime(0);
+
             if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
             {
                 animation->setCurrentAnimation(AxeHitDown);
@@ -45,11 +48,17 @@ namespace mmt_gd
 
 
         //WATER
-        else if (InputManager::instance().isKeyPressed("space", gameObject.getPlayerIdx() && !m_usingTool))
+        else if (InputManager::instance().isKeyPressed("space", 1) 
+            && !m_usingTool 
+            && gameObject.getComponent<WaterNotiCmp>()->m_waterAmount>0)
         {
+
+            AssetManager::instance().m_Music["Water"]->play();
+            gameObject.getComponent<WaterNotiCmp>()->looseWater();
             m_usingTool = true;
-            //animation->setCurrentFrameIndex(0);
+            animation->setCurrentFrameIndex(0);
             animation->setCurrentAnimationTime(0);
+
             if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
             {
                 animation->setCurrentAnimation(WaterDown);
@@ -66,13 +75,11 @@ namespace mmt_gd
             {
                 animation->setCurrentAnimation(WaterRight);
             }
-
         }
 
 
         if (animation->getCurrentFrameIndex() == 7)
         {
-           
             if (animation->getCurrentAnimation() == AxeHitRight || animation->getCurrentAnimation() == WaterRight)
             {
                 m_usingTool = false;

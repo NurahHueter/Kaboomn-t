@@ -15,9 +15,46 @@ namespace mmt_gd
 	using namespace sf;
 	using namespace std;
 
+	std::vector<std::vector<int>> MapTile::m_LayerKachel;
+	sf::Vector2f MapTile::m_tileSize;
+
 	void MapTile::loadMap(const std::unique_ptr<tson::Map>& map, const fs::path resourcePath)
-	{
-		
+	{	
+		const int numRows = 60;
+		const int numCols = 60;
+
+		//ground
+		auto& layerGround = map->getLayers()[1].getData();
+
+		//collider
+		auto& layerCollider1 = map->getLayers()[5].getData();
+		auto& layerCollider2 = map->getLayers()[6].getData();
+
+		m_LayerKachel.reserve(numRows);
+
+
+		for (int i = 0; i < numRows; ++i)
+		{
+			m_LayerKachel.emplace_back(); 
+			m_LayerKachel[i].reserve(numCols);
+
+			for (int j = 0; j < numCols; ++j)
+			{
+			
+				if (layerGround[i * numCols + j] != 0 &&
+					layerCollider1[i * numCols + j] == 0 &&
+					layerCollider2[i * numCols + j] == 0)
+				{
+					m_LayerKachel[i].emplace_back(1);
+				}
+				else
+				{
+					m_LayerKachel[i].emplace_back(0);
+				}
+			}
+		}
+
+
 
 		if (map->getStatus() == tson::ParseStatus::OK)
 		{
@@ -89,9 +126,8 @@ namespace mmt_gd
 				// calculate position of tile
 				Vector2f position;
 				position.x = i % layer.getSize().x * static_cast<float>( tileSize.x);
-				position.y = static_cast<float>(i) / layer.getSize().x * static_cast<float>(tileSize.y);
+				position.y = i / layer.getSize().x * static_cast<float>(tileSize.y);
 				//position += offset;
-
 				// number of tiles in tile set texture (horizontally)
 				const int tileCountX = texture.getSize().x / tileSize.x;
 
@@ -114,7 +150,14 @@ namespace mmt_gd
 		int count = 0;
 		for (auto& layer : layers)
 		{
-			RenderManager::instance().addLayer(layer.m_name, count);
+			if (layer.m_name == "Objects")
+			{
+				RenderManager::instance().addLayer(layer.m_name, count, true);
+			}
+			else
+			{
+				RenderManager::instance().addLayer(layer.m_name, count, false);
+			}
 			const auto& tileLayer = std::make_shared<TileLayerCmp>(
 				gameObject,
 				RenderManager::instance().getWindow(),
