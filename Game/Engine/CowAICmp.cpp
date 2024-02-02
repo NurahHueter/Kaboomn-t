@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-#include "CowAICmp.h"
+#include "CowAiCmp.h"
 #include "AnimationTypes.h"
 #include "SpriteAnimationCmp.h"
 #include "GameObject.h"

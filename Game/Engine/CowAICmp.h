@@ -9,7 +9,7 @@ namespace mmt_gd
 		Sleep,
 		Attack,
 		Despawn,
-		Eat,ds
+		Eat,
 	};
 	class PlantCmp;
 	class CowAICmp : public IComponent

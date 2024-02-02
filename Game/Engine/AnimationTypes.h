@@ -49,6 +49,11 @@ namespace mmt_gd
         CowIdleSleepLeft, 
         CowIdleChewLeft, 
         CowIdleEatLeft, 
-        CowIdleLoveLeft, 
+        CowIdleLoveLeft,
+        Full,
+        NearFull,
+        Half,
+        NearEmpty,
+        Empty
 	};
 }

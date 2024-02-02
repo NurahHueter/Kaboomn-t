@@ -90,7 +90,7 @@ namespace mmt_gd
                     float distance = std::sqrt(std::pow(plant->getPosition().x - playerPosition.x, 2) + std::pow(plant->getPosition().y - playerPosition.y, 2));
                     if (distance < 32.f)
                     {
-                        // Pflanze gießen
+                        // Pflanze gieï¿½en
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {

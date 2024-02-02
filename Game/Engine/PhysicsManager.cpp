@@ -18,7 +18,7 @@ namespace mmt_gd
     }
 
     void PhysicsManager::update()
-    {
+    { 
         m_collisionPairs.clear();
         findCollisions(m_bodies);
     }

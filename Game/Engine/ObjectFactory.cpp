@@ -13,6 +13,7 @@
 #include "PlantTypes.h"
 #include "ObjectTypes.h"
 #include "PatchCmp.h"
+#include "IconCmp.h"
 #include "PlantCmp.h"
 #include "PlantHud.h"
 #include "PlantAICmp.h"
@@ -130,6 +131,13 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
                 object.getSize().y/2),
             false);
         gameObject->addComponent(boxCollider);
+        const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject,
+            sf::FloatRect(gameObject->getPosition().x,
+                gameObject->getPosition().y,
+                object.getSize().x / 2,
+                object.getSize().y / 2),
+            true);
+        gameObject->addComponent(trigger);
 
         const auto waterNotiCmp = std::make_shared<WaterNotiCmp>(*gameObject,
             RenderManager::instance().getWindow(),
@@ -137,6 +145,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         RenderManager::instance().addCompToLayer(layer.getName(), waterNotiCmp);
         gameObject->addComponent(waterNotiCmp);
         PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
+        PhysicsManager::instance().addBoxCollisionCmp(trigger);
         animationCmp->init();
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
@@ -181,9 +190,6 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         {
             auto plant = loadPlants(layer, gameObject, i, type, texture);
             patchCmp->addPlant(plant);
-
-            // Füge die Position zum Vektor hinzu
-          
         }
 
         auto bounds = std::make_shared<BoxCollisionCmp>(*gameObject, sf::FloatRect(gameObject->getPosition(), sf::Vector2f(object.getSize().x, object.getSize().y)), true);
@@ -318,9 +324,88 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         gameObject->addComponent(std::make_shared<PlantCmp>(*gameObject)); 
         gameObject->addComponent(std::make_shared<PlantAICmp>(*gameObject, patch));
 
-        auto hud = std::make_shared<PlantHudCmp>(*gameObject, RenderManager::instance().getWindow());
-        RenderManager::instance().addCompToLayer(layer.getName(), hud);
-        gameObject->addComponent(hud);
+        //auto hud = std::make_shared<PlantHudCmp>(*gameObject, RenderManager::instance().getWindow());
+        //RenderManager::instance().addCompToLayer(layer.getName(), hud);
+        //gameObject->addComponent(hud);
+
+        //Icons
+        if (!AssetManager::instance().m_Textures["SanityIcon"])
+        {
+            AssetManager::instance().LoadTexture("SanityIcon", "../Engine/Assets/ChomBombs/Sanity.png" );
+        }
+        else
+        {
+            auto sanityIcon = std::make_shared<IconCmp>(*gameObject, RenderManager::instance().getWindow(),
+                AssetManager::instance().m_Textures["SanityIcon"],
+                1,
+                5,
+                true,
+                1);
+            sanityIcon->addAnimation({
+            {Full , 1},
+            {NearFull , 1},
+            {Half , 1},
+            {NearEmpty , 1},
+            {Empty , 1},
+                });
+            sanityIcon->setPosition(gameObject->getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.f, sanityIcon->getTextureRect().height));
+            sanityIcon->setCurrentAnimation(Full); 
+            gameObject->addComponent(sanityIcon);
+            RenderManager::instance().addCompToLayer(layer.getName(), sanityIcon);
+        }
+        if (!AssetManager::instance().m_Textures["WaterIcon"])
+        {
+            AssetManager::instance().LoadTexture("WaterIcon", "../Engine/Assets/ChomBombs/WaterIcon.png");
+        }
+        else
+        {
+            auto waterIcon = std::make_shared<IconCmp>(*gameObject, RenderManager::instance().getWindow(),
+                AssetManager::instance().m_Textures["WaterIcon"],
+                1,
+                5,
+                true,
+                1);
+            waterIcon->addAnimation({
+              {Full , 1},
+              {NearFull , 1},
+              {Half , 1},
+              {NearEmpty , 1},
+              {Empty , 1},
+                });
+            waterIcon->setPosition(sf::Vector2f(gameObject->getPosition().x - waterIcon->getTextureRect().width, gameObject->getPosition().y));
+            waterIcon->setCurrentAnimation(Full);
+            gameObject->addComponent(waterIcon);
+            RenderManager::instance().addCompToLayer(layer.getName(), waterIcon);
+        }
+        if (!AssetManager::instance().m_Textures["HeartIcon"])
+        {
+            AssetManager::instance().LoadTexture("HeartIcon", "../Engine/Assets/ChomBombs/HeartIcon.png");
+        }
+        else
+        {
+            auto heartIcon = std::make_shared<IconCmp>(*gameObject, RenderManager::instance().getWindow(),
+                AssetManager::instance().m_Textures["HeartIcon"],
+                1,
+                5,
+                true,
+                1);
+            heartIcon->addAnimation({
+                    {Full , 1},
+                    {NearFull , 1},
+                    {Half , 1},
+                    {NearEmpty , 1},
+                    {Empty , 1},
+                });
+            heartIcon->setPosition(sf::Vector2f(gameObject->getPosition().x - heartIcon->getTextureRect().width, gameObject->getPosition().y - heartIcon->getTextureRect().width));
+            heartIcon->setCurrentAnimation(Full);
+            gameObject->addComponent(heartIcon);
+            RenderManager::instance().addCompToLayer(layer.getName(), heartIcon);
+            
+        }
+        
+        
+        
+ 
 
         gameObject->setMiddle(gameObject->getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.f, animationCmp->getTextureRect().height / 2.f));
         gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height));
