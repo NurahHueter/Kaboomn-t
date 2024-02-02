@@ -30,11 +30,11 @@ namespace mmt_gd
         auto animationCmp = gameObject.getComponent<SpriteAnimationCmp>();
         auto sanity = gameObject.getComponent<PlantCmp>()->getSanity();
 		
-		if (sanity > 50.f && currentState != Explode)
+		if ((sanity > 50.f || gameObject.getComponent<PlantCmp>()->isRegenarating()) && currentState != Explode)
 		{
 			currentState = Happy;
 		}
-		else if(sanity < 50.f && currentState != Sad && currentState != Explode)
+		else if((sanity < 50.f || !gameObject.getComponent<PlantCmp>()->isRegenarating()) && currentState != Sad && currentState != Explode)
 		{  
 			currentState = Sad;
 			animationCmp->setCurrentAnimation(CryIdle);

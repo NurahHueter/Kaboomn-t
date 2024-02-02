@@ -119,7 +119,7 @@ namespace mmt_gd
             gameObject->addComponent(cameraCmp);
             RenderManager::instance().addCompToLayer(layer.getName(), cameraCmp);
 
-            gameObject->addComponent(std::make_shared<MoveCmp>(*gameObject, 100.f));
+            gameObject->addComponent(std::make_shared<MoveCmp>(*gameObject, 150.f));
 gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         }
 
