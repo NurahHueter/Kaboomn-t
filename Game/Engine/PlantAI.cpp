@@ -8,6 +8,7 @@
 #include "AssetManager.h"
 #include "GameObjectManager.h"
 #include "CameraCmp.h"
+#include "IconCmp.h"
 
 #include "PatchCmp.h"
 #include "VectorAlgebra2D.h"
