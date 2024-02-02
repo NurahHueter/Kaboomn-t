@@ -55,11 +55,13 @@ namespace mmt_gd
         if (InputManager::instance().isKeyUp("space", 1) && 
             player->getComponent<WaterNotiCmp>()->m_waterAmount > 0)
         {
+            player->getComponent<WaterNotiCmp>()->looseWater();
             for (auto p : plantObjects)
             {
                 auto plant = p.lock();
                 if (plant)
                 {
+                    
                     float distance = std::sqrt(std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2));
                     if (distance < 32.f)
                     {
@@ -67,7 +69,6 @@ namespace mmt_gd
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {
-                            player->getComponent<WaterNotiCmp>()->looseWater();
                             plantComponent->watering();
                         }
                     }
