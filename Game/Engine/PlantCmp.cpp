@@ -23,8 +23,13 @@ namespace mmt_gd
 		{
 			if (m_sanity <= M_MAXSANITY)
 			{
+				isRegenerating = true;
 				m_sanity += m_happy * deltaTime;
 			}
+		}
+		else
+		{
+			isRegenerating = false;
 		}
 
 		if (m_getingEaten)

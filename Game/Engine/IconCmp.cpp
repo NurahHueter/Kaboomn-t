@@ -8,6 +8,7 @@ namespace mmt_gd
 	void IconCmp::setPosition(sf::Vector2f position)
 	{
 		m_position = position - gameObject.getPosition();
+		sprite->setScale(sf::Vector2f(0.5f, 0.5f));
 	}
 	void IconCmp::update(float deltaTime)
 	{

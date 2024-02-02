@@ -20,6 +20,7 @@ namespace mmt_gd
 		void cowAttack(bool getingEaten) { m_getingEaten = m_getingEaten; };
 		void getHitfromExplosion();
 		void friendDied() { m_lonelyness += 0.5f; };
+		bool isRegenarating() const { return isRegenerating; }
 
 		void pet();
 		void watering();
@@ -33,8 +34,8 @@ namespace mmt_gd
 		float m_lonelyness = 2.f;
 		float m_dryingOut = 2.f;
 
-		float m_happy = 1.f;
-
+		float m_happy = 3.f;
+		bool isRegenerating = false;
 		bool m_getingEaten = false;
 		const float M_MAXSANITY = 100.f;
 		const float M_MAXWATER = 100.f;
