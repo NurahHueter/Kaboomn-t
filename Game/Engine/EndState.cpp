@@ -13,12 +13,11 @@ namespace mmt_gd
     void EndState::init()
     {
         AssetManager::instance().LoadTexture("background", "../Engine/Assets/endbg.png");
-        
+
         auto goBg = std::make_shared<GameObject>("background");
 
         auto spriteCmp = std::make_shared<SpriteRenderCmp>(*goBg, RenderManager::instance().getWindow(), AssetManager::instance().m_Textures["background"]);
-        spriteCmp->sprite->setScale(RenderManager::instance().getWindow().getSize().x / 2.f,
-            RenderManager::instance().getWindow().getSize().y / 2.f);
+
         AssetManager::instance().LoadFont("font", "../Engine/Assets/Fonts/arial.ttf");
         m_score = PlayState::scoreClock.getElapsedTime().asSeconds();
         auto goCamera = std::make_shared<GameObject>("camera");
@@ -33,7 +32,7 @@ namespace mmt_gd
         GameObjectManager::instance().addGameObject(goBg);
         RenderManager::instance().addCompToLayer("hud2", cameraCmp);
         GameObjectManager::instance().addGameObject(goCamera);
-     
+
 
     }
 
@@ -50,12 +49,6 @@ namespace mmt_gd
     void EndState::draw()
     {
         RenderManager::instance().getWindow().clear({ 0, 0, 0 });
-
-        // Hintergrund-Sprite zeichnen
-        //sf::Sprite backgroundSprite(*AssetManager::instance().m_Textures["background"]);
-        //RenderManager::instance().getWindow().draw(backgroundSprite);
-
-        // Text zeichnen
         sf::Text text;
         text.setFont(*AssetManager::instance().m_Font["font"]);
         text.setCharacterSize(24);
@@ -70,10 +63,9 @@ namespace mmt_gd
         float x = (RenderManager::instance().getWindow().getView().getSize().x - text.getGlobalBounds().width) / 2;
         float y = (RenderManager::instance().getWindow().getView().getSize().y - text.getGlobalBounds().height) / 2;
         text.setPosition(x, y);
-
+        RenderManager::instance().draw();
         RenderManager::instance().getWindow().draw(text);
-
         RenderManager::instance().getWindow().display();
-    }
 
+    }
 }
