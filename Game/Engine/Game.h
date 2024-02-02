@@ -14,7 +14,7 @@ namespace mmt_gd
 		void HandleEvents();
 		void CloseGame(sf::Event::KeyEvent& e);
 
-
+		static sf::Clock m_score;
 		sf::Clock m_clock;
 		Fps m_fps;
 	};

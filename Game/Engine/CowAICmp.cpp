@@ -10,6 +10,7 @@
 #include "PlantAICmp.h"
 #include "PlantCmp.h"
 #include "GameObjectManager.h"
+#include "AssetManager.h"
 namespace mmt_gd
 {
     bool CowAICmp::init()
@@ -34,6 +35,7 @@ namespace mmt_gd
         if (movementClock.getElapsedTime().asSeconds() >= m_rand && 
             !gameObject.getComponent<SteeringCmp>()->m_astarStart)
         {
+            AssetManager::instance().m_Music["Cow"]->play();
             gameObject.getComponent<SteeringCmp>()->init();
             gameObject.getComponent<SteeringCmp>()->m_astarStart = true;
             currentState = Attack;
@@ -41,6 +43,7 @@ namespace mmt_gd
 
         if (m_despawn)
         {
+            sf::Clock despawnTimer;
             gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
             m_despawn = false;
             gameObject.getComponent<SteeringCmp>()->m_astarStart = true;
@@ -95,6 +98,7 @@ namespace mmt_gd
     }
     void CowAICmp::despawn()
     {
+
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
         steeringCmp->m_astarStart = false;
         steeringCmp->m_firstRun = false;

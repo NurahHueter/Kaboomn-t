@@ -131,6 +131,7 @@ namespace mmt_gd
         int m_idx = 0; ///< unique name of object, e.g. player
         bool        m_wantToDie = false;
         bool        m_isActive = true;
+   
         ObjectType m_type = Default;
 
         std::vector<IComponent::Ptr> m_componentList;

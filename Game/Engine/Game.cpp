@@ -21,12 +21,13 @@ namespace mmt_gd
 		AssetManager::instance().LoadMusic("Pet", "../Engine/Assets/Sounds/seHm.mp3");
 		AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
 		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
-
+		AssetManager::instance().LoadMusic("Cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
 
 		bindInput();
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
+		GameStateManager::instance().addState("EndState", std::make_shared<EndState>());
 		GameStateManager::instance().setState("MenuState");
 	}
 
@@ -53,6 +54,7 @@ namespace mmt_gd
 		}
 		else if (InputManager::instance().isKeyUp("PlayState", 1))
 		{
+			static sf::Clock m_score;
 			GameStateManager::instance().setState("PlayState");
 		}
 

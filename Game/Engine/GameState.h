@@ -28,6 +28,8 @@ namespace mmt_gd
         virtual void exit() override;
         virtual void update(float deltaTime) override;
         virtual void draw() override; 
+
+        sf::Vector2f m_textOriginalPosition;
     };
     class PlayState : public GameState
     {
@@ -37,5 +39,19 @@ namespace mmt_gd
         virtual void exit() override;
         virtual void update(float deltaTime) override;
         virtual void draw() override;
+
+        static sf::Clock scoreClock;
+    };
+
+    class EndState : public GameState
+    {
+    public:
+        MapTile mapTile;
+        virtual void init() override;
+        virtual void exit() override;
+        virtual void update(float deltaTime) override;
+        virtual void draw() override;
+    private:
+        int m_score;
     };
 }

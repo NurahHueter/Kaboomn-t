@@ -8,7 +8,7 @@ namespace mmt_gd
 	bool CameraCmp::init()
 	{
 		view.setSize(size);
-		view.zoom(.69f);
+		view.zoom(.5f);
 		return true;
 	}
 	void CameraCmp::setTarget(std::weak_ptr<GameObject> target)

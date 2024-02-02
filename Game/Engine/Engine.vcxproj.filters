@@ -159,6 +159,9 @@
     <ClCompile Include="PlantHudCmp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EndState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
