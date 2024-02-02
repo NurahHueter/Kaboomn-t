@@ -52,6 +52,6 @@ namespace mmt_gd
         virtual void update(float deltaTime) override;
         virtual void draw() override;
     private:
-        int m_score;
+        int m_score=0;
     };
 }

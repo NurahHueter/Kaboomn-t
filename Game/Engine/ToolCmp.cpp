@@ -54,7 +54,7 @@ namespace mmt_gd
         {
 
             AssetManager::instance().m_Music["Water"]->play();
-            gameObject.getComponent<WaterNotiCmp>()->looseWater();
+           
             m_usingTool = true;
             animation->setCurrentFrameIndex(0);
             animation->setCurrentAnimationTime(0);
