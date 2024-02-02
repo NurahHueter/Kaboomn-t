@@ -22,6 +22,28 @@ namespace mmt_gd
 		AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
 		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
 		AssetManager::instance().LoadMusic("Cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
+
+		if (!AssetManager::instance().m_SoundBuffer["Explosion"])
+		{
+			AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
+		}
+
+		if (!AssetManager::instance().m_SoundBuffer["axe"])
+		{
+			AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
+		}
+		if (!AssetManager::instance().m_SoundBuffer["pet"])
+		{
+			AssetManager::instance().LoadSoundBuffer("pet", "../Engine/Assets/Sounds/seHm.mp3");
+		}
+		if (!AssetManager::instance().m_SoundBuffer["water"])
+		{
+			AssetManager::instance().LoadSoundBuffer("water", "../Engine/Assets/Sounds/splash-6213.mp3");
+		}
+		if (!AssetManager::instance().m_SoundBuffer["cow"])
+		{
+			AssetManager::instance().LoadSoundBuffer("cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
+		}
 		bindInput();
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());

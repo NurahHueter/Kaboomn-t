@@ -23,7 +23,7 @@ namespace mmt_gd
 		{
 			return sprite->getTextureRect();
 		}
-	protected:
+
 		bool m_mirror = false;
 		std::weak_ptr<sf::Texture> p_texture;
 		std::shared_ptr<sf::Sprite> sprite = std::make_shared<sf::Sprite>();

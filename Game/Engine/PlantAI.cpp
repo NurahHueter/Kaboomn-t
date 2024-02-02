@@ -17,12 +17,9 @@ namespace mmt_gd
 {
 	bool PlantAICmp::init()
 	{
-		if (!AssetManager::instance().m_SoundBuffer["Explosion"])
-		{
-			AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
-		}
+		
 		m_explosionSound.setBuffer(*AssetManager::instance().m_SoundBuffer["Explosion"]);
-		m_explosionSound.setPitch(2);
+		//m_explosionSound.setPitch(2);
 		return true;
 	};
 	void PlantAICmp::update(float deltaTime)

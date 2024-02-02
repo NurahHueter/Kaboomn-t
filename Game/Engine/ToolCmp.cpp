@@ -23,7 +23,6 @@ namespace mmt_gd
         if (InputManager::instance().isMouseDown("leftclick", 1) && !m_usingTool)
         {
             m_usingTool = true;
-            AssetManager::instance().m_Music["Axe"]->play();
 
             animation->setCurrentFrameIndex(0);
             animation->setCurrentAnimationTime(0);
@@ -52,8 +51,6 @@ namespace mmt_gd
             && !m_usingTool 
             && gameObject.getComponent<WaterNotiCmp>()->m_waterAmount>0)
         {
-
-            AssetManager::instance().m_Music["Water"]->play();
            
             m_usingTool = true;
             animation->setCurrentFrameIndex(0);
