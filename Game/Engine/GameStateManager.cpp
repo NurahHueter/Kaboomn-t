@@ -45,6 +45,12 @@ namespace mmt_gd
         }
     }
 
+    std::shared_ptr<GameState> GameStateManager::getState()
+    {
+
+        return currentState;
+    }
+
     void GameStateManager::CloseGame()
     {
         currentState->exit();

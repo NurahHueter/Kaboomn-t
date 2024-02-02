@@ -113,7 +113,7 @@ namespace mmt_gd
             const auto cameraCmp = std::make_shared<CameraCmp>(*gameObject,
                 RenderManager::instance().getWindow(),
                 sf::Vector2f(RenderManager::instance().getWindow().getSize().x / 2.f,
-                    RenderManager::instance().getWindow().getSize().y / 2.f), 0.25);
+                    RenderManager::instance().getWindow().getSize().y / 2.f), 0.42);
 
             cameraCmp->setTarget(gameObject);
             gameObject->addComponent(cameraCmp);

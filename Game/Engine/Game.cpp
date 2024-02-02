@@ -13,8 +13,8 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		//RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
-		RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
+		RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
+		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
 		AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
@@ -54,7 +54,21 @@ namespace mmt_gd
 		}
 		else if (InputManager::instance().isKeyUp("PlayState", 1))
 		{
+			m_isInGame = true;
 			GameStateManager::instance().setState("PlayState");
+		}
+
+		else if (InputManager::instance().isKeyUp("EndState", 1) )
+		{
+			GameStateManager::instance().setState("EndState");
+		}
+		auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
+		if (plantObjects.size() < 12 && m_isInGame)
+		{
+			m_isInGame = false;
+			std::cout << "Verloren" << std::endl;
+			AssetManager::instance().m_Music["BackGround"]->stop();
+			GameStateManager::instance().setState("EndState");
 		}
 
 
@@ -107,6 +121,7 @@ namespace mmt_gd
 			InputManager::instance().bind("space", sf::Keyboard::Key::Space, 1);
 			InputManager::instance().bind("MenuState", sf::Keyboard::Key::Num1, 1);
 			InputManager::instance().bind("PlayState", sf::Keyboard::Key::Num2, 1);
+			InputManager::instance().bind("EndState", sf::Keyboard::Key::Num3, 1);
 	}
 }
 

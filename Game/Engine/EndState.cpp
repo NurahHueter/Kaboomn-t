@@ -39,18 +39,18 @@ namespace mmt_gd
         RenderManager::instance().getWindow().clear({ 0, 0, 0 });
         sf::Text text;
         text.setFont(*AssetManager::instance().m_Font["font"]);
-        text.setCharacterSize(12);
+        text.setCharacterSize(24);
         text.setFillColor(sf::Color::White);
        
-        std::string instructions = "The game is over!\n"
-            "You have survived for " + std::to_string(m_score) + " seconds\n\n\n"
-            "Thank you for playing";
+        std::string gameOverMessage = "Game Over!\n"
+            "Survival Time: " + std::to_string(m_score) + " seconds\n\n"
+            "Thank you for playing!\n"
+            "Feel free to try again and aim for an even longer survival time!";
         
-        text.setString(instructions);
-
-        float x = (RenderManager::instance().getWindow().getSize().x - text.getGlobalBounds().width) / 2;
-        float y = (RenderManager::instance().getWindow().getSize().y - text.getGlobalBounds().height) / 2;
-        text.setPosition(300, 400);
+        text.setString(gameOverMessage);
+        float x = (RenderManager::instance().getWindow().getView().getSize().x - text.getGlobalBounds().width) / 2;
+        float y = (RenderManager::instance().getWindow().getView().getSize().y - text.getGlobalBounds().height) / 2;
+        text.setPosition(x, y);
         RenderManager::instance().draw();
         RenderManager::instance().getWindow().draw(text);
         RenderManager::instance().getWindow().display();

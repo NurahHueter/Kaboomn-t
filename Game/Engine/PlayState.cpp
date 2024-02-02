@@ -156,7 +156,7 @@ namespace mmt_gd
             std::cout << "Verloren" << std::endl;
             AssetManager::instance().m_Music["BackGround"]->stop();
             GameStateManager::instance().setState("EndState");
-            PlayState::exit();
+           // PlayState::exit();
         }
     }
 
