@@ -4,6 +4,8 @@
 #include "GameState.h"
 #include "Assetmanager.h"
 #include "MapTile.h"
+#include "GameObject.h"
+#include "CameraCmp.h"
 
 namespace mmt_gd
 {
@@ -11,6 +13,15 @@ namespace mmt_gd
     {
         AssetManager::instance().LoadFont("font", "../Engine/Assets/Fonts/arial.ttf");
         m_score = PlayState::scoreClock.getElapsedTime().asSeconds();
+        auto goCamera = std::make_shared<GameObject>("camera");
+        auto cameraCmp = std::make_shared<CameraCmp>(*goCamera,
+            RenderManager::instance().getWindow(),
+            sf::Vector2f(RenderManager::instance().getWindow().getSize().x / 2.f,
+                RenderManager::instance().getWindow().getSize().y / 2.f), 1.25f);
+        goCamera->addComponent(cameraCmp);
+        RenderManager::instance().addLayer("hud", 1, false);
+        RenderManager::instance().addCompToLayer("hud", cameraCmp);
+        GameObjectManager::instance().addGameObject(goCamera);
     }
 
     void EndState::exit()
@@ -41,7 +52,7 @@ namespace mmt_gd
         float x = (RenderManager::instance().getWindow().getSize().x - text.getGlobalBounds().width) / 2;
         float y = (RenderManager::instance().getWindow().getSize().y - text.getGlobalBounds().height) / 2;
         text.setPosition(300, 400);
-       
+        RenderManager::instance().draw();
         RenderManager::instance().getWindow().draw(text);
         RenderManager::instance().getWindow().display();
 

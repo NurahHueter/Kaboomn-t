@@ -230,9 +230,6 @@
     <ClInclude Include="SpriteRenderCmp.h">
       <Filter>Header Files\Components\Components</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBodyCmp.h">
-      <Filter>Header Files\Components\Components</Filter>
-    </ClInclude>
     <ClInclude Include="IRenderComponent.h">
       <Filter>Header Files\Components\Components</Filter>
     </ClInclude>
@@ -285,6 +282,9 @@
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
     <ClInclude Include="IconCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBodyCmp.h">
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
   </ItemGroup>
