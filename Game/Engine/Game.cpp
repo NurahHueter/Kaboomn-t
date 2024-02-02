@@ -18,7 +18,6 @@ namespace mmt_gd
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
 		AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
-		AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
 		AssetManager::instance().LoadMusic("Pet", "../Engine/Assets/Sounds/seHm.mp3");
 		AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
 		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
@@ -47,11 +46,28 @@ namespace mmt_gd
 
 	void Game::Update(float deltaTime)
 	{
+		auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
 
-		if (InputManager::instance().isKeyUp("MenuState", 1))
+		if (plantObjects.size() < 12 && m_isInGame)
+		{
+
+			AssetManager::instance().m_Music["BackGround"]->stop();
+			GameStateManager::instance().setState("EndState");
+
+			m_time = m_time + deltaTime;
+			if (m_time > 10.f)
+			{
+				m_isInGame = false;
+				m_time = 0;
+				GameStateManager::instance().setState("MenuState");
+			}
+		}
+
+		else if (InputManager::instance().isKeyUp("MenuState", 1))
 		{
 			GameStateManager::instance().setState("MenuState");
 		}
+
 		else if (InputManager::instance().isKeyUp("PlayState", 1))
 		{
 			m_isInGame = true;
@@ -61,25 +77,6 @@ namespace mmt_gd
 		else if (InputManager::instance().isKeyUp("EndState", 1) )
 		{
 			GameStateManager::instance().setState("EndState");
-		}
-		auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
-		if (plantObjects.size() < 12 && m_isInGame)
-		{
-		
-			
-			AssetManager::instance().m_Music["BackGround"]->stop();
-			GameStateManager::instance().setState("EndState");
-			
-			m_time = m_time + deltaTime;
-			std::cout << m_time << std::endl;
-			if (m_time > 6.f)
-			{
-				m_isInGame = false;
-				m_time = 0;
-				GameStateManager::instance().setState("MenuState");
-			}
-
-		
 		}
 
 
@@ -131,7 +128,7 @@ namespace mmt_gd
 			InputManager::instance().bind("debugdraw", sf::Keyboard::Key::Num0, 1);
 			InputManager::instance().bind("space", sf::Keyboard::Key::Space, 1);
 			InputManager::instance().bind("MenuState", sf::Keyboard::Key::Num1, 1);
-			InputManager::instance().bind("PlayState", sf::Keyboard::Key::Num2, 1);
+			InputManager::instance().bind("PlayState", sf::Keyboard::Key::Enter, 1);
 			InputManager::instance().bind("EndState", sf::Keyboard::Key::Num3, 1);
 	}
 }
