@@ -41,6 +41,11 @@ namespace mmt_gd
         virtual void draw() override;
 
         static sf::Clock scoreClock;
+
+    private:
+        sf::Sound m_waterSound;
+        sf::Sound m_axeSound;
+        sf::Sound m_petSound;
     };
   
     class EndState : public GameState

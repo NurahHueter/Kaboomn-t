@@ -35,6 +35,10 @@ namespace mmt_gd
         AssetManager::instance().m_Music["BackGround"]->play();
         AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 
+        m_waterSound.setBuffer(*AssetManager::instance().m_SoundBuffer["water"]);
+        m_petSound.setBuffer(*AssetManager::instance().m_SoundBuffer["pet"]);
+        m_axeSound.setBuffer(*AssetManager::instance().m_SoundBuffer["axe"]);
+
     }
 
     void PlayState::exit()
@@ -55,11 +59,14 @@ namespace mmt_gd
         if (InputManager::instance().isKeyUp("space", 1) && 
             player->getComponent<WaterNotiCmp>()->m_waterAmount > 0)
         {
+            player->getComponent<WaterNotiCmp>()->looseWater();
+            m_waterSound.play();
             for (auto p : plantObjects)
             {
                 auto plant = p.lock();
                 if (plant)
                 {
+                    
                     float distance = std::sqrt(std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2));
                     if (distance < 32.f)
                     {
@@ -67,7 +74,6 @@ namespace mmt_gd
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {
-                            player->getComponent<WaterNotiCmp>()->looseWater();
                             plantComponent->watering();
                         }
                     }
@@ -89,7 +95,7 @@ namespace mmt_gd
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {
-                            AssetManager::instance().m_Music["Pet"]->play();
+                            m_petSound.play();
                             plantComponent->pet();
                         }
                     }
@@ -100,6 +106,7 @@ namespace mmt_gd
 
         if (InputManager::instance().isMouseDown("leftclick", 1))
         {
+            m_axeSound.play();
             for (auto c : cowObjects)
             {
                 auto cow = c.lock();
@@ -134,8 +141,8 @@ namespace mmt_gd
                 && p.second->getType() == Player
                 && InputManager::instance().isKeyUp("space",1))
             {
-              
-                AssetManager::instance().m_Music["Water"]->play();
+                m_waterSound.play();
+                //AssetManager::instance().m_Music["Water"]->play();
                 p.second->getComponent<WaterNotiCmp>()->addWater();
                
             }

@@ -148,7 +148,6 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="BoxCollision.cpp" />
     <ClCompile Include="CameraCmp.cpp" />
     <ClCompile Include="CowAICmp.cpp" />
-    <ClCompile Include="CowAiCmp.h" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -223,6 +222,7 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Trigonometry.h" />
     <ClInclude Include="VectorAlgebra2D.h" />
     <ClInclude Include="VectorAlgebra3D.h" />
+    <ClInclude Include="CowAiCmp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="VectorAlgebra2D.inl" />

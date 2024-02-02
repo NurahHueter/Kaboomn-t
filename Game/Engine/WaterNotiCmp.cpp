@@ -10,10 +10,10 @@ namespace mmt_gd
 {
 	bool WaterNotiCmp::init()
 	{ 
-		m_background.setSize(sf::Vector2f(15.f, 5.f));
-		m_background.setFillColor(sf::Color().Black);
+		m_background.setSize(sf::Vector2f(15.f, 3.f));
+		m_background.setFillColor(sf::Color(30, 30, 30, 200)); 
 		m_slider.setSize(sf::Vector2f(15.f, 2.f));
-		m_slider.setFillColor(sf::Color().Blue);
+		m_slider.setFillColor(sf::Color(0x00, 0x82, 0xfc));
 		return true;
 	};
 	void WaterNotiCmp::update(float deltaTime)
