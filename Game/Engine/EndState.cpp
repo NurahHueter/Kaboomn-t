@@ -43,7 +43,7 @@ namespace mmt_gd
         text.setFillColor(sf::Color::White);
        
         std::string gameOverMessage = "Game Over!\n"
-            "Survival Time: " + std::to_string(m_score) + " seconds\n\n"
+            "Survival Time: " + std::to_string(m_score) + " seconds!\n\n"
             "Thank you for playing!\n"
             "Feel free to try again and aim for an even longer survival time!";
         

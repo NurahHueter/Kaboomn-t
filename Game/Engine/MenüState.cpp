@@ -43,15 +43,16 @@ namespace mmt_gd
         text.setFillColor(sf::Color::White);
         
         std::string instructions =
-            "Welcome to the ______ Game!\n\n"
+            "Welcome to the Kaboomn't Game! (work in progress)\n\n"
             "Instructions:\n"
             "1. Press 'Enter' to start the game.\n"
+            "1. Press 'ESC' to close the game.\n"
             "2. Use 'E' to pet the animals.\n"
             "3. Press 'Space' to water the plants.\n"
-            "4. Left-click to hit objects.\n"
-            "5. Stand in front of the well and press 'Space' to fill up.\n\n"
+            "4. Left-click to hit objects.\n\n"
             "Remember:\n"
             "   - Keep the plants alive by watering them.\n"
+            "   - Stand in front of the well and press 'Space' to fill up.\n"
             "   - Show love to your animals by petting them.\n"
             "   - Use the well to replenish your resources.\n"
             "   - When 5 plants die, the game is over.\n"

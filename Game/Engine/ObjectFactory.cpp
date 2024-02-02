@@ -82,7 +82,7 @@ namespace mmt_gd
                 8,
                 24,
                 false,
-                8);
+                16);
             animationCmp->addAnimation({
                {IdleDown, 8},
                {IdleUp, 8},
