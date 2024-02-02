@@ -24,9 +24,10 @@ namespace mmt_gd
         {
             m_usingTool = true;
             AssetManager::instance().m_Music["Axe"]->play();
+
             animation->setCurrentFrameIndex(0);
-            //reset the current animation cycle to index 0 so it always starts at 0
             animation->setCurrentAnimationTime(0);
+
             if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
             {
                 animation->setCurrentAnimation(AxeHitDown);
@@ -51,11 +52,13 @@ namespace mmt_gd
             && !m_usingTool 
             && gameObject.getComponent<WaterNotiCmp>()->m_waterAmount>0)
         {
+
             AssetManager::instance().m_Music["Water"]->play();
             gameObject.getComponent<WaterNotiCmp>()->looseWater();
             m_usingTool = true;
             animation->setCurrentFrameIndex(0);
             animation->setCurrentAnimationTime(0);
+
             if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
             {
                 animation->setCurrentAnimation(WaterDown);

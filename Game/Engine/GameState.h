@@ -42,7 +42,7 @@ namespace mmt_gd
 
         static sf::Clock scoreClock;
     };
-
+  
     class EndState : public GameState
     {
     public:

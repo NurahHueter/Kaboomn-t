@@ -13,16 +13,16 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
-		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
+		//RenderManager::instance().getWindow().create(sf::VideoMode::getFullscreenModes()[0], "SFML Window", sf::Style::Fullscreen);
+		RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
 		AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
+		AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
 		AssetManager::instance().LoadMusic("Pet", "../Engine/Assets/Sounds/seHm.mp3");
 		AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
 		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
 		AssetManager::instance().LoadMusic("Cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
-
 		bindInput();
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
@@ -54,7 +54,6 @@ namespace mmt_gd
 		}
 		else if (InputManager::instance().isKeyUp("PlayState", 1))
 		{
-			static sf::Clock m_score;
 			GameStateManager::instance().setState("PlayState");
 		}
 

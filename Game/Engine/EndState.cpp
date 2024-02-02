@@ -36,7 +36,6 @@ namespace mmt_gd
 
     void EndState::draw()
     {
-        //
         RenderManager::instance().getWindow().clear({ 0, 0, 0 });
         sf::Text text;
         text.setFont(*AssetManager::instance().m_Font["font"]);

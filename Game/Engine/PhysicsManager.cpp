@@ -73,7 +73,6 @@ namespace mmt_gd
                     {
                         sf::Vector2f separationVector = normal * penetration;
 
-                        // When body1 == Player
                         if (body1->getGameObject().getComponent<MoveCmp>())
                         {
                             body1->getGameObject().setPosition(body1->getGameObject().getPosition() + separationVector);

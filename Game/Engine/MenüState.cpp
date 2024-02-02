@@ -47,7 +47,8 @@ namespace mmt_gd
             "E -> pet\n"
             "Space -> watering\n"
             "LeftMouse -> hit\n"
-            "Keep the Platns alive, care for the cows";
+            "Space in Front of the Well -> fill up\n\n\n"
+            "Keep the Plants alive, care for the cows";
 
         text.setString(instructions);
 
