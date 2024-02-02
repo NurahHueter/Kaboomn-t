@@ -50,23 +50,24 @@ namespace mmt_gd
         PhysicsManager::instance().update();
         auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
         auto cowObjects = GameObjectManager::instance().getObjectsByType(Cow);
-        auto& playerPosition = GameObjectManager::instance().getGameObject("Player")->getPosition();
+        auto player = GameObjectManager::instance().getGameObject("Player");
 
         if (InputManager::instance().isKeyUp("space", 1) && 
-            GameObjectManager::instance().getGameObject("Player")->getComponent<WaterNotiCmp>()->m_waterAmount > 0)
+            player->getComponent<WaterNotiCmp>()->m_waterAmount > 0)
         {
             for (auto p : plantObjects)
             {
                 auto plant = p.lock();
                 if (plant)
                 {
-                    float distance = std::sqrt(std::pow(plant->getPosition().x - playerPosition.x, 2) + std::pow(plant->getPosition().y - playerPosition.y, 2));
+                    float distance = std::sqrt(std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2));
                     if (distance < 32.f)
                     {
 
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {
+                            player->getComponent<WaterNotiCmp>()->looseWater();
                             plantComponent->watering();
                         }
                     }
@@ -82,7 +83,7 @@ namespace mmt_gd
                 auto plant = p.lock();
                 if (plant)
                 {
-                    float distance = std::sqrt(std::pow(plant->getPosition().x - playerPosition.x, 2) + std::pow(plant->getPosition().y - playerPosition.y, 2));
+                    float distance = std::sqrt(std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2));
                     if (distance < 32.f)
                     {
                         auto plantComponent = plant->getComponent<PlantCmp>();
@@ -104,8 +105,8 @@ namespace mmt_gd
                 auto cow = c.lock();
                 if (cow)
                 {
-                    float distance = std::sqrt(std::pow(cow->getPosition().x - playerPosition.x, 2) + std::pow(cow->getPosition().y - playerPosition.y, 2));
-                    if (distance < 32.f)
+                    float distance = std::pow(cow->getPosition().x - player->getPosition().x, 2) + std::pow(cow->getPosition().y - player->getPosition().y, 2);
+                    if (distance < 1024.f)
                     {
                         auto plantComponent = cow->getComponent<CowAICmp>();
                         if (plantComponent)

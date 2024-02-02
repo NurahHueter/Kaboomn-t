@@ -43,7 +43,7 @@ namespace mmt_gd
         text.setFillColor(sf::Color::White);
         
         std::string instructions =
-            "Welcome to the ______ Game!\n\n"
+            "Welcome to the Kaboomn't Game! (work in progress)\n\n"
             "Instructions:\n"
             "1. Press 'Enter' to start the game.\n"
             "1. Press 'ESC' to close the game.\n"
