@@ -5,8 +5,6 @@
 
 namespace mmt_gd
 {
-
-
 	void IconCmp::setPosition(sf::Vector2f position)
 	{
 		m_position = position - gameObject.getPosition();

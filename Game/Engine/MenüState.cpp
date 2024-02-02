@@ -45,7 +45,7 @@ namespace mmt_gd
         std::string instructions =
             "Welcome to the ______ Game!\n\n"
             "Instructions:\n"
-            "1. Press '2' to start the game.\n"
+            "1. Press 'Enter' to start the game.\n"
             "2. Use 'E' to pet the animals.\n"
             "3. Press 'Space' to water the plants.\n"
             "4. Left-click to hit objects.\n"

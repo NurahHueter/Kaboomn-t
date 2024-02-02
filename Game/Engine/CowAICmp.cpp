@@ -13,6 +13,7 @@
 #include "AssetManager.h"
 namespace mmt_gd
 {
+    static sf::Clock movementClock;
     bool CowAICmp::init()
     {
         auto spriteAnimationCmp = gameObject.getComponent<SpriteAnimationCmp>();
@@ -21,7 +22,7 @@ namespace mmt_gd
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_real_distribution<float> distribution(15.0f, 35.0f);
-
+        movementClock.restart();
         m_startPos = gameObject.getPosition();
         m_rand = distribution(gen);
         currentState = Sleep;
@@ -30,7 +31,7 @@ namespace mmt_gd
 
     void CowAICmp::update(float deltaTime)
     {
-        static sf::Clock movementClock;
+       
 
         if (movementClock.getElapsedTime().asSeconds() >= m_rand && 
             !gameObject.getComponent<SteeringCmp>()->m_astarStart)

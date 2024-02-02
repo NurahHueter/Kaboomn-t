@@ -65,10 +65,21 @@ namespace mmt_gd
 		auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
 		if (plantObjects.size() < 12 && m_isInGame)
 		{
-			m_isInGame = false;
-			std::cout << "Verloren" << std::endl;
+		
+			
 			AssetManager::instance().m_Music["BackGround"]->stop();
 			GameStateManager::instance().setState("EndState");
+			
+			m_time = m_time + deltaTime;
+			std::cout << m_time << std::endl;
+			if (m_time > 6.f)
+			{
+				m_isInGame = false;
+				m_time = 0;
+				GameStateManager::instance().setState("MenuState");
+			}
+
+		
 		}
 
 

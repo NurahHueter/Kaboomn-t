@@ -15,6 +15,7 @@ namespace mmt_gd
 		void CloseGame(sf::Event::KeyEvent& e);
 		bool m_isInGame = false;
 		static sf::Clock m_score;
+		float m_time = 0;
 		sf::Clock m_clock;
 		Fps m_fps;
 	};
