@@ -47,16 +47,14 @@ namespace mmt_gd
             gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
             m_despawn = false;
             gameObject.getComponent<SteeringCmp>()->m_astarStart = true;
-            currentState = Despawn;
-            
             movementClock.restart();
+            currentState = Despawn;
         }
 
         if (gameObject.getComponent<SteeringCmp>()->m_foundTarget)
         {
-            currentState = Eat;
-            gameObject.getComponent<SteeringCmp>()->m_foundTarget=false;
-           
+            gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
+            currentState = Eat;       
         }
 
         switch (currentState)

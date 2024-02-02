@@ -28,8 +28,8 @@ namespace mmt_gd
         {
             if (std::shared_ptr<GameObject> tempP = plant.lock())
             {
-
-                tempP->setPosition(gameObject.getPosition().x + smallRectWidth, gameObject.getPosition().y + smallRectHeight);
+                tempP->setPosition(gameObject.getPosition().x + smallRectWidth, 
+                    gameObject.getPosition().y + smallRectHeight);
             }
 
         }

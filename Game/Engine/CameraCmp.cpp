@@ -35,7 +35,6 @@ namespace mmt_gd
 				shaking = 0;
 				isShaking = false;
 			}
-				
 		}
 	}
 

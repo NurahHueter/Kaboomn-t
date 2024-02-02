@@ -4,6 +4,7 @@
 #include "GameState.h"
 #include "Assetmanager.h"
 #include "MapTile.h"
+#include "CameraCmp.h"
 
 namespace mmt_gd
 {
@@ -25,7 +26,6 @@ namespace mmt_gd
 
     void EndState::draw()
     {
-        //
         RenderManager::instance().getWindow().clear({ 0, 0, 0 });
         sf::Text text;
         text.setFont(*AssetManager::instance().m_Font["font"]);
@@ -40,7 +40,8 @@ namespace mmt_gd
 
         float x = (RenderManager::instance().getWindow().getSize().x - text.getGlobalBounds().width) / 2;
         float y = (RenderManager::instance().getWindow().getSize().y - text.getGlobalBounds().height) / 2;
-        text.setPosition(300, 400);
+        //Global
+        text.setPosition(400, 400);
        
         RenderManager::instance().getWindow().draw(text);
         RenderManager::instance().getWindow().display();

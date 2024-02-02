@@ -9,7 +9,7 @@ namespace mmt_gd
 {
     void MenuState::init()
     {
-        AssetManager::instance().LoadFont("font","../Engine/Assets/Fonts/arial.ttf");
+        AssetManager::instance().LoadFont("font","../Engine/Assets/Fonts/arial.ttf");  
     }
 
     void MenuState::exit()
@@ -36,13 +36,14 @@ namespace mmt_gd
             "E -> pet\n"
             "Space -> watering\n"
             "LeftMouse -> hit\n"
-            "Keep the Platns alive, care for the cows";
+            "Space in Front of the Well -> fill up\n\n\n"
+            "Keep the Plants alive, care for the cows";
 
         text.setString(instructions);
 
         float x = (RenderManager::instance().getWindow().getSize().x - text.getGlobalBounds().width) / 2;
         float y = (RenderManager::instance().getWindow().getSize().y - text.getGlobalBounds().height) / 2;
-        text.setPosition(200, 400);
+        text.setPosition(x, y);
 
         RenderManager::instance().getWindow().draw(text);
         RenderManager::instance().getWindow().display();

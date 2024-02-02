@@ -202,7 +202,6 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
     void ObjectFactory::loadCow(tson::Object& object, const tson::Layer& layer)
     {
         auto gameObject = std::make_shared<GameObject>(object.getName());
-      //probieren, irgendwie zu überschreiben
         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
         gameObject->setType(ObjectType::Cow);
         std::shared_ptr<sf::Texture> texture;
@@ -248,20 +247,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
                {CowIdleLoveLeft, 6},
                 });
         
-
-
-       /* const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
-            sf::FloatRect(gameObject->getPosition().x,
-                gameObject->getPosition().y,
-                object.getSize().x ,
-                object.getSize().y ),
-            false);
-        gameObject->addComponent(boxCollider);*/
-        // PhysicsManager::instance().addBoxCollisionCmp(boxCollider); 
-        
-        //gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject, sf::Vector2f(1.f, 1.f), animationCmp->getTextureRect().getSize().x/3, animationCmp->getTextureRect().getSize().y/3));
         gameObject->addComponent(std::make_shared<SteeringCmp>(*gameObject));
-       // std::cout << animationCmp->getTextureRect().getSize().x << "SIzeY" << animationCmp->getTextureRect().getSize().y << std::endl;
         gameObject->addComponent(std::make_shared<CowAICmp>(*gameObject));
         animationCmp->init();        
         
@@ -272,9 +258,6 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         PhysicsManager::instance().addBoxCollisionCmp(trigger);
        
         animationCmp->init();
-
-
-       
 
         RenderManager::instance().addCompToLayer(layer.getName(), animationCmp);
         gameObject->addComponent(animationCmp);
@@ -403,9 +386,6 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             
         }
         
-        
-        
- 
 
         gameObject->setMiddle(gameObject->getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.f, animationCmp->getTextureRect().height / 2.f));
         gameObject->setDrawPoint(gameObject->getPosition() + sf::Vector2f(0.f, animationCmp->getTextureRect().height));
@@ -422,21 +402,17 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
          const tson::Layer& layer)
      {
          auto gameObject = std::make_shared<GameObject>(object.getName());
-         gameObject->setPosition(static_cast<float>(object.getPosition().x), static_cast<float>(object.getPosition().y));
-        // gameObject->setType(ObjectType::StaticCollider);
-
+         gameObject->setPosition(static_cast<float>(object.getPosition().x),
+             static_cast<float>(object.getPosition().y));
 
          std::string id;
 
-
-
-         //Well
          if (object.getId() == 42)
              {
               const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject,
                   sf::FloatRect(gameObject->getPosition().x,
                       gameObject->getPosition().y,
-                      object.getSize().x+10,
+                      object.getSize().x,
                       object.getSize().y+10),
                   true);
 
@@ -445,10 +421,6 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
                   gameObject->setType(Trigger);
              }
          
-          
-              ////Collider
-                 //gameObject->addComponent(std::make_shared<RigidBodyCmp>(*gameObject,
-                 //    mass, sf::Vector2f(0.f, 0.f), gameObject->getPosition()));
               const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
                   sf::FloatRect(gameObject->getPosition().x,
                       gameObject->getPosition().y,
@@ -457,12 +429,6 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
                   false);
               gameObject->addComponent(boxCollider);
               PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
-          
-
-   
-      
-
-        
 
          gameObject->init();
          GameObjectManager::instance().addGameObject(gameObject);

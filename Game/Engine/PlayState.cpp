@@ -45,7 +45,7 @@ namespace mmt_gd
 
     void PlayState::update(float deltaTime)
     {
-        std::cout << scoreClock.getElapsedTime().asSeconds() << std::endl;
+
         GameObjectManager::instance().update(deltaTime);
         PhysicsManager::instance().update();
         auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
@@ -152,6 +152,7 @@ namespace mmt_gd
 
         if (plantObjects.size() < 12)
         {
+            
             std::cout << "Verloren" << std::endl;
             AssetManager::instance().m_Music["BackGround"]->stop();
             GameStateManager::instance().setState("EndState");
