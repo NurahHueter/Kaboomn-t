@@ -10,6 +10,7 @@ namespace mmt_gd
 	{
 	public:
 		PlantCmp(GameObject& gameObject)
+
 			: IComponent(gameObject) {};
 		bool init() { return true; };
 		void update(float deltaTime) override;
@@ -17,7 +18,7 @@ namespace mmt_gd
 		float getWater() const { return m_water; };
 		float getAffection() const { return m_love; };
 
-		void cowAttack(bool getingEaten) { m_getingEaten = m_getingEaten; };
+		void cowAttack(bool getingEaten) { m_getingEaten = getingEaten; };
 		void getHitfromExplosion();
 		void friendDied() { m_lonelyness += 0.5f; };
 		bool isRegenarating() const { return isRegenerating; }
@@ -31,10 +32,10 @@ namespace mmt_gd
 		float m_water = 100.f;
 		float m_love = 100.f;
 
-		float m_lonelyness = 2.f;
-		float m_dryingOut = 2.f;
+		float m_lonelyness = 1.1f;
+		float m_dryingOut = 1.1f;
 
-		float m_happy = 3.f;
+		float m_happy = 2.0f;
 		bool isRegenerating = false;
 		bool m_getingEaten = false;
 		const float M_MAXSANITY = 100.f;

@@ -10,6 +10,7 @@
 
 namespace mmt_gd
 {
+
     void EndState::init()
     {
         AssetManager::instance().LoadTexture("background", "../Engine/Assets/endbg.png");

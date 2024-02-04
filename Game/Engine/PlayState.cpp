@@ -67,8 +67,8 @@ namespace mmt_gd
                 if (plant)
                 {
                     
-                    float distance = std::sqrt(std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2));
-                    if (distance < 32.f)
+                    float distance = std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2);
+                    if (distance < 1024.f)
                     {
 
                         auto plantComponent = plant->getComponent<PlantCmp>();
@@ -89,14 +89,49 @@ namespace mmt_gd
                 auto plant = p.lock();
                 if (plant)
                 {
-                    float distance = std::sqrt(std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2));
-                    if (distance < 32.f)
+                    float distance = std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2);
+                    if (distance < 1024.f)
                     {
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {
                             m_petSound.play();
                             plantComponent->pet();
+                        }
+                    }
+                }
+            }
+        }
+
+
+        for (auto c : cowObjects)
+        {
+            auto cow = c.lock();
+            if (cow)
+            {
+                auto cowAICmp = cow->getComponent<CowAICmp>();
+                if (cowAICmp && cowAICmp->m_isEating)
+                {
+                    for (auto p : plantObjects)
+                    {
+                        auto plant = p.lock();
+
+                        if (plant)
+                        {
+                            float distance = std::pow(plant->getPosition().x - cow->getPosition().x, 2) + std::pow(plant->getPosition().y - cow->getPosition().y, 2);
+                            if (distance < 4096.f)
+                            {
+                                auto plantComponent = plant->getComponent<PlantCmp>();
+                                if (plantComponent)
+                                {
+                                    m_petSound.play();
+                                    plantComponent->cowAttack(true);
+                                }
+                                else
+                                {
+                                    plantComponent->cowAttack(false);
+                                }
+                            }
                         }
                     }
                 }
@@ -142,14 +177,10 @@ namespace mmt_gd
                 && InputManager::instance().isKeyUp("space",1))
             {
                 m_waterSound.play();
-                //AssetManager::instance().m_Music["Water"]->play();
                 p.second->getComponent<WaterNotiCmp>()->addWater();
                
             }
-            if (p.first->getType() == Cow && p.second->getType() == ObjectType::Plants)
-            {
-                p.second->getComponent<PlantCmp>()->cowAttack(true);
-            }
+           
         }
 
         if (plantObjects.size() < 12)

@@ -7,6 +7,15 @@ namespace mmt_gd
 {
 	void PlantCmp::update(float deltaTime)
 	{
+		sf::Clock getHarderClock;
+
+		if (getHarderClock.getElapsedTime().asSeconds() >= 30)
+		{
+			m_lonelyness += 0.1f;
+			m_dryingOut += 0.1f;
+			getHarderClock.restart();
+		}
+
 		m_love -= m_lonelyness * deltaTime;
 		m_water -= m_dryingOut * deltaTime;
 
@@ -34,7 +43,7 @@ namespace mmt_gd
 
 		if (m_getingEaten)
 		{
-			m_sanity -= 5.f * deltaTime ;
+			m_sanity -= 3.f * deltaTime ;
 		}
 		m_getingEaten = false;
 

@@ -13,6 +13,7 @@
 #include "AssetManager.h"
 namespace mmt_gd
 {
+    bool CowAICmp::m_isEating = false;
     static sf::Clock movementClock;
     bool CowAICmp::init()
     {
@@ -79,6 +80,7 @@ namespace mmt_gd
 
     void CowAICmp::attack()
     {
+        m_isEating = false;
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
         steeringCmp->m_astarStart = true;
         steeringCmp->m_firstRun = true;
@@ -87,17 +89,19 @@ namespace mmt_gd
 
     void CowAICmp::sleep()
     {
+        m_isEating = false;
         gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleSleepLeft);
         gameObject.getComponent<SteeringCmp>()->m_foundTarget = false;
     }
     void CowAICmp::eat()
     {
         gameObject.getComponent<SpriteAnimationCmp>()->setCurrentAnimation(CowIdleChewRight);
+        m_isEating = true;
 
     }
     void CowAICmp::despawn()
     {
-
+        m_isEating = false;
         auto steeringCmp = gameObject.getComponent<SteeringCmp>();
         steeringCmp->m_astarStart = false;
         steeringCmp->m_firstRun = false;
