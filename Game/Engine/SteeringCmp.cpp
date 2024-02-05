@@ -29,7 +29,9 @@ namespace mmt_gd
             int m_rand = distribution(gen);
             sf::Vector2f plantPosition = plantObject[m_rand].lock()->getPosition();
 
-           
+            std::cout << plantPosition.x << " " << plantPosition.y << std::endl;
+            std::cout << " Rand:" << m_rand << std::endl;
+            std::cout << " Size:" << plantObject.size() << std::endl;
             Node start(idxh_player + 1, idxw_player + 1, 0, 0);
             int plantPositionxint = static_cast<int>(plantPosition.x) / 16;
             int plantPositionyint = static_cast<int>(plantPosition.y) / 16;

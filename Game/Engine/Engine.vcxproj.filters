@@ -153,17 +153,14 @@
     <ClCompile Include="CowAICmp.cpp">
       <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
-    <ClCompile Include="CowAiCmp.h">
-      <Filter>Header Files\Components\CustomComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="PlantHudCmp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IconCmp.cpp">
       <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
     <ClCompile Include="EndState.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="PlantHudCmp.cpp">
+      <Filter>Source Files\Components\CustomComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,9 +181,6 @@
     </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>Header Files\Manager\GameStateManager</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraCmp.h">
-      <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="tileson.hpp">
       <Filter>Header Files</Filter>
@@ -285,6 +279,12 @@
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
     <ClInclude Include="RigidBodyCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraCmp.h">
+      <Filter>Header Files\Components\CustomComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="CowAiCmp.h">
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
   </ItemGroup>

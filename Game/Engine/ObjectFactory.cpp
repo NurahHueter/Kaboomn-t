@@ -407,19 +407,22 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
 
          std::string id;
 
-         if (object.getId() == 42)
+         if (object.getId() == 92)
              {
+             
               const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject,
                   sf::FloatRect(gameObject->getPosition().x,
                       gameObject->getPosition().y,
                       object.getSize().x,
-                      object.getSize().y+10),
+                      object.getSize().y),
                   true);
 
                   gameObject->addComponent(trigger);
                   PhysicsManager::instance().addBoxCollisionCmp(trigger);
                   gameObject->setType(Trigger);
              }
+         else {
+
          
               const auto& boxCollider = std::make_shared<BoxCollisionCmp>(*gameObject,
                   sf::FloatRect(gameObject->getPosition().x,
@@ -429,7 +432,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
                   false);
               gameObject->addComponent(boxCollider);
               PhysicsManager::instance().addBoxCollisionCmp(boxCollider);
-
+         }
          gameObject->init();
          GameObjectManager::instance().addGameObject(gameObject);
      }

@@ -46,6 +46,8 @@ namespace mmt_gd
         sf::Sound m_waterSound;
         sf::Sound m_axeSound;
         sf::Sound m_petSound;
+
+        bool m_spaceKeyPressedPreviously = false;
     };
   
     class EndState : public GameState

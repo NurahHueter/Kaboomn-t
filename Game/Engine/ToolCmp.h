@@ -12,5 +12,6 @@ namespace mmt_gd
 		void update(float deltaTime) override;
 		static bool m_usingTool;
 		int m_waterAmount = 5;
+		bool m_spaceKeyPressedPreviouslyTool = false;
 	};
 }
