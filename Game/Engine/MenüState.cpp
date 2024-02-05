@@ -12,6 +12,8 @@ namespace mmt_gd
 {
     void MenuState::init()
     {
+
+
         AssetManager::instance().LoadFont("font","../Engine/Assets/Fonts/arial.ttf");
         AssetManager::instance().LoadTexture("startScreen", "../Engine/Assets/Startscreen2.png");
         AssetManager::instance().LoadTexture("exitButtonB", "../Engine/Assets/Exit.png");
@@ -63,6 +65,9 @@ namespace mmt_gd
     void MenuState::update(float deltaTime)
     {
         GameObjectManager::instance().update(deltaTime);
+        //sf::View view = RenderManager::instance().getWindow().getDefaultView();
+        //RenderManager::instance().getWindow().setView(view);
+
     }
 
     void MenuState::draw()

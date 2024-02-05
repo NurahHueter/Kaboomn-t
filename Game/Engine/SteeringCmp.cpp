@@ -92,15 +92,29 @@ namespace mmt_gd
 
         const float epsilon = 0.001;
 
-        if (direction.x > epsilon) {
-            if (spriteAnimationCmp->getCurrentAnimation() != CowRunRight) {
-                spriteAnimationCmp->setCurrentAnimation(CowRunRight);
+        if (std::abs(direction.x) > epsilon || std::abs(direction.y) > epsilon) {
+            // Check the larger component (x or y) to determine the dominant direction
+            if (std::abs(direction.x) >= std::abs(direction.y)) {
+                if (direction.x > epsilon) {
+                    if (spriteAnimationCmp->getCurrentAnimation() != CowRunRight) {
+                        spriteAnimationCmp->setCurrentAnimation(CowRunRight);
+                    }
+                }
+                else if (direction.x < -epsilon) {
+                    if (spriteAnimationCmp->getCurrentAnimation() != CowRunLeft) {
+                        spriteAnimationCmp->setCurrentAnimation(CowRunLeft);
+                    }
+                }
             }
-        }
-        else if (direction.x < -epsilon) {
-            if (spriteAnimationCmp->getCurrentAnimation() != CowRunLeft) {
-                spriteAnimationCmp->setCurrentAnimation(CowRunLeft);
-            }
+            //else {
+            // 
+            //    if (direction.y > epsilon) {
+            //        
+            //    }
+            //    else if (direction.y < -epsilon) {
+            //        // Set animation for moving up
+            //    }
+            //}
         }
 
         gameObject.setPosition(newPosition);

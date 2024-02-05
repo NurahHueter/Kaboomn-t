@@ -17,7 +17,8 @@ namespace mmt_gd
 
         auto goBg = std::make_shared<GameObject>("background");
 
-        auto spriteCmp = std::make_shared<SpriteRenderCmp>(*goBg, RenderManager::instance().getWindow(), AssetManager::instance().m_Textures["background"]);
+        auto spriteCmp = std::make_shared<SpriteRenderCmp>(*goBg, RenderManager::instance().getWindow(),
+            AssetManager::instance().m_Textures["background"]);
 
         AssetManager::instance().LoadFont("font", "../Engine/Assets/Fonts/arial.ttf");
         m_score = PlayState::scoreClock.getElapsedTime().asSeconds();
@@ -45,6 +46,8 @@ namespace mmt_gd
     void EndState::update(float deltaTime)
     {
         GameObjectManager::instance().update(deltaTime);
+        sf::View view = RenderManager::instance().getWindow().getDefaultView();
+        RenderManager::instance().getWindow().setView(view);
     }
 
     void EndState::draw()
