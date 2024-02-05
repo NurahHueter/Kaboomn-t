@@ -47,7 +47,7 @@ namespace mmt_gd
 
 
         //WATER
-         if (InputManager::instance().isKeyPressed("space", 1) &&
+        else if (InputManager::instance().isKeyPressed("space", 1) &&
             !m_usingTool &&
             gameObject.getComponent<WaterNotiCmp>()->m_waterAmount > 0 && !m_spaceKeyPressedPreviouslyTool)
         {

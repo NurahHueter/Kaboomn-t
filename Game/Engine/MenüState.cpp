@@ -11,6 +11,8 @@ namespace mmt_gd
 {
     void MenuState::init()
     {
+
+
         AssetManager::instance().LoadFont("font","../Engine/Assets/Fonts/arial.ttf");
         auto goCamera = std::make_shared<GameObject>("camera");
         auto cameraCmp = std::make_shared<CameraCmp>(*goCamera,
@@ -31,6 +33,9 @@ namespace mmt_gd
     void MenuState::update(float deltaTime)
     {
         GameObjectManager::instance().update(deltaTime);
+        //sf::View view = RenderManager::instance().getWindow().getDefaultView();
+        //RenderManager::instance().getWindow().setView(view);
+
     }
 
     void MenuState::draw()
@@ -64,8 +69,9 @@ namespace mmt_gd
         float x = (RenderManager::instance().getWindow().getView().getSize().x - text.getGlobalBounds().width) / 2;
         float y = (RenderManager::instance().getWindow().getView().getSize().y - text.getGlobalBounds().height) / 2;
         text.setPosition(x, y);
-        RenderManager::instance().draw();
         RenderManager::instance().getWindow().draw(text);
+        RenderManager::instance().draw();
+     
         RenderManager::instance().getWindow().display();
 
     }
