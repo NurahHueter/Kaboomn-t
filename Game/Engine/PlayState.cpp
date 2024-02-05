@@ -56,30 +56,39 @@ namespace mmt_gd
         auto cowObjects = GameObjectManager::instance().getObjectsByType(Cow);
         auto player = GameObjectManager::instance().getGameObject("Player");
 
-        if (InputManager::instance().isKeyUp("space", 1) && 
-            player->getComponent<WaterNotiCmp>()->m_waterAmount > 0)
-        {
-            player->getComponent<WaterNotiCmp>()->looseWater();
-            m_waterSound.play();
-            for (auto p : plantObjects)
-            {
-                auto plant = p.lock();
-                if (plant)
-                {
-                    
-                    float distance = std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2);
-                    if (distance < 1024.f)
-                    {
 
-                        auto plantComponent = plant->getComponent<PlantCmp>();
-                        if (plantComponent)
+        if (InputManager::instance().isKeyPressed("space",1))
+        {
+            if (!m_spaceKeyPressedPreviously && player->getComponent<WaterNotiCmp>()->m_waterAmount > 0)
+            {
+                player->getComponent<WaterNotiCmp>()->looseWater();
+                m_waterSound.play();
+
+                for (auto p : plantObjects)
+                {
+                    auto plant = p.lock();
+                    if (plant)
+                    {
+                        float distance = std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2);
+                        if (distance < 1024.f)
                         {
-                            plantComponent->watering();
+                            auto plantComponent = plant->getComponent<PlantCmp>();
+                            if (plantComponent)
+                            {
+                                plantComponent->watering();
+                            }
                         }
                     }
                 }
             }
+
+           m_spaceKeyPressedPreviously = true;
         }
+        else
+        {
+            m_spaceKeyPressedPreviously = false;
+        }
+
 
 
         if (InputManager::instance().isKeyUp("pet", 1))

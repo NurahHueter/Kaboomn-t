@@ -47,31 +47,38 @@ namespace mmt_gd
 
 
         //WATER
-        else if (InputManager::instance().isKeyPressed("space", 1) 
-            && !m_usingTool 
-            && gameObject.getComponent<WaterNotiCmp>()->m_waterAmount>0)
+         if (InputManager::instance().isKeyPressed("space", 1) &&
+            !m_usingTool &&
+            gameObject.getComponent<WaterNotiCmp>()->m_waterAmount > 0 && !m_spaceKeyPressedPreviouslyTool)
         {
-           
-            m_usingTool = true;
-            animation->setCurrentFrameIndex(0);
-            animation->setCurrentAnimationTime(0);
+            
+                m_usingTool = true;
+                animation->setCurrentFrameIndex(0);
+                animation->setCurrentAnimationTime(0);
 
-            if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
-            {
-                animation->setCurrentAnimation(WaterDown);
-            }
-            else if (animation->getCurrentAnimation() == IdleUp || animation->getCurrentAnimation() == MoveUp)
-            {
-                animation->setCurrentAnimation(WaterUp);
-            }
-            else if (animation->getCurrentAnimation() == IdleLeft || animation->getCurrentAnimation() == MoveLeft)
-            {
-                animation->setCurrentAnimation(WaterLeft);
-            }
-            else if (animation->getCurrentAnimation() == IdleRight || animation->getCurrentAnimation() == MoveRight)
-            {
-                animation->setCurrentAnimation(WaterRight);
-            }
+                if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
+                {
+                    animation->setCurrentAnimation(WaterDown);
+                }
+                else if (animation->getCurrentAnimation() == IdleUp || animation->getCurrentAnimation() == MoveUp)
+                {
+                    animation->setCurrentAnimation(WaterUp);
+                }
+                else if (animation->getCurrentAnimation() == IdleLeft || animation->getCurrentAnimation() == MoveLeft)
+                {
+                    animation->setCurrentAnimation(WaterLeft);
+                }
+                else if (animation->getCurrentAnimation() == IdleRight || animation->getCurrentAnimation() == MoveRight)
+                {
+                    animation->setCurrentAnimation(WaterRight);
+                }
+            
+
+            m_spaceKeyPressedPreviouslyTool = true;
+        }
+        else
+        {
+            m_spaceKeyPressedPreviouslyTool = false;
         }
 
 
