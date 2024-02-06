@@ -27,6 +27,7 @@ namespace mmt_gd
 
         m_startPos = gameObject.getPosition();
         currentState = Sleep;
+        m_cowSound.setBuffer(*AssetManager::instance().m_SoundBuffer["cow"]);
         return true;
     }
 
@@ -37,7 +38,7 @@ namespace mmt_gd
         if (movementClock.getElapsedTime().asSeconds() >= m_rand && 
             !steeringCmp->m_astarStart)
         {
-            AssetManager::instance().m_Music["Cow"]->play();
+            m_cowSound.play();
             steeringCmp->init();
             steeringCmp->m_astarStart = true;
             currentState = Attack;

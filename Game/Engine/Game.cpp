@@ -13,8 +13,8 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		//RenderManager::instance().getWindow().create({ 1920, 1080 }, "SFML Window", sf::Style::Fullscreen);
-		RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
+		RenderManager::instance().getWindow().create({ 1920, 1080 }, "SFML Window");
+		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
 		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
