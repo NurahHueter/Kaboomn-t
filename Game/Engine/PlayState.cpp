@@ -71,7 +71,7 @@ namespace mmt_gd
                     if (plant)
                     {
                         float distance = std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2);
-                        if (distance < 1024.f)
+                        if (distance < m_radiusSquared)
                         {
                             auto plantComponent = plant->getComponent<PlantCmp>();
                             if (plantComponent)
@@ -92,7 +92,7 @@ namespace mmt_gd
 
 
 
-        if (InputManager::instance().isKeyUp("pet", 1))
+        if (InputManager::instance().isKeyPressed("pet", 1))
         {
             for (auto p : plantObjects)
             {
@@ -100,7 +100,7 @@ namespace mmt_gd
                 if (plant)
                 {
                     float distance = std::pow(plant->getPosition().x - player->getPosition().x, 2) + std::pow(plant->getPosition().y - player->getPosition().y, 2);
-                    if (distance < 1024.f)
+                    if (distance < m_radiusSquared)
                     {
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
@@ -129,7 +129,7 @@ namespace mmt_gd
                         if (plant)
                         {
                             float distance = std::pow(plant->getPosition().x - cow->getPosition().x, 2) + std::pow(plant->getPosition().y - cow->getPosition().y, 2);
-                            if (distance < 4096.f)
+                            if (distance < m_radiusSquared*4)
                             {
                                 auto plantComponent = plant->getComponent<PlantCmp>();
                                 if (plantComponent)
@@ -149,7 +149,7 @@ namespace mmt_gd
         }
 
 
-        if (InputManager::instance().isMouseDown("leftclick", 1))
+        if (InputManager::instance().isMousePressed("leftclick", 1))
         {
             m_axeSound.play();
             for (auto c : cowObjects)
@@ -158,7 +158,7 @@ namespace mmt_gd
                 if (cow)
                 {
                     float distance = std::pow(cow->getPosition().x - player->getPosition().x, 2) + std::pow(cow->getPosition().y - player->getPosition().y, 2);
-                    if (distance < 1024.f)
+                    if (distance < m_radiusSquared)
                     {
                         auto plantComponent = cow->getComponent<CowAICmp>();
                         if (plantComponent)
@@ -184,7 +184,7 @@ namespace mmt_gd
             }
             if (p.first->getType() == ObjectType::Trigger 
                 && p.second->getType() == Player
-                && InputManager::instance().isKeyUp("space",1))
+                && InputManager::instance().isKeyPressed("space",1))
             {
                 m_waterSound.play();
                 p.second->getComponent<WaterNotiCmp>()->addWater();

@@ -46,7 +46,7 @@ namespace mmt_gd
         sf::Sound m_waterSound;
         sf::Sound m_axeSound;
         sf::Sound m_petSound;
-
+        float m_radiusSquared = 1024.f;
         bool m_spaceKeyPressedPreviously = false;
     };
   
