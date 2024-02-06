@@ -73,7 +73,7 @@ namespace mmt_gd
 		if (plantObjects.size() < 12 && m_isInGame)
 		{
 
-			AssetManager::instance().m_Music["BackGround"]->stop();
+			
 			GameStateManager::instance().setState("EndState");
 
 			m_time = m_time + deltaTime;
@@ -101,10 +101,9 @@ namespace mmt_gd
 			GameStateManager::instance().setState("EndState");
 		}
 
-
-		GameStateManager::instance().update(deltaTime);
 		InputManager::instance().update();
-
+		GameStateManager::instance().update(deltaTime);
+	
 		std::ostringstream ss;
 		m_fps.update();
 		ss << " | FPS: " << m_fps.getFps();
@@ -117,14 +116,17 @@ namespace mmt_gd
 		sf::Event event;
 		while (RenderManager::instance().getWindow().pollEvent(event))
 		{
+
 			if (event.type == sf::Event::Closed)
 			{
 				GameStateManager::instance().CloseGame();
 				RenderManager::instance().getWindow().close();
+				Game::~Game();
 			}
 
 			InputManager::instance().handleEvents(event);
 			CloseGame(event.key);
+
 		}
 	};
 
@@ -133,6 +135,10 @@ namespace mmt_gd
 		if (e.code == sf::Keyboard::Key::Escape)
 		{
 			GameStateManager::instance().CloseGame();
+		}
+
+		if (GameStateManager::instance().getCloseEvent())
+		{
 			RenderManager::instance().getWindow().close();
 			Game::~Game();
 		}

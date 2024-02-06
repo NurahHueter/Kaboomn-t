@@ -43,6 +43,7 @@ namespace mmt_gd
 
     void PlayState::exit()
     {
+        AssetManager::instance().m_Music["BackGround"]->stop();
         GameObjectManager::instance().shutdown();
         RenderManager::instance().shutdown();
     }

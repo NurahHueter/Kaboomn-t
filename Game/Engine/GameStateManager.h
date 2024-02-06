@@ -25,9 +25,11 @@ namespace mmt_gd
         void setState(std::string stateName);
         std::shared_ptr<GameState> getState();
         void CloseGame();
+        bool getCloseEvent() { return closeGame; }
 
     private:
         ~GameStateManager() {}
+        bool closeGame = false;
         std::map<std::string, std::shared_ptr<GameState>> states;
         std::shared_ptr<GameState> currentState;
     };

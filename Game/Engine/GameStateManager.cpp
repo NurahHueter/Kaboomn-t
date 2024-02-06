@@ -55,5 +55,6 @@ namespace mmt_gd
     {
         currentState->exit();
         states.clear();
+        closeGame = true;
     }
 }
