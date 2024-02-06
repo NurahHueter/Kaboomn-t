@@ -32,8 +32,7 @@ namespace mmt_gd
 
         GameObjectManager::instance().addGameObject(mapGo);
 
-        AssetManager::instance().m_Music["BackGround"]->play();
-        AssetManager::instance().m_Music["BackGround"]->setLoop(true);
+ 
 
         m_waterSound.setBuffer(*AssetManager::instance().m_SoundBuffer["water"]);
         m_petSound.setBuffer(*AssetManager::instance().m_SoundBuffer["pet"]);
@@ -82,7 +81,7 @@ namespace mmt_gd
                     }
                 }
             }
-
+         
            m_spaceKeyPressedPreviously = true;
         }
         else
@@ -92,7 +91,7 @@ namespace mmt_gd
 
 
 
-        if (InputManager::instance().isKeyPressed("pet", 1))
+       if (InputManager::instance().isKeyPressed("pet", 1))
         {
             for (auto p : plantObjects)
             {
@@ -112,7 +111,31 @@ namespace mmt_gd
                 }
             }
         }
-
+       else if (InputManager::instance().isMousePressed("leftclick", 1) && !m_leftclickPressedPreviouslyTool)
+       {
+           m_leftclickPressedPreviouslyTool = true;
+           m_axeSound.play();
+           for (auto c : cowObjects)
+           {
+               auto cow = c.lock();
+               if (cow)
+               {
+                   float distance = std::pow(cow->getPosition().x - player->getPosition().x, 2) + std::pow(cow->getPosition().y - player->getPosition().y, 2);
+                   if (distance < m_radiusSquared)
+                   {
+                       auto plantComponent = cow->getComponent<CowAICmp>();
+                       if (plantComponent)
+                       {
+                           plantComponent->m_despawn = true;
+                       }
+                   }
+               }
+           }
+       }
+       else if (!InputManager::instance().isMousePressed("leftclick", 1))
+       {
+           m_leftclickPressedPreviouslyTool = false;
+       }
 
         for (auto c : cowObjects)
         {
@@ -149,26 +172,7 @@ namespace mmt_gd
         }
 
 
-        if (InputManager::instance().isMousePressed("leftclick", 1))
-        {
-            m_axeSound.play();
-            for (auto c : cowObjects)
-            {
-                auto cow = c.lock();
-                if (cow)
-                {
-                    float distance = std::pow(cow->getPosition().x - player->getPosition().x, 2) + std::pow(cow->getPosition().y - player->getPosition().y, 2);
-                    if (distance < m_radiusSquared)
-                    {
-                        auto plantComponent = cow->getComponent<CowAICmp>();
-                        if (plantComponent)
-                        {
-                            plantComponent->m_despawn = true;
-                        }
-                    }
-                }
-            }
-        }
+        
 
 
         const auto coll_pairs = PhysicsManager::instance().getCollisionPairs();

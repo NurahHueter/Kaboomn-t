@@ -63,10 +63,11 @@ namespace mmt_gd
 
     void MenuState::update(float deltaTime)
     {
-        GameObjectManager::instance().update(deltaTime);
+       
         if (GameObjectManager::instance().getGameObject("ExitButton"))
         {
             auto exitButton = GameObjectManager::instance().getGameObject("ExitButton")->getComponent<SpriteRenderCmp>()->sprite->getGlobalBounds();
+            
             if (exitButton.contains(InputManager::instance().getMousPosition()) &&
                 InputManager::instance().isMousePressed("leftclick", 1))
             {
@@ -86,7 +87,7 @@ namespace mmt_gd
         }
 
         
-       
+        GameObjectManager::instance().update(deltaTime);
 
     }
 

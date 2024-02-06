@@ -20,34 +20,41 @@ namespace mmt_gd
 
 
         //AXE
-        if (InputManager::instance().isMousePressed("leftclick", 1) && !m_usingTool)
+        if (InputManager::instance().isMousePressed("leftclick", 1)  && !m_leftclickPressedPreviouslyTool &&!m_usingTool)
         {
-            m_usingTool = true;
+  
+            
+                m_usingTool = true;
 
-            animation->setCurrentFrameIndex(0);
-            animation->setCurrentAnimationTime(0);
+                animation->setCurrentFrameIndex(0);
+                animation->setCurrentAnimationTime(0);
 
-            if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
-            {
-                animation->setCurrentAnimation(AxeHitDown);
-            }
-            else if (animation->getCurrentAnimation() == IdleUp || animation->getCurrentAnimation() == MoveUp)
-            {
-                animation->setCurrentAnimation(AxeHitUp);
-            }
-            else if (animation->getCurrentAnimation() == IdleLeft || animation->getCurrentAnimation() == MoveLeft)
-            {
-                animation->setCurrentAnimation(AxeHitLeft);
-            }
-            else if (animation->getCurrentAnimation() == IdleRight || animation->getCurrentAnimation() == MoveRight)
-            {
-                animation->setCurrentAnimation(AxeHitRight);
-            }  
+                if (animation->getCurrentAnimation() == IdleDown || animation->getCurrentAnimation() == MoveDown)
+                {
+                    animation->setCurrentAnimation(AxeHitDown);
+                }
+                else if (animation->getCurrentAnimation() == IdleUp || animation->getCurrentAnimation() == MoveUp)
+                {
+                    animation->setCurrentAnimation(AxeHitUp);
+                }
+                else if (animation->getCurrentAnimation() == IdleLeft || animation->getCurrentAnimation() == MoveLeft)
+                {
+                    animation->setCurrentAnimation(AxeHitLeft);
+                }
+                else if (animation->getCurrentAnimation() == IdleRight || animation->getCurrentAnimation() == MoveRight)
+                {
+                    animation->setCurrentAnimation(AxeHitRight);
+                }
+                m_leftclickPressedPreviouslyTool = true;
+        }
+        else if (!InputManager::instance().isMousePressed("leftclick", 1))
+        {
+            m_leftclickPressedPreviouslyTool = false;
         }
 
 
         //WATER
-        else if (InputManager::instance().isKeyPressed("space", 1) &&
+        if (InputManager::instance().isKeyPressed("space", 1) &&
             !m_usingTool &&
             gameObject.getComponent<WaterNotiCmp>()->m_waterAmount > 0 && !m_spaceKeyPressedPreviouslyTool)
         {
@@ -76,7 +83,7 @@ namespace mmt_gd
 
             m_spaceKeyPressedPreviouslyTool = true;
         }
-        else
+        else if (!InputManager::instance().isKeyPressed("space", 1))
         {
             m_spaceKeyPressedPreviouslyTool = false;
         }

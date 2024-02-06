@@ -13,5 +13,6 @@ namespace mmt_gd
 		static bool m_usingTool;
 		int m_waterAmount = 5;
 		bool m_spaceKeyPressedPreviouslyTool = false;
+		bool m_leftclickPressedPreviouslyTool = false;
 	};
 }

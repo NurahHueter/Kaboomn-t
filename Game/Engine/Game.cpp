@@ -50,6 +50,8 @@ namespace mmt_gd
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
 		GameStateManager::instance().addState("EndState", std::make_shared<EndState>());
 		GameStateManager::instance().setState("MenuState");
+		AssetManager::instance().m_Music["BackGround"]->play();
+		AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 	}
 
 	void Game::Run()

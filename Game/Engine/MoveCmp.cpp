@@ -43,21 +43,26 @@ namespace mmt_gd
                 velocity.x = m_velocity;
                 animation->setCurrentAnimation(MoveRight);
             }
-            else if (InputManager::instance().isKeyUp("up", gameObject.getPlayerIdx()))
+
+            else if (!InputManager::instance().isKeyPressed("right", gameObject.getPlayerIdx()) &&
+                animation->getCurrentAnimation()==MoveRight)
             {
-                animation->setCurrentAnimation(IdleUp);
+                animation->setCurrentAnimation(IdleRight);
             }
-            else if (InputManager::instance().isKeyUp("down", gameObject.getPlayerIdx()))
-            {
-                animation->setCurrentAnimation(IdleDown);
-            }
-            else if (InputManager::instance().isKeyUp("left", gameObject.getPlayerIdx()))
+            else if (!InputManager::instance().isKeyPressed("left", gameObject.getPlayerIdx()) &&
+                animation->getCurrentAnimation() == MoveLeft)
             {
                 animation->setCurrentAnimation(IdleLeft);
             }
-            else if (InputManager::instance().isKeyUp("right", gameObject.getPlayerIdx()))
+            else if (!InputManager::instance().isKeyPressed("up", gameObject.getPlayerIdx()) &&
+                animation->getCurrentAnimation() == MoveUp)
             {
-                animation->setCurrentAnimation(IdleRight);
+                animation->setCurrentAnimation(IdleUp);
+            }
+            else if (!InputManager::instance().isKeyPressed("down", gameObject.getPlayerIdx()) &&
+                animation->getCurrentAnimation() == MoveDown)
+            {
+                animation->setCurrentAnimation(IdleDown);
             }
         }
         
