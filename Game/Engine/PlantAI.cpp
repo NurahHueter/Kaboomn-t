@@ -19,7 +19,6 @@ namespace mmt_gd
 	{
 		
 		m_explosionSound.setBuffer(*AssetManager::instance().m_SoundBuffer["Explosion"]);
-		//m_explosionSound.setPitch(2);
 		return true;
 	};
 	void PlantAICmp::update(float deltaTime)

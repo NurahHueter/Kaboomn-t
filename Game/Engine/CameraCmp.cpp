@@ -50,7 +50,7 @@ namespace mmt_gd
 
 	void CameraCmp::zoom(float& zoom)
 	{
-		view.rotate(zoom);
+		view.zoom(zoom);
 	};
 
 	void CameraCmp::setSize(sf::Vector2f& size)

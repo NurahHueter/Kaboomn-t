@@ -17,25 +17,26 @@ namespace mmt_gd
 {
     bool SteeringCmp::init()
     {
-        int idxw_player = static_cast<int>(gameObject.getPosition().x) / 16;
-        int idxh_player = static_cast<int>(gameObject.getPosition().y) / 16;
+        int indexCorrection = 1;
+        int idxw_player = static_cast<int>(gameObject.getPosition().x) / m_tileSize;
+        int idxh_player = static_cast<int>(gameObject.getPosition().y) / m_tileSize;
 
         auto plantObject = GameObjectManager::instance().getObjectsByType(Plants);
         std::random_device rd;
         std::mt19937 gen(rd());
         if (plantObject.size() != 0)
         {
-            std::uniform_int_distribution<int> distribution(0, plantObject.size() - 1);
+            std::uniform_int_distribution<int> distribution(0, plantObject.size() - indexCorrection);
             int m_rand = distribution(gen);
             sf::Vector2f plantPosition = plantObject[m_rand].lock()->getPosition();
 
             std::cout << plantPosition.x << " " << plantPosition.y << std::endl;
-            std::cout << " Rand:" << m_rand << std::endl;
+            std::cout << " Rand:" << rand << std::endl;
             std::cout << " Size:" << plantObject.size() << std::endl;
-            Node start(idxh_player + 1, idxw_player + 1, 0, 0);
-            int plantPositionxint = static_cast<int>(plantPosition.x) / 16;
-            int plantPositionyint = static_cast<int>(plantPosition.y) / 16;
-            Node goal(plantPositionyint + 1, plantPositionxint + 1, 0, 0);
+            Node start(idxh_player + indexCorrection, idxw_player + indexCorrection, 0, 0);
+            int plantPositionxint = static_cast<int>(plantPosition.x) / m_tileSize;
+            int plantPositionyint = static_cast<int>(plantPosition.y) / m_tileSize;
+            Node goal(plantPositionyint + indexCorrection, plantPositionxint + indexCorrection, 0, 0);
 
             m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
         }
@@ -72,7 +73,7 @@ namespace mmt_gd
     {
         float speed = 50.0f;
         sf::Vector2f currentPosition = gameObject.getPosition();
-        sf::Vector2f nextWaypoint = sf::Vector2f(m_pathlist.back().second * 16, m_pathlist.back().first * 16);
+        sf::Vector2f nextWaypoint = sf::Vector2f(m_pathlist.back().second * m_tileSize, m_pathlist.back().first * m_tileSize);
 
         sf::Vector2f direction = (nextWaypoint - currentPosition);
         direction /= MathUtil::length(direction);

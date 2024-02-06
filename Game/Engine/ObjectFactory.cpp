@@ -405,11 +405,8 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
          gameObject->setPosition(static_cast<float>(object.getPosition().x),
              static_cast<float>(object.getPosition().y));
 
-         std::string id;
-
-         if (object.getId() == 92)
+         if (object.getName() == "Trigger")
              {
-             
               const auto& trigger = std::make_shared<BoxCollisionCmp>(*gameObject,
                   sf::FloatRect(gameObject->getPosition().x,
                       gameObject->getPosition().y,

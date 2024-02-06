@@ -24,11 +24,11 @@ namespace mmt_gd
 		const int numCols = 60;
 
 		//ground
-		auto& layerGround = map->getLayers()[1].getData();
-
+		//auto& layerGround = map->getLayers()[1].getData();
+		auto& layerGround = map->getLayer("Ground")->getData();
 		//collider
-		auto& layerCollider1 = map->getLayers()[5].getData();
-		auto& layerCollider2 = map->getLayers()[6].getData();
+		auto& layerCollider1 = map->getLayer("Cows")->getData();;
+		auto& layerCollider2 = map->getLayer("Collider")->getData();;
 
 		m_LayerKachel.reserve(numRows);
 

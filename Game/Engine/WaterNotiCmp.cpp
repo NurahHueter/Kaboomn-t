@@ -21,8 +21,8 @@ namespace mmt_gd
 		float sliderWidth = (float)m_waterAmount / m_maxwaterAmount * m_background.getSize().x;
 		m_slider.setSize(sf::Vector2f(sliderWidth, m_slider.getSize().y)); 
 
-		m_background.setPosition(gameObject.getPosition().x+8.f, gameObject.getPosition().y+8.f);
-		m_slider.setPosition(gameObject.getPosition().x+8.f, gameObject.getPosition().y+8.f );
+		m_background.setPosition(gameObject.getPosition().x+ m_offset, gameObject.getPosition().y+ m_offset);
+		m_slider.setPosition(gameObject.getPosition().x+ m_offset, gameObject.getPosition().y+ m_offset);
 	};
 
 	void WaterNotiCmp::addWater()
