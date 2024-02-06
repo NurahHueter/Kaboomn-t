@@ -40,10 +40,7 @@ namespace mmt_gd
 					gameObject.getComponent<SpriteAnimationCmp>()->getTextureRect().width / 4),
 				m_shape.getSize());
 		}
-		//else if (gameObject.getType() == Trigger)
-		//{
-		//	m_shape = sf::FloatRect(gameObject.getPosition() - sf::Vector2f(10,10), m_shape.getSize() + sf::Vector2f(20, 20));
-		//}
+
 		else
 		{
 			m_shape = sf::FloatRect(gameObject.getPosition(), m_shape.getSize());
