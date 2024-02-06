@@ -20,7 +20,7 @@ namespace mmt_gd
 
 
         //AXE
-        if (InputManager::instance().isMouseDown("leftclick", 1) && !m_usingTool)
+        if (InputManager::instance().isMousePressed("leftclick", 1) && !m_usingTool)
         {
             m_usingTool = true;
 

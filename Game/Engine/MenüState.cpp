@@ -64,19 +64,29 @@ namespace mmt_gd
     void MenuState::update(float deltaTime)
     {
         GameObjectManager::instance().update(deltaTime);
-
-        auto exitButton = GameObjectManager::instance().getGameObject("ExitButton")->getComponent<SpriteRenderCmp>()->sprite->getGlobalBounds();
-        auto startButton = GameObjectManager::instance().getGameObject("StartButton")->getComponent<SpriteRenderCmp>()->sprite->getGlobalBounds();
-
-
-        if (startButton.contains(InputManager::instance().getMousPosition()))
+        if (GameObjectManager::instance().getGameObject("ExitButton"))
         {
-            GameStateManager::instance().setState("PlayState");
+            auto exitButton = GameObjectManager::instance().getGameObject("ExitButton")->getComponent<SpriteRenderCmp>()->sprite->getGlobalBounds();
+            if (exitButton.contains(InputManager::instance().getMousPosition()) &&
+                InputManager::instance().isMousePressed("leftclick", 1))
+            {
+                GameStateManager::instance().CloseGame();
+            }
+
         }
-        if(exitButton.contains(InputManager::instance().getMousPosition()))
+        if (GameObjectManager::instance().getGameObject("StartButton"))
         {
-            GameStateManager::instance().CloseGame();
+            auto startButton = GameObjectManager::instance().getGameObject("StartButton")->getComponent<SpriteRenderCmp>()->sprite->getGlobalBounds();
+            if (startButton.contains(InputManager::instance().getMousPosition()) &&
+                InputManager::instance().isMousePressed("leftclick", 1))
+            {
+                GameStateManager::instance().setState("PlayState");
+            }
+
         }
+
+        
+       
 
     }
 
