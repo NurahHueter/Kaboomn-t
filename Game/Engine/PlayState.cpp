@@ -32,7 +32,11 @@ namespace mmt_gd
 
         GameObjectManager::instance().addGameObject(mapGo);
 
- 
+        //sound
+
+
+        AssetManager::instance().m_Music["BackGround"]->play();
+        AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 
         m_waterSound.setBuffer(*AssetManager::instance().m_SoundBuffer["water"]);
         m_petSound.setBuffer(*AssetManager::instance().m_SoundBuffer["pet"]);
@@ -49,7 +53,6 @@ namespace mmt_gd
 
     void PlayState::update(float deltaTime)
     {
-
         GameObjectManager::instance().update(deltaTime);
         PhysicsManager::instance().update();
         auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
@@ -193,8 +196,7 @@ namespace mmt_gd
                 m_waterSound.play();
                 p.second->getComponent<WaterNotiCmp>()->addWater();
                
-            }
-           
+            }           
         }
 
         if (plantObjects.size() < 12)

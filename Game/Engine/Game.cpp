@@ -13,16 +13,11 @@ namespace mmt_gd
 	void Game::Initialize()
 	{
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		RenderManager::instance().getWindow().create({ 1920, 1080 }, "SFML Window", sf::Style::Fullscreen);
-		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
+		//RenderManager::instance().getWindow().create({ 1920, 1080 }, "SFML Window", sf::Style::Fullscreen);
+		RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
-		AssetManager::instance().LoadMusic("Axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
-		AssetManager::instance().LoadMusic("Pet", "../Engine/Assets/Sounds/seHm.mp3");
-		AssetManager::instance().LoadMusic("Water", "../Engine/Assets/Sounds/splash-6213.mp3");
 		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
-		AssetManager::instance().LoadMusic("Cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
-
 		if (!AssetManager::instance().m_SoundBuffer["Explosion"])
 		{
 			AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
@@ -70,35 +65,18 @@ namespace mmt_gd
 
 	void Game::Update(float deltaTime)
 	{
-		auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
 
-		if (plantObjects.size() < 12 && m_isInGame)
-		{
-
-			
-			GameStateManager::instance().setState("EndState");
-
-			m_time = m_time + deltaTime;
-			if (m_time > 10.f)
-			{
-				m_isInGame = false;
-				m_time = 0;
-				GameStateManager::instance().setState("MenuState");
-			}
-		}
-
-		else if (InputManager::instance().isKeyUp("MenuState", 1))
+		if (InputManager::instance().isKeyUp("MenuState", 1))
 		{
 			GameStateManager::instance().setState("MenuState");
 		}
 
-		else if (InputManager::instance().isKeyUp("PlayState", 1))
+		if (InputManager::instance().isKeyUp("PlayState", 1))
 		{
-			m_isInGame = true;
 			GameStateManager::instance().setState("PlayState");
 		}
 
-		else if (InputManager::instance().isKeyUp("EndState", 1) )
+		if (InputManager::instance().isKeyUp("EndState", 1) )
 		{
 			GameStateManager::instance().setState("EndState");
 		}
@@ -138,7 +116,6 @@ namespace mmt_gd
 		{
 			GameStateManager::instance().CloseGame();
 		}
-
 		if (GameStateManager::instance().getCloseEvent())
 		{
 			RenderManager::instance().getWindow().close();

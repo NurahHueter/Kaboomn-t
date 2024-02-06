@@ -61,5 +61,6 @@ namespace mmt_gd
         virtual void draw() override;
     private:
         int m_score=0;
+        float m_timer = 0;
     };
 }
