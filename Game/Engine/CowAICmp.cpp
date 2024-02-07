@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "CowAiCmp.h"
 #include "AnimationTypes.h"

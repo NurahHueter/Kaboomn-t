@@ -1,4 +1,3 @@
-#pragma
 #include "pch.h"
 #include "WaterNotiCmp.h"
 #include "GameObject.h"

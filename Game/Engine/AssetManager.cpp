@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "AssetManager.h"
 namespace mmt_gd

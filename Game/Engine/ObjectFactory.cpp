@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "ObjectFactory.h"
 #include "GameObject.h"

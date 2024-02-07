@@ -1,5 +1,3 @@
-#pragma once
-
 #include "pch.h"
 #include "GameState.h"
 #include "Assetmanager.h"

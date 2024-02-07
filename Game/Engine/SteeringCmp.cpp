@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "SteeringCmp.h"
 #include "GameObject.h"

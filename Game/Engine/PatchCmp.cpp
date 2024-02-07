@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "PatchCmp.h"
 #include "GameObject.h"

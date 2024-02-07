@@ -1,4 +1,3 @@
-#pragma once
 #include"pch.h"
 #include"SpriteAnimationCmp.h"
 #include"SpriteRenderCmp.h"

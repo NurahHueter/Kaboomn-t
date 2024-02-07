@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "BoxCollisionCmp.h"
 #include "GameObject.h"

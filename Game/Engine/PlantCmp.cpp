@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "PlantCmp.h"
 #include "IconCmp.h"

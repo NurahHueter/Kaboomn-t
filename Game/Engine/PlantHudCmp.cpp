@@ -1,4 +1,3 @@
-#pragma
 #include "pch.h"
 #include "PlantHud.h"
 #include "GameObject.h"

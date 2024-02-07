@@ -1,4 +1,3 @@
-#pragma once
 #include "pch.h"
 #include "TileLayerCmp.h"
 namespace mmt_gd
