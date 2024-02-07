@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PatchCmp.h"
+#include "PlantCmp.h"
 #include "GameObject.h"
 #include "SpriteAnimationCmp.h"
 #include "BoxCollisionCmp.h"
@@ -35,4 +36,28 @@ namespace mmt_gd
 
         return true;
     }
+    void PatchCmp::update(float deltaTime)
+    {
+       std::vector<std::weak_ptr<GameObject>> tempPlants;
+
+       for (auto plant : m_plants)
+       {
+           if (plant.lock())
+           {
+               tempPlants.push_back(plant);
+           }
+           else
+           {
+               for (auto plantLonely : m_plants)
+               {
+                   if (std::shared_ptr<GameObject> tempP = plantLonely.lock())
+                   {
+                       tempP->getComponent<PlantCmp>()->friendDied();
+                   }
+               }
+           }
+       }
+
+       m_plants = tempPlants;
+    };
 }

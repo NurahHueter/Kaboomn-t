@@ -315,7 +315,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         {
             AssetManager::instance().LoadTexture("SanityIcon", "../Engine/Assets/ChomBombs/Sanity.png" );
         }
-        else
+        if(AssetManager::instance().m_Textures["SanityIcon"])
         {
             auto sanityIcon = std::make_shared<IconCmp>(*gameObject, RenderManager::instance().getWindow(),
                 AssetManager::instance().m_Textures["SanityIcon"],
@@ -339,7 +339,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         {
             AssetManager::instance().LoadTexture("WaterIcon", "../Engine/Assets/ChomBombs/WaterIcon.png");
         }
-        else
+        if (AssetManager::instance().m_Textures["WaterIcon"])
         {
             auto waterIcon = std::make_shared<IconCmp>(*gameObject, RenderManager::instance().getWindow(),
                 AssetManager::instance().m_Textures["WaterIcon"],
@@ -363,7 +363,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
         {
             AssetManager::instance().LoadTexture("HeartIcon", "../Engine/Assets/ChomBombs/HeartIcon.png");
         }
-        else
+        if (AssetManager::instance().m_Textures["HeartIcon"])
         {
             auto heartIcon = std::make_shared<IconCmp>(*gameObject, RenderManager::instance().getWindow(),
                 AssetManager::instance().m_Textures["HeartIcon"],
