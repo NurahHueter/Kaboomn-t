@@ -159,9 +159,6 @@
     <ClCompile Include="EndState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="PlantHudCmp.cpp">
-      <Filter>Source Files\Components\CustomComponents</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -270,9 +267,6 @@
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
     <ClInclude Include="PlantAICmp.h">
-      <Filter>Header Files\Components\CustomComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="PlantHud.h">
       <Filter>Header Files\Components\CustomComponents</Filter>
     </ClInclude>
     <ClInclude Include="IconCmp.h">

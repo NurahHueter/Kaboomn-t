@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "Game.h"
 #include "InputManager.h"
@@ -5,7 +10,6 @@
 #include "RenderManager.h"
 #include "GameStateManager.h"
 #include "GameState.h"
-#include "SFML/Window.hpp"
 
 namespace mmt_gd
 {
