@@ -95,6 +95,10 @@ namespace mmt_gd
                             parentMap[{nx, ny}] = { current.m_x, current.m_y };  // Store the parent information
                         }
                     }
+                    else
+                    {
+                        continue;
+                    }
                 }            
             }
         }
