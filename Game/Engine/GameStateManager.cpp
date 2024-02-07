@@ -31,7 +31,6 @@ namespace mmt_gd
 
             if (state != currentState) {
                 if (currentState != nullptr) {
-                    std::cout << "exit State" << std::endl;
                     currentState->exit();
                 }
                 currentState = state;

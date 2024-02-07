@@ -7,7 +7,6 @@ namespace mmt_gd
 	bool CameraCmp::init()
 	{
 		view.setSize(size);
-		std::cout << size.x << std::endl;
 		view.zoom(m_zoom);
 		return true;
 	}

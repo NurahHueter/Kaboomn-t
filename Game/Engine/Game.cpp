@@ -12,9 +12,9 @@ namespace mmt_gd
 
 	void Game::Initialize()
 	{
+
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		RenderManager::instance().getWindow().create({ 1920, 1080 }, "SFML Window");
-		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
+		RenderManager::instance().getWindow().create({ 1920, 1080 }, "Kaboomn't", sf::Style::Fullscreen);
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
 		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
@@ -39,12 +39,33 @@ namespace mmt_gd
 		{
 			AssetManager::instance().LoadSoundBuffer("cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
 		}
+
 		bindInput();
+
+
+
+		// Load a custom cursor image
+		sf::Texture cursorTexture;
+		if (!cursorTexture.loadFromFile("../Engine/Assets/CatpawMouseScale.png"))
+		{
+			return;
+		}
+
+		// Set the cursor image as the mouse cursor
+		sf::Cursor customCursor;
+		customCursor.loadFromPixels(cursorTexture.copyToImage().getPixelsPtr(), cursorTexture.getSize(), { 0, 0 });
+
+		RenderManager::instance().getWindow().setMouseCursorVisible(true); 
+		RenderManager::instance().getWindow().setMouseCursor(customCursor);
+
+
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
 		GameStateManager::instance().addState("EndState", std::make_shared<EndState>());
 		GameStateManager::instance().setState("MenuState");
+
+		AssetManager::instance().m_Music["BackGround"]->setVolume(40);
 		AssetManager::instance().m_Music["BackGround"]->play();
 		AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 	}
@@ -52,6 +73,8 @@ namespace mmt_gd
 	void Game::Run()
 	{
 		Initialize();
+
+
 
 		while (RenderManager::instance().getWindow().isOpen())
 		{
@@ -66,20 +89,20 @@ namespace mmt_gd
 	void Game::Update(float deltaTime)
 	{
 
-		if (InputManager::instance().isKeyUp("MenuState", 1))
-		{
-			GameStateManager::instance().setState("MenuState");
-		}
+		//if (InputManager::instance().isKeyUp("MenuState", 1))
+		//{
+		//	GameStateManager::instance().setState("MenuState");
+		//}
 
-		if (InputManager::instance().isKeyUp("PlayState", 1))
-		{
-			GameStateManager::instance().setState("PlayState");
-		}
+		//if (InputManager::instance().isKeyUp("PlayState", 1))
+		//{
+		//	GameStateManager::instance().setState("PlayState");
+		//}
 
-		if (InputManager::instance().isKeyUp("EndState", 1) )
-		{
-			GameStateManager::instance().setState("EndState");
-		}
+		//if (InputManager::instance().isKeyUp("EndState", 1) )
+		//{
+		//	GameStateManager::instance().setState("EndState");
+		//}
 
 		InputManager::instance().update();
 		GameStateManager::instance().update(deltaTime);

@@ -124,7 +124,7 @@ namespace mmt_gd
 				
 				// calculate position of tile
 				Vector2f position;
-				position.x = i % layer.getSize().x * static_cast<float>( tileSize.x);
+				position.x = i % layer.getSize().x * static_cast<float>(tileSize.x);
 				position.y = i / layer.getSize().x * static_cast<float>(tileSize.y);
 				//position += offset;
 				// number of tiles in tile set texture (horizontally)
@@ -136,7 +136,7 @@ namespace mmt_gd
 				const int idxY = idx / tileCountX;
 				
 				// calculate source area of tile in tile set texture
-				IntRect source(idxX * tileSize.x, idxY * tileSize.y, tileSize.x, tileSize.y+1);
+				IntRect source(idxX * tileSize.x, idxY * tileSize.y, tileSize.x, tileSize.y);
 
 				//add Tile Sprite
 				const auto sprite = std::make_shared<sf::Sprite>();

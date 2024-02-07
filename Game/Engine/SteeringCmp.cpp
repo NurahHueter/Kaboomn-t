@@ -29,9 +29,6 @@ namespace mmt_gd
             int m_rand = distribution(gen);
             sf::Vector2f plantPosition = plantObject[m_rand].lock()->getPosition();
 
-            std::cout << plantPosition.x << " " << plantPosition.y << std::endl;
-            std::cout << " Rand:" << m_rand << std::endl;
-            std::cout << " Size:" << plantObject.size() << std::endl;
             Node start(idxh_player + indexCorrection, idxw_player + indexCorrection, 0, 0);
             int plantPositionxint = static_cast<int>(plantPosition.x) / m_tileSize;
             int plantPositionyint = static_cast<int>(plantPosition.y) / m_tileSize;
@@ -106,15 +103,6 @@ namespace mmt_gd
                     }
                 }
             }
-            //else {
-            // 
-            //    if (direction.y > epsilon) {
-            //        
-            //    }
-            //    else if (direction.y < -epsilon) {
-            //        // Set animation for moving up
-            //    }
-            //}
         }
 
         gameObject.setPosition(newPosition);

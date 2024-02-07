@@ -38,20 +38,19 @@ namespace mmt_gd
 
         //sound
 
-
+        AssetManager::instance().m_Music["BackGround"]->setVolume(40);
         AssetManager::instance().m_Music["BackGround"]->play();
         AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 
         m_waterSound.setBuffer(*AssetManager::instance().m_SoundBuffer["water"]);
         m_petSound.setBuffer(*AssetManager::instance().m_SoundBuffer["pet"]);
         m_axeSound.setBuffer(*AssetManager::instance().m_SoundBuffer["axe"]);
-
+        m_petSound.setVolume(60);
         
     }
 
     void PlayState::exit()
     {
-        AssetManager::instance().m_Music["BackGround"]->stop();
         GameObjectManager::instance().shutdown();
         RenderManager::instance().shutdown();
     }
@@ -112,6 +111,7 @@ namespace mmt_gd
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {
+                        
                             m_petSound.play();
                             plantComponent->pet();
                         }
@@ -206,7 +206,6 @@ namespace mmt_gd
 
         if (plantObjects.size() < 12)
         {
-            AssetManager::instance().m_Music["BackGround"]->stop();
             GameStateManager::instance().setState("EndState");
         }
     }
