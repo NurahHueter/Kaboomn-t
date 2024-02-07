@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "ObjectFactory.h"
 #include "GameObject.h"
@@ -14,7 +19,6 @@
 #include "PatchCmp.h"
 #include "IconCmp.h"
 #include "PlantCmp.h"
-#include "PlantHud.h"
 #include "PlantAICmp.h"
 #include "Tileson.hpp"
 #include "AssetManager.h"

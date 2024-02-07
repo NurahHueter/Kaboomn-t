@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #pragma once 
 #include "IRenderComponent.h"
 #include "SpriteRenderCmp.h"
