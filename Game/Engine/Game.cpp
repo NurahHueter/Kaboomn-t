@@ -17,32 +17,7 @@ namespace mmt_gd
 		RenderManager::instance().getWindow().create({ 1920, 1080 }, "Kaboomn't", sf::Style::Fullscreen);
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
-		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
-		if (!AssetManager::instance().m_SoundBuffer["Explosion"])
-		{
-			AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
-		}
-
-		if (!AssetManager::instance().m_SoundBuffer["axe"])
-		{
-			AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
-		}
-		if (!AssetManager::instance().m_SoundBuffer["pet"])
-		{
-			AssetManager::instance().LoadSoundBuffer("pet", "../Engine/Assets/Sounds/seHm.mp3");
-		}
-		if (!AssetManager::instance().m_SoundBuffer["water"])
-		{
-			AssetManager::instance().LoadSoundBuffer("water", "../Engine/Assets/Sounds/splash-6213.mp3");
-		}
-		if (!AssetManager::instance().m_SoundBuffer["cow"])
-		{
-			AssetManager::instance().LoadSoundBuffer("cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
-		}
-
 		bindInput();
-
-
 
 		// Load a custom cursor image
 		sf::Texture cursorTexture;
@@ -58,16 +33,10 @@ namespace mmt_gd
 		RenderManager::instance().getWindow().setMouseCursorVisible(true); 
 		RenderManager::instance().getWindow().setMouseCursor(customCursor);
 
-
-
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
 		GameStateManager::instance().addState("EndState", std::make_shared<EndState>());
 		GameStateManager::instance().setState("MenuState");
-
-		AssetManager::instance().m_Music["BackGround"]->setVolume(40);
-		AssetManager::instance().m_Music["BackGround"]->play();
-		AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 	}
 
 	void Game::Run()
@@ -160,6 +129,7 @@ namespace mmt_gd
 			InputManager::instance().bind("MenuState", sf::Keyboard::Key::Num1, 1);
 			InputManager::instance().bind("PlayState", sf::Keyboard::Key::Enter, 1);
 			InputManager::instance().bind("EndState", sf::Keyboard::Key::Num3, 1);
+			InputManager::instance().bind("Esc", sf::Keyboard::Key::Escape, 1);
 	}
 }
 

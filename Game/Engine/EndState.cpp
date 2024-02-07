@@ -34,6 +34,7 @@ namespace mmt_gd
     {
         RenderManager::instance().shutdown();
         GameObjectManager::instance().shutdown();
+		AssetManager::instance().shutdown();
     }
 
     void EndState::update(float deltaTime)

@@ -78,4 +78,11 @@ namespace mmt_gd
 			m_Font.erase(it);
 		}
 	}
+
+	void AssetManager::shutdown() {
+		m_Textures.clear();
+		m_SoundBuffer.clear();
+		m_Music.clear();
+		m_Font.clear();
+	}
 }

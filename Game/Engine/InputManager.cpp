@@ -166,7 +166,10 @@ namespace mmt_gd
 			m_isMousePressed[event.key.code] = false;
 		}
 	}
-
+	void InputManager::shutdown()
+	{
+		m_bindings.clear();
+	}
 	void InputManager::setWindow(sf::RenderWindow& window)
 	{
 		this->m_window.reset(&window, [](sf::RenderWindow*) {});

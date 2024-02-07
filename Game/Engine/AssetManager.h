@@ -30,6 +30,8 @@ namespace mmt_gd
 		void UnloadMusic(std::string name);
 		void UnloadFont(std::string name);
 
+		void shutdown();
+
 	private:
 		AssetManager() {}
 		~AssetManager() {}

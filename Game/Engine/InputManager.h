@@ -42,6 +42,8 @@ namespace mmt_gd
 
         void handleEvents(sf::Event& event);
 
+        void shutdown();
+
         void setWindow(sf::RenderWindow& window);
 
     private:

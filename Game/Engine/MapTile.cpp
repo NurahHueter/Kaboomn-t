@@ -57,9 +57,9 @@ namespace mmt_gd
 
 		if (map->getStatus() == tson::ParseStatus::OK)
 		{
-			err() << "Load tile map with size: " << map->getSize().x << ", "
+			/*err() << "Load tile map with size: " << map->getSize().x << ", "
 				<< map->getSize().y << " and tile size: " << map->getTileSize().x
-				<< ", " << map->getTileSize().y << std::endl;
+				<< ", " << map->getTileSize().y << std::endl;*/
 
 			for (auto& tileSet : map->getTilesets())
 			{

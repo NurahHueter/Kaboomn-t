@@ -18,7 +18,13 @@ namespace mmt_gd
     sf::Clock PlayState::scoreClock;
     void PlayState::init()
     {
-        
+        AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
+		AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
+		AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
+		AssetManager::instance().LoadSoundBuffer("pet", "../Engine/Assets/Sounds/seHm.mp3");
+		AssetManager::instance().LoadSoundBuffer("water", "../Engine/Assets/Sounds/splash-6213.mp3");
+		AssetManager::instance().LoadSoundBuffer("cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
+
 
         scoreClock.restart();
        //map
@@ -53,6 +59,7 @@ namespace mmt_gd
     {
         GameObjectManager::instance().shutdown();
         RenderManager::instance().shutdown();
+        AssetManager::instance().shutdown();
     }
 
     void PlayState::update(float deltaTime)
@@ -62,6 +69,12 @@ namespace mmt_gd
         auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
         auto cowObjects = GameObjectManager::instance().getObjectsByType(Cow);
         auto player = GameObjectManager::instance().getGameObject("Player");
+
+
+        if (plantObjects.size() < 12 && plantObjects.size()!=0)
+        {
+            GameStateManager::instance().setState("EndState");
+        }
 
 
         if (InputManager::instance().isKeyPressed("space",1))
@@ -204,10 +217,7 @@ namespace mmt_gd
             }           
         }
 
-        if (plantObjects.size() < 12)
-        {
-            GameStateManager::instance().setState("EndState");
-        }
+       
     }
 
     void PlayState::draw()
