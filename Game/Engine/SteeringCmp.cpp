@@ -32,12 +32,15 @@ namespace mmt_gd
             Node start(idxh_player + indexCorrection, idxw_player + indexCorrection, 0, 0);
             int plantPositionxint = static_cast<int>(plantPosition.x) / m_tileSize;
             int plantPositionyint = static_cast<int>(plantPosition.y) / m_tileSize;
-            Node goal(plantPositionyint + indexCorrection, plantPositionxint + indexCorrection, 0, 0);
 
-            m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
-        }
-
-        return true;
+            //check if the plant is even reachable
+            if (MapTile::m_LayerKachel[plantPositionyint + indexCorrection][plantPositionxint + indexCorrection] != 0)
+            {
+                Node goal(plantPositionyint + indexCorrection, plantPositionxint + indexCorrection, 0, 0);
+                m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
+                return true;
+            }
+        }     
     }
 
     void SteeringCmp::clearPath()
@@ -104,7 +107,6 @@ namespace mmt_gd
                 }
             }
         }
-
         gameObject.setPosition(newPosition);
     }
 
@@ -112,7 +114,6 @@ namespace mmt_gd
     {
         float distanceToNextWaypoint = MathUtil::length(nextWaypoint - currentPosition);
         return distanceToNextWaypoint < 0.2f;
-
     }
 
     void SteeringCmp::handlePathCompletion()

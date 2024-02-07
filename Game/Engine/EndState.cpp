@@ -55,6 +55,8 @@ namespace mmt_gd
         text.setFont(*AssetManager::instance().m_Font["font"]);
         text.setCharacterSize(100);
         text.setFillColor(sf::Color::White);
+        text.setOutlineColor(sf::Color::Black);
+        text.setOutlineThickness(2.0f);
 
         std::string gameOverMessage = std::to_string(m_score);
         float xTextOffset = 50.f;

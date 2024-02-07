@@ -201,12 +201,12 @@ namespace mmt_gd
         {
         
 
-            if ((p.first->getType() == ObjectType::Plants 
+           /* if ((p.first->getType() == ObjectType::Plants 
                 && p.first->getComponent<PlantAICmp>()->isExploding()) 
                 && p.second->getType() == Plants)
             {
                     p.second->getComponent<PlantCmp>()->getHitfromExplosion();
-            }
+            }*/
             if (p.first->getType() == ObjectType::Trigger 
                 && p.second->getType() == Player
                 && InputManager::instance().isKeyPressed("space",1))

@@ -1032,7 +1032,7 @@
                  "y":431.25
                 }, 
                 {
-                 "height":15.75,
+                 "height":18.4772727272727,
                  "id":42,
                  "name":"Fence23",
                  "rotation":0,
@@ -1040,7 +1040,7 @@
                  "visible":true,
                  "width":28,
                  "x":481.5,
-                 "y":463.25
+                 "y":460.522727272727
                 }, 
                 {
                  "height":13,
@@ -1396,7 +1396,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
