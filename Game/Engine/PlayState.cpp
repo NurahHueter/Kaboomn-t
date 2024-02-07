@@ -18,13 +18,17 @@ namespace mmt_gd
     sf::Clock PlayState::scoreClock;
     void PlayState::init()
     {
+        
+
         scoreClock.restart();
        //map
         tson::Tileson t;
-        const fs::path tileMapresourcePath = { "Assets/Tiled" };
+        const fs::path tileMapresourcePath = { "../Engine/Assets/Tiled" };
         const std::unique_ptr<tson::Map> map = t.parse(tileMapresourcePath / "game.tmj");
-        mapTile.loadMap(map, tileMapresourcePath);
 
+        
+        mapTile.loadMap(map, tileMapresourcePath);
+       
         const auto& mapGo = std::make_shared<GameObject>("map");
         mapTile.getTiledLayer(*mapGo, map);
         mapTile.getObjectLayer(map);
@@ -42,6 +46,7 @@ namespace mmt_gd
         m_petSound.setBuffer(*AssetManager::instance().m_SoundBuffer["pet"]);
         m_axeSound.setBuffer(*AssetManager::instance().m_SoundBuffer["axe"]);
 
+        
     }
 
     void PlayState::exit()

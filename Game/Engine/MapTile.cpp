@@ -18,7 +18,9 @@ namespace mmt_gd
 	sf::Vector2f MapTile::m_tileSize;
 
 	void MapTile::loadMap(const std::unique_ptr<tson::Map>& map, const fs::path resourcePath)
-	{	
+	{
+		
+
 		const int numRows = 60;
 		const int numCols = 60;
 
@@ -30,7 +32,6 @@ namespace mmt_gd
 		auto& layerCollider2 = map->getLayer("Collider")->getData();;
 
 		m_LayerKachel.reserve(numRows);
-
 
 		for (int i = 0; i < numRows; ++i)
 		{
@@ -52,7 +53,6 @@ namespace mmt_gd
 				}
 			}
 		}
-
 
 
 		if (map->getStatus() == tson::ParseStatus::OK)
