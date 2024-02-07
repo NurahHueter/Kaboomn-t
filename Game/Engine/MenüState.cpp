@@ -13,7 +13,7 @@ namespace mmt_gd
     void MenuState::init()
     {
         AssetManager::instance().LoadFont("font","../Engine/Assets/Fonts/arial.ttf");
-        AssetManager::instance().LoadTexture("startScreen", "../Engine/Assets/Startscreen2.png");
+        AssetManager::instance().LoadTexture("startScreen", "../Engine/Assets/Startscreen.png");
         AssetManager::instance().LoadTexture("exitButtonB", "../Engine/Assets/Exit.png");
         AssetManager::instance().LoadTexture("startButton", "../Engine/Assets/Play.png");
 
