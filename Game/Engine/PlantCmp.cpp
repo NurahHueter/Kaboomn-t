@@ -49,66 +49,42 @@ namespace mmt_gd
 		//Icons
 		auto iconCmps = gameObject.getComponents<IconCmp>();
  
-		for (auto icon : iconCmps)
-		{
-			if (icon->getIconType() == Love)
-			{
-				if (m_love >= 80 && m_love <= 100) {
-					icon->setCurrentAnimation(Full);
-				}
-				else if (m_love >= 60 && m_love < 80) {
-					icon->setCurrentAnimation(NearFull);
-				}
-				else if (m_love >= 40 && m_love < 60) {
-					icon->setCurrentAnimation(Half);
-				}
-				else if (m_love >= 20 && m_love < 40) {
-					icon->setCurrentAnimation(NearEmpty);
-				}
-				else if (m_love >= 0 && m_love < 20) {
-					icon->setCurrentAnimation(Empty);
-				}
-			}
-			if (icon->getIconType() == Sanity)
-			{
-				if (m_sanity >= 80 && m_sanity <= 100) {
-					icon->setCurrentAnimation(Full);
-				}
-				else if (m_sanity >= 60 && m_sanity < 80) {
-					icon->setCurrentAnimation(NearFull);
-				}
-				else if (m_sanity >= 40 && m_sanity < 60) {
-					icon->setCurrentAnimation(Half);
-				}
-				else if (m_sanity >= 20 && m_sanity < 40) {
-					icon->setCurrentAnimation(NearEmpty);
-				}
-				else if (m_sanity >= 0 && m_sanity < 20) {
-					icon->setCurrentAnimation(Empty);
-				}
-			}
-			if (icon->getIconType() == Water)
-			{
-				if (m_water >= 80 && m_water <= 100) {
-					icon->setCurrentAnimation(Full);
-				}
-				else if (m_water >= 60 && m_water < 80) {
-					icon->setCurrentAnimation(NearFull);
-				}
-				else if (m_water >= 40 && m_water < 60) {
-					icon->setCurrentAnimation(Half);
-				}
-				else if (m_water >= 20 && m_water < 40) {
-					icon->setCurrentAnimation(NearEmpty);
-				}
-				else if (m_sanity >= 0 && m_sanity < 20) {
-					icon->setCurrentAnimation(Empty);
-				}
+		for (auto icon : iconCmps) {
+			switch (icon->getIconType()) {
+			case Love:
+				setIconAnimation(m_love, Love, icon);
+				break;
+			case Sanity:
+				setIconAnimation(m_sanity, Sanity, icon);
+				break;
+			case Water:
+				setIconAnimation(m_water, Water, icon);
+				break;
+			default:
+				break;
 			}
 		}
-
-
 	};
+
+	void PlantCmp::setIconAnimation(float value, IconType iconType, std::shared_ptr<IconCmp> icon)
+	{
+		if (value >= 80 && value <= 100) {
+			icon->setCurrentAnimation(Full);
+		}
+		else if (value >= 60 && value < 80) {
+			icon->setCurrentAnimation(NearFull);
+		}
+		else if (value >= 40 && value < 60) {
+			icon->setCurrentAnimation(Half);
+		}
+		else if (value >= 20 && value < 40) {
+			icon->setCurrentAnimation(NearEmpty);
+		}
+		else if (value >= 0 && value < 20) {
+			icon->setCurrentAnimation(Empty);
+		}
+	}
+
 	void PlantCmp::pet()
 	{
 		m_love = M_LOVE;

@@ -2,10 +2,10 @@
 #include "IComponent.h"
 #include "GameObject.h"
 #include "PlantTypes.h"
+#include "IconCmp.h"
 
 namespace mmt_gd
 {
-
 	class PlantCmp : public IComponent
 	{
 	public:
@@ -17,6 +17,7 @@ namespace mmt_gd
 		float getSanity() const { return m_sanity; };
 		float getWater() const { return m_water; };
 		float getAffection() const { return m_love; };
+		void setIconAnimation(float value, IconType iconType, std::shared_ptr<IconCmp> icon);
 
 		void cowAttack(bool getingEaten) { m_getingEaten = getingEaten; };
 		void getHitfromExplosion();

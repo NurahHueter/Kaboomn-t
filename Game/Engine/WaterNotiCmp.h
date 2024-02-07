@@ -19,7 +19,8 @@ namespace mmt_gd
 		int m_waterAmount;
 	protected:
 		
-		float m_offset = 8.f;
+		float m_Xoffset = 16.f;
+		float m_Yoffset = 8.f;
 		sf::RectangleShape m_background;
 		sf::RectangleShape m_slider;
 	};

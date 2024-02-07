@@ -330,7 +330,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
             {NearEmpty , 1},
             {Empty , 1},
                 });
-            sanityIcon->setPosition(gameObject->getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.5f, sanityIcon->getTextureRect().height));
+            sanityIcon->setPosition(gameObject->getPosition() + sf::Vector2f(animationCmp->getTextureRect().width / 2.9f, sanityIcon->getTextureRect().height -3));
             sanityIcon->setCurrentAnimation(Full); 
             gameObject->addComponent(sanityIcon);
             RenderManager::instance().addCompToLayer(layer.getName(), sanityIcon);
@@ -354,7 +354,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
               {NearEmpty , 1},
               {Empty , 1},
                 });
-            waterIcon->setPosition(sf::Vector2f(gameObject->getPosition().x, gameObject->getPosition().y));
+            waterIcon->setPosition(sf::Vector2f(gameObject->getPosition().x, gameObject->getPosition().y + animationCmp->getTextureRect().width / 2.2f));
             waterIcon->setCurrentAnimation(Full);
             gameObject->addComponent(waterIcon);
             RenderManager::instance().addCompToLayer(layer.getName(), waterIcon);
@@ -378,7 +378,7 @@ gameObject->addComponent(std::make_shared<ToolCmp>(*gameObject));
                     {NearEmpty , 1},
                     {Empty , 1},
                 });
-            heartIcon->setPosition(sf::Vector2f(gameObject->getPosition().x - heartIcon->getTextureRect().width, gameObject->getPosition().y + animationCmp->getTextureRect().width / 2));
+            heartIcon->setPosition(sf::Vector2f(gameObject->getPosition().x - heartIcon->getTextureRect().width, gameObject->getPosition().y + animationCmp->getTextureRect().width / 1.5));
             heartIcon->setCurrentAnimation(Full);
             gameObject->addComponent(heartIcon);
             RenderManager::instance().addCompToLayer(layer.getName(), heartIcon);
