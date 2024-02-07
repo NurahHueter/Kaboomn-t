@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "CowAiCmp.h"
 #include "AnimationTypes.h"
@@ -27,6 +32,7 @@ namespace mmt_gd
         m_startPos = gameObject.getPosition();
         currentState = Sleep;
         m_cowSound.setBuffer(*AssetManager::instance().m_SoundBuffer["cow"]);
+        m_cowSound.setVolume(50);
         return true;
     }
 

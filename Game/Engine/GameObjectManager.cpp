@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "GameObjectManager.h"
 #include "IRenderComponent.h"
@@ -55,7 +60,7 @@ namespace mmt_gd
             }
             else
             {
-                ffErrorMsg("Could not find gameobject with id " + id);
+               // ffErrorMsg("Could not find gameobject with id " + id);
                 return nullptr;
             }
         }

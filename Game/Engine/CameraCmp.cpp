@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "GameObject.h"
 #include "SpriteAnimationCmp.h"
@@ -7,7 +12,6 @@ namespace mmt_gd
 	bool CameraCmp::init()
 	{
 		view.setSize(size);
-		std::cout << size.x << std::endl;
 		view.zoom(m_zoom);
 		return true;
 	}

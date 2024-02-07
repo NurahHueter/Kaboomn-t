@@ -1,6 +1,13 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "GameStateManager.h"
 #include "GameState.h"
+#include "AssetManager.h"
+#include "InputManager.h"
 
 namespace mmt_gd
 {
@@ -31,7 +38,6 @@ namespace mmt_gd
 
             if (state != currentState) {
                 if (currentState != nullptr) {
-                    std::cout << "exit State" << std::endl;
                     currentState->exit();
                 }
                 currentState = state;
@@ -55,5 +61,9 @@ namespace mmt_gd
         currentState->exit();
         states.clear();
         closeGame = true;
+        AssetManager::instance().shutdown();
+        InputManager::instance().shutdown();
+        RenderManager::instance().shutdown();
+        GameObjectManager::instance().shutdown();
     }
 }

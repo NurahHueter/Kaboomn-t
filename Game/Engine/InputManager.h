@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #pragma once
 #include <map>
 namespace mmt_gd
@@ -41,6 +46,8 @@ namespace mmt_gd
         void unbind(const std::string& name, int playerIdx);
 
         void handleEvents(sf::Event& event);
+
+        void shutdown();
 
         void setWindow(sf::RenderWindow& window);
 

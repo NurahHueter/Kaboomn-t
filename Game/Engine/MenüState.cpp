@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "GameState.h"
 #include "Assetmanager.h"
@@ -16,6 +21,11 @@ namespace mmt_gd
         AssetManager::instance().LoadTexture("startScreen", "../Engine/Assets/Startscreen.png");
         AssetManager::instance().LoadTexture("exitButtonB", "../Engine/Assets/Exit.png");
         AssetManager::instance().LoadTexture("startButton", "../Engine/Assets/Play.png");
+		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
+
+		AssetManager::instance().m_Music["BackGround"]->setVolume(40);
+		AssetManager::instance().m_Music["BackGround"]->play();
+		AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 
         sf::View view(sf::FloatRect(0, 0, RenderManager::instance().getWindow().getSize().x, RenderManager::instance().getWindow().getSize().y));
         RenderManager::instance().getWindow().setView(view);
@@ -57,6 +67,7 @@ namespace mmt_gd
     {
         GameObjectManager::instance().shutdown();
         RenderManager::instance().shutdown();
+		AssetManager::instance().shutdown();
     }
 
     void MenuState::update(float deltaTime)

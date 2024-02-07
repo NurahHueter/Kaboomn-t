@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "AssetManager.h"
 #include "Game.h"
@@ -18,7 +23,13 @@ namespace mmt_gd
     sf::Clock PlayState::scoreClock;
     void PlayState::init()
     {
-        
+        AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
+		AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
+		AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
+		AssetManager::instance().LoadSoundBuffer("pet", "../Engine/Assets/Sounds/seHm.mp3");
+		AssetManager::instance().LoadSoundBuffer("water", "../Engine/Assets/Sounds/splash-6213.mp3");
+		AssetManager::instance().LoadSoundBuffer("cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
+
 
         scoreClock.restart();
        //map
@@ -38,22 +49,22 @@ namespace mmt_gd
 
         //sound
 
-
+        AssetManager::instance().m_Music["BackGround"]->setVolume(40);
         AssetManager::instance().m_Music["BackGround"]->play();
         AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 
         m_waterSound.setBuffer(*AssetManager::instance().m_SoundBuffer["water"]);
         m_petSound.setBuffer(*AssetManager::instance().m_SoundBuffer["pet"]);
         m_axeSound.setBuffer(*AssetManager::instance().m_SoundBuffer["axe"]);
-
+        m_petSound.setVolume(60);
         
     }
 
     void PlayState::exit()
     {
-        AssetManager::instance().m_Music["BackGround"]->stop();
         GameObjectManager::instance().shutdown();
         RenderManager::instance().shutdown();
+        AssetManager::instance().shutdown();
     }
 
     void PlayState::update(float deltaTime)
@@ -63,6 +74,12 @@ namespace mmt_gd
         auto plantObjects = GameObjectManager::instance().getObjectsByType(Plants);
         auto cowObjects = GameObjectManager::instance().getObjectsByType(Cow);
         auto player = GameObjectManager::instance().getGameObject("Player");
+
+
+        if (plantObjects.size() < 12 && plantObjects.size()!=0)
+        {
+            GameStateManager::instance().setState("EndState");
+        }
 
 
         if (InputManager::instance().isKeyPressed("space",1))
@@ -112,6 +129,7 @@ namespace mmt_gd
                         auto plantComponent = plant->getComponent<PlantCmp>();
                         if (plantComponent)
                         {
+                        
                             m_petSound.play();
                             plantComponent->pet();
                         }
@@ -188,12 +206,12 @@ namespace mmt_gd
         {
         
 
-            if ((p.first->getType() == ObjectType::Plants 
+           /* if ((p.first->getType() == ObjectType::Plants 
                 && p.first->getComponent<PlantAICmp>()->isExploding()) 
                 && p.second->getType() == Plants)
             {
                     p.second->getComponent<PlantCmp>()->getHitfromExplosion();
-            }
+            }*/
             if (p.first->getType() == ObjectType::Trigger 
                 && p.second->getType() == Player
                 && InputManager::instance().isKeyPressed("space",1))
@@ -204,11 +222,7 @@ namespace mmt_gd
             }           
         }
 
-        if (plantObjects.size() < 12)
-        {
-            AssetManager::instance().m_Music["BackGround"]->stop();
-            GameStateManager::instance().setState("EndState");
-        }
+       
     }
 
     void PlayState::draw()

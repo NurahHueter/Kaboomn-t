@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "tileson.hpp"
 #include "AssetManager.h"
@@ -57,9 +62,9 @@ namespace mmt_gd
 
 		if (map->getStatus() == tson::ParseStatus::OK)
 		{
-			err() << "Load tile map with size: " << map->getSize().x << ", "
+			/*err() << "Load tile map with size: " << map->getSize().x << ", "
 				<< map->getSize().y << " and tile size: " << map->getTileSize().x
-				<< ", " << map->getTileSize().y << std::endl;
+				<< ", " << map->getTileSize().y << std::endl;*/
 
 			for (auto& tileSet : map->getTilesets())
 			{
@@ -124,7 +129,7 @@ namespace mmt_gd
 				
 				// calculate position of tile
 				Vector2f position;
-				position.x = i % layer.getSize().x * static_cast<float>( tileSize.x);
+				position.x = i % layer.getSize().x * static_cast<float>(tileSize.x);
 				position.y = i / layer.getSize().x * static_cast<float>(tileSize.y);
 				//position += offset;
 				// number of tiles in tile set texture (horizontally)
@@ -136,7 +141,7 @@ namespace mmt_gd
 				const int idxY = idx / tileCountX;
 				
 				// calculate source area of tile in tile set texture
-				IntRect source(idxX * tileSize.x, idxY * tileSize.y, tileSize.x, tileSize.y+1);
+				IntRect source(idxX * tileSize.x, idxY * tileSize.y, tileSize.x, tileSize.y);
 
 				//add Tile Sprite
 				const auto sprite = std::make_shared<sf::Sprite>();

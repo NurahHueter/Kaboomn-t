@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include <queue>
 #include <vector>
@@ -94,6 +99,10 @@ namespace mmt_gd
                             costMap[{nx, ny}] = newWeight;
                             parentMap[{nx, ny}] = { current.m_x, current.m_y };  // Store the parent information
                         }
+                    }
+                    else
+                    {
+                        continue;
                     }
                 }            
             }

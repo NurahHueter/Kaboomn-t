@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "GameState.h"
 #include "Assetmanager.h"
@@ -34,6 +39,7 @@ namespace mmt_gd
     {
         RenderManager::instance().shutdown();
         GameObjectManager::instance().shutdown();
+		AssetManager::instance().shutdown();
     }
 
     void EndState::update(float deltaTime)
@@ -54,6 +60,8 @@ namespace mmt_gd
         text.setFont(*AssetManager::instance().m_Font["font"]);
         text.setCharacterSize(100);
         text.setFillColor(sf::Color::White);
+        text.setOutlineColor(sf::Color::Black);
+        text.setOutlineThickness(2.0f);
 
         std::string gameOverMessage = std::to_string(m_score);
         float xTextOffset = 50.f;

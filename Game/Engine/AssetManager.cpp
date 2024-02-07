@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "AssetManager.h"
 namespace mmt_gd
@@ -77,5 +82,12 @@ namespace mmt_gd
 		if (it != m_Font.end()) {
 			m_Font.erase(it);
 		}
+	}
+
+	void AssetManager::shutdown() {
+		m_Textures.clear();
+		m_SoundBuffer.clear();
+		m_Music.clear();
+		m_Font.clear();
 	}
 }

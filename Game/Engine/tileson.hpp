@@ -2739,7 +2739,7 @@ namespace tson
 					*m_data = json11::Json::parse(str, strError);
 					if(!strError.empty())
 					{
-						std::cout << strError << "\n";
+						//std::cout << strError << "\n";
 						return false;
 					}
 					m_json = m_data.get();

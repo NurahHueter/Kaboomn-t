@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "SteeringCmp.h"
 #include "GameObject.h"
@@ -29,18 +34,18 @@ namespace mmt_gd
             int m_rand = distribution(gen);
             sf::Vector2f plantPosition = plantObject[m_rand].lock()->getPosition();
 
-            std::cout << plantPosition.x << " " << plantPosition.y << std::endl;
-            std::cout << " Rand:" << m_rand << std::endl;
-            std::cout << " Size:" << plantObject.size() << std::endl;
             Node start(idxh_player + indexCorrection, idxw_player + indexCorrection, 0, 0);
             int plantPositionxint = static_cast<int>(plantPosition.x) / m_tileSize;
             int plantPositionyint = static_cast<int>(plantPosition.y) / m_tileSize;
-            Node goal(plantPositionyint + indexCorrection, plantPositionxint + indexCorrection, 0, 0);
 
-            m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
-        }
-
-        return true;
+            //check if the plant is even reachable
+            if (MapTile::m_LayerKachel[plantPositionyint + indexCorrection][plantPositionxint + indexCorrection] != 0)
+            {
+                Node goal(plantPositionyint + indexCorrection, plantPositionxint + indexCorrection, 0, 0);
+                m_pathlist = AStar(MapTile::m_LayerKachel, start, goal);
+                return true;
+            }
+        }     
     }
 
     void SteeringCmp::clearPath()
@@ -106,17 +111,7 @@ namespace mmt_gd
                     }
                 }
             }
-            //else {
-            // 
-            //    if (direction.y > epsilon) {
-            //        
-            //    }
-            //    else if (direction.y < -epsilon) {
-            //        // Set animation for moving up
-            //    }
-            //}
         }
-
         gameObject.setPosition(newPosition);
     }
 
@@ -124,7 +119,6 @@ namespace mmt_gd
     {
         float distanceToNextWaypoint = MathUtil::length(nextWaypoint - currentPosition);
         return distanceToNextWaypoint < 0.2f;
-
     }
 
     void SteeringCmp::handlePathCompletion()

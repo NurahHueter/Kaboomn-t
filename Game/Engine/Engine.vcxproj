@@ -176,7 +176,6 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="PlantAI.cpp" />
     <ClCompile Include="PlantCmp.cpp" />
-    <ClCompile Include="PlantHudCmp.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RigidBodyCmp.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -213,7 +212,6 @@ sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="PlantAICmp.h" />
     <ClInclude Include="PlantCmp.h" />
-    <ClInclude Include="PlantHud.h" />
     <ClInclude Include="PlantTypes.h" />
     <ClInclude Include="RigidBodyCmp.h" />
     <ClInclude Include="BoxCollisionCmp.h" />

@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #include "pch.h"
 #include "Game.h"
 #include "InputManager.h"
@@ -5,53 +10,44 @@
 #include "RenderManager.h"
 #include "GameStateManager.h"
 #include "GameState.h"
-#include "SFML/Window.hpp"
 
 namespace mmt_gd
 {
 
 	void Game::Initialize()
 	{
+
 		RenderManager::instance().getWindow().setVerticalSyncEnabled(true);
-		RenderManager::instance().getWindow().create({ 1920, 1080 }, "SFML Window");
-		//RenderManager::instance().getWindow().create({800, 800}, "SFML Window");
+		RenderManager::instance().getWindow().create({ 1920, 1080 }, "Kaboomn't", sf::Style::Fullscreen);
 		InputManager::instance().setWindow(RenderManager::instance().getWindow());
 
-		AssetManager::instance().LoadMusic("BackGround", "../Engine/Assets/Sounds/8-bit-dream-land-142093.mp3");
-		if (!AssetManager::instance().m_SoundBuffer["Explosion"])
+		bindInput();
+
+		// Load a custom cursor image
+		sf::Texture cursorTexture;
+		if (!cursorTexture.loadFromFile("../Engine/Assets/CatpawMouseScale.png"))
 		{
-			AssetManager::instance().LoadSoundBuffer("Explosion", "../Engine/Assets/Sounds/hq-explosion-6288.mp3");
+			return;
 		}
 
-		if (!AssetManager::instance().m_SoundBuffer["axe"])
-		{
-			AssetManager::instance().LoadSoundBuffer("axe", "../Engine/Assets/Sounds/axe-slash-1-106748.mp3");
-		}
-		if (!AssetManager::instance().m_SoundBuffer["pet"])
-		{
-			AssetManager::instance().LoadSoundBuffer("pet", "../Engine/Assets/Sounds/seHm.mp3");
-		}
-		if (!AssetManager::instance().m_SoundBuffer["water"])
-		{
-			AssetManager::instance().LoadSoundBuffer("water", "../Engine/Assets/Sounds/splash-6213.mp3");
-		}
-		if (!AssetManager::instance().m_SoundBuffer["cow"])
-		{
-			AssetManager::instance().LoadSoundBuffer("cow", "../Engine/Assets/Sounds/animalhowling-107316.mp3");
-		}
-		bindInput();
+		// Set the cursor image as the mouse cursor
+		sf::Cursor customCursor;
+		customCursor.loadFromPixels(cursorTexture.copyToImage().getPixelsPtr(), cursorTexture.getSize(), { 0, 0 });
+
+		RenderManager::instance().getWindow().setMouseCursorVisible(true); 
+		RenderManager::instance().getWindow().setMouseCursor(customCursor);
 
 		GameStateManager::instance().addState("MenuState", std::make_shared<MenuState>());
 		GameStateManager::instance().addState("PlayState", std::make_shared<PlayState>());
 		GameStateManager::instance().addState("EndState", std::make_shared<EndState>());
 		GameStateManager::instance().setState("MenuState");
-		AssetManager::instance().m_Music["BackGround"]->play();
-		AssetManager::instance().m_Music["BackGround"]->setLoop(true);
 	}
 
 	void Game::Run()
 	{
 		Initialize();
+
+
 
 		while (RenderManager::instance().getWindow().isOpen())
 		{
@@ -66,29 +62,29 @@ namespace mmt_gd
 	void Game::Update(float deltaTime)
 	{
 
-		if (InputManager::instance().isKeyUp("MenuState", 1))
-		{
-			GameStateManager::instance().setState("MenuState");
-		}
+		//if (InputManager::instance().isKeyUp("MenuState", 1))
+		//{
+		//	GameStateManager::instance().setState("MenuState");
+		//}
 
-		if (InputManager::instance().isKeyUp("PlayState", 1))
-		{
-			GameStateManager::instance().setState("PlayState");
-		}
+		//if (InputManager::instance().isKeyUp("PlayState", 1))
+		//{
+		//	GameStateManager::instance().setState("PlayState");
+		//}
 
-		if (InputManager::instance().isKeyUp("EndState", 1) )
-		{
-			GameStateManager::instance().setState("EndState");
-		}
+		//if (InputManager::instance().isKeyUp("EndState", 1) )
+		//{
+		//	GameStateManager::instance().setState("EndState");
+		//}
 
 		InputManager::instance().update();
 		GameStateManager::instance().update(deltaTime);
 	
-		std::ostringstream ss;
-		m_fps.update();
-		ss << " | FPS: " << m_fps.getFps();
+		//std::ostringstream ss;
+		//m_fps.update();
+		//ss << " | FPS: " << m_fps.getFps();
 
-		RenderManager::instance().getWindow().setTitle(ss.str());
+		//RenderManager::instance().getWindow().setTitle(ss.str());
 	}
 
 	void Game::HandleEvents()
@@ -137,6 +133,7 @@ namespace mmt_gd
 			InputManager::instance().bind("MenuState", sf::Keyboard::Key::Num1, 1);
 			InputManager::instance().bind("PlayState", sf::Keyboard::Key::Enter, 1);
 			InputManager::instance().bind("EndState", sf::Keyboard::Key::Num3, 1);
+			InputManager::instance().bind("Esc", sf::Keyboard::Key::Escape, 1);
 	}
 }
 

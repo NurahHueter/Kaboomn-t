@@ -1,3 +1,8 @@
+/*
+MultimediaTechnology / FH Salzburg
+MultimediaProjekt 2A
+Authors: Nurah Hüter, Florian Rauter
+*/
 #pragma once
 #include <map>
 
@@ -29,6 +34,8 @@ namespace mmt_gd
 		void UnloadSoundBuffer(std::string name);
 		void UnloadMusic(std::string name);
 		void UnloadFont(std::string name);
+
+		void shutdown();
 
 	private:
 		AssetManager() {}
