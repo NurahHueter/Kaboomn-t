@@ -76,11 +76,11 @@ namespace mmt_gd
 		InputManager::instance().update();
 		GameStateManager::instance().update(deltaTime);
 	
-		std::ostringstream ss;
-		m_fps.update();
-		ss << " | FPS: " << m_fps.getFps();
+		//std::ostringstream ss;
+		//m_fps.update();
+		//ss << " | FPS: " << m_fps.getFps();
 
-		RenderManager::instance().getWindow().setTitle(ss.str());
+		//RenderManager::instance().getWindow().setTitle(ss.str());
 	}
 
 	void Game::HandleEvents()
